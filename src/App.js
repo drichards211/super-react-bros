@@ -1,8 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+/* import sprites from './logo.svg'; */
 import './App.css';
 
-function App() {
+function RenderMario() {
+  return (
+    <div className="Render-mario">
+
+    </div>
+  )
+}
+
+
+/* function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +30,6 @@ function App() {
       </header>
     </div>
   );
-}
+} */
 
-export default App;
+export default RenderMario;
