@@ -1,9 +1,15 @@
 .Render-mario {
   width: 160px;
   height: 320px;
-  background-position: -800px -10px;
-  background-image: url("/mario-luigi-sprites-scaled.png");
+  background-position: -0px -0px;
+  background-image: url("/mario-sprites-scaled.png");
   background-repeat: no-repeat;
+  animation: walk .33s steps(3) infinite;
   /* background-size: cover; */
   /* SHORTHAND background: url("/mario-luigi-sprites.png") -80px -1px no-repeat; */
+}
+@keyframes walk {
+  from { background-position: -160px -0px; }
+    to { background-position: -640px -0px; }
+  /* 100% { background-position: -800px -1140px; } */
 }
