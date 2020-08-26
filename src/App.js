@@ -2,9 +2,9 @@ import React from 'react';
 /* import sprites from './logo.svg'; */
 import './App.css';
 
-function RenderMario() {
+function RenderBrother() {
   return (
-    <div className="Render-mario">
+    <div className="Render-brother mario">
 
     </div>
   )
@@ -32,4 +32,4 @@ function RenderMario() {
   );
 } */
 
-export default RenderMario;
+export default RenderBrother;

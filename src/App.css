@@ -1,15 +1,100 @@
-.Render-mario {
+
+:root {
+  --mario: -230px;
+  --luigi: -800px;
+  --super-mario: -0px;
+  --super-luigi: -480px; 
+}
+.Render-brother {
   width: 160px;
-  height: 320px;
-  background-position: -0px -0px;
   background-image: url("/mario-sprites-scaled.png");
   background-repeat: no-repeat;
-  animation: walk .33s steps(3) infinite;
-  /* background-size: cover; */
   /* SHORTHAND background: url("/mario-luigi-sprites.png") -80px -1px no-repeat; */
 }
-@keyframes walk {
+
+/* DIFFERENT BROS STATES */
+.mario {
+  height: 160px;
+  background-position: -0px -320px;
+  animation: walk-mario .33s steps(3) infinite;
+}
+@keyframes walk-mario {
+  from { background-position: -160px -320px; }
+    to { background-position: -640px -320px; }
+}
+.luigi {
+  height: 160px;
+  background-position: -0px -800px;
+  animation: walk-luigi .33s steps(3) infinite;
+}
+@keyframes walk-luigi {
+  from { background-position: -160px -800px; }
+    to { background-position: -640px -800px; }
+}
+.super-mario {
+  height: 320px;
+  background-position: -0px -0px;
+  animation: walk-super-mario .33s steps(3) infinite;
+}
+@keyframes walk-super-mario {
   from { background-position: -160px -0px; }
     to { background-position: -640px -0px; }
-  /* 100% { background-position: -800px -1140px; } */
+}
+.super-luigi {
+  height: 320px;
+  background-position: -0px -480px;
+  animation: walk-super-luigi .33s steps(3) infinite;
+}
+@keyframes walk-super-luigi {
+  from { background-position: -160px -480px; }
+    to { background-position: -640px -480px; }
+}
+.fire {
+/* Identical sprites used for Mario and Luigi in Fire form */
+  height: 320px;
+  background-position: -0px -960px;
+  animation: walk-fire .33s steps(3) infinite;
+}
+@keyframes walk-fire {
+  from { background-position: -160px -960px; }
+    to { background-position: -640px -960px; }
+}
+.invincible {
+/* This doesn't work properly yet */
+  height: 160px;
+  background-position: -160px -1760px;
+  animation: invincible-1 .33s steps(9, jump-none) infinite;
+}
+@keyframes invincible-1 {
+  0% { background-position: -160px -1760px; }
+  12.5% { background-position: -160px -2720px; }
+  25% { background-position: -160px -2880px; }
+  37.5% { background-position: -320px -1760px; }
+  50% { background-position: -320px -2720px; }
+  62.5% { background-position: -320px -2880px; }
+  75% { background-position: -480px -1760px; }
+  87.5% { background-position: -480px -2720px; }
+  100% { background-position: -480px -2880px; }
+}
+@keyframes invincible-2 {
+  from { background-position: -160px -2720px; }
+    to { background-position: -160px -2880px; }
+    
+  
+}
+.invincible-super {
+
+}
+.dead-mario {
+  height: 160px;
+  background-position: -960px -320px;
+}
+.dead-luigi {
+  height: 160px;
+  background-position: -960px -800px;
+}
+.dead-fire { 
+/* When timer runs out if Mario/Luigi is in fire-form */
+  height: 160px;
+  background-position: -960px -1280px;
 }
