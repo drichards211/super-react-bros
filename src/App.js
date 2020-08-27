@@ -4,7 +4,7 @@ import './App.css';
 
 function RenderBrother() {
   return (
-    <div className="Render-brother mario">
+    <div className="Render-brother super-mario">
 
     </div>
   )

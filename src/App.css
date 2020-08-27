@@ -7,7 +7,7 @@
 }
 .Render-brother {
   width: 160px;
-  background-image: url("/mario-sprites-scaled.png");
+  background-image: url("/mario-grid-a2-enlarged.png");
   background-repeat: no-repeat;
   /* SHORTHAND background: url("/mario-luigi-sprites.png") -80px -1px no-repeat; */
 }
@@ -60,30 +60,22 @@
     to { background-position: -640px -960px; }
 }
 .invincible {
-/* This doesn't work properly yet */
   height: 160px;
-  background-position: -160px -1760px;
-  animation: invincible-1 .33s steps(9, jump-none) infinite;
+  background-position: -160px -3200px;
+  animation: invincible .33s steps(9) infinite;
 }
-@keyframes invincible-1 {
-  0% { background-position: -160px -1760px; }
-  12.5% { background-position: -160px -2720px; }
-  25% { background-position: -160px -2880px; }
-  37.5% { background-position: -320px -1760px; }
-  50% { background-position: -320px -2720px; }
-  62.5% { background-position: -320px -2880px; }
-  75% { background-position: -480px -1760px; }
-  87.5% { background-position: -480px -2720px; }
-  100% { background-position: -480px -2880px; }
-}
-@keyframes invincible-2 {
-  from { background-position: -160px -2720px; }
-    to { background-position: -160px -2880px; }
-    
-  
+@keyframes invincible {
+  0% { background-position: -160px -3200px; }
+  100% { background-position: -1600px -3200px; }
 }
 .invincible-super {
-
+  height: 320px;
+  background-position: -160px -2880px;
+  animation: invincible-super .33s steps(9) infinite;
+}
+@keyframes invincible-super {
+  0% { background-position: -160px -2880px; }
+  100% { background-position: -1600px -2880px; }
 }
 .dead-mario {
   height: 160px;
