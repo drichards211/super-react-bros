@@ -12,6 +12,7 @@ function RenderBrother() {
 
 const MarioStateManager = () => {
   
+  // STATE MANAGEMENT:
   const [marioState, setMarioState] = useState({
     brother: "mario",
     super: false,
@@ -19,24 +20,31 @@ const MarioStateManager = () => {
     invincible: false,
     invinciTimer: 0,
     alive: true,
+    points: "000000",
     lives: 3,
     coins: 0,
     timer: 100,
   });
-  
+
   let marioClass = "Render-brother ";
 
+  // ADMINISTRATIVE TOOLS:
+  const addLeadingZeroes = (number, places) => {
+  // Stringifies number and adds leading zeroes:
+    return String(number).padStart(places, '0');
+  }
+  
   // BUTTONS
-  let buttonMushroom = ( <button onClick={() => setMarioState((prevState) => ({
+  const buttonMushroom = ( <button onClick={() => setMarioState((prevState) => ({
     ...prevState, super: true, }))}> Super Mushroom </button> );
 
-  let buttonStar = ( <button onClick={() => setMarioState((prevState) => ({
+  const buttonStar = ( <button onClick={() => setMarioState((prevState) => ({
     ...prevState, invincible: true, invinciTimer: 10, }))}> Starman </button> );
   
-  let buttonEndStar = ( <button onClick={() => setMarioState((prevState) => ({
+  const buttonEndStar = ( <button onClick={() => setMarioState((prevState) => ({
     ...prevState, invincible: false, }))}> Cancel Starman </button> );
 
-  let buttonEnemy = ( <button onClick={() => {
+  const buttonEnemy = ( <button onClick={() => {
       // ENEMY LOGIC:
       if (marioState.invincible) {
         console.log("Mario/Luigi is Invincible, no state change");
@@ -49,16 +57,18 @@ const MarioStateManager = () => {
       }
     }}> Enemy </button> );
 
-  let buttonFire = ( <button onClick={() => setMarioState((prevState) => ({
+  const buttonFire = ( <button onClick={() => setMarioState((prevState) => ({
     ...prevState, fire: true, super: true, }))}> Fire Flower </button> );
 
-  let buttonCoin = ( <button onClick={() => setMarioState((prevState) => ({
-    ...prevState, coins: marioState.coins +1, }))}> Coin </button> );
-
-  let buttonOneUp = ( <button onClick={() => setMarioState((prevState) => ({
+  const buttonCoin = ( <button onClick={() => setMarioState((prevState) => ({
+    ...prevState, coins: marioState.coins +1, 
+    // Convert marioState.points into a number, add 200 points, convert back into string with leading zeroes:
+    points: addLeadingZeroes((parseInt(marioState.points) +200), 6) }))}  > Coin </button> );
+    
+  const buttonOneUp = ( <button onClick={() => setMarioState((prevState) => ({
     ...prevState, lives: marioState.lives +1, }))}> One Up </button> );
 
-  let tryAgain = ( <button onClick={() => {
+  const tryAgain = ( <button onClick={() => {
     // NEW LIFE LOGIC:
     if (marioState.alive) {
       alert("Mario/Luigi is still alive. Try dying first.");
@@ -71,19 +81,79 @@ const MarioStateManager = () => {
     }
   }}> Try Again </button> );
     
-  let newGame = ( <button onClick={() => setMarioState((prevState) => ({
-    brother: "mario",
+  const newGame = ( <button onClick={() => setMarioState((prevState) => ({
+    brother: marioState.brother,
     super: false,
     fire: false,
     invincible: false,
     invinciTimer: 0,
     alive: true,
+    points: "000000",
     lives: 3,
     coins: 0,
     timer: 100, }))}> New Game </button> );
 
-  let buttons = <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {tryAgain} {newGame} </div>;
+  const buttons = <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {tryAgain} {newGame} </div>;
   // END BUTTONS 
+
+  // SCOREBOARD
+    let playerToggle = ( <button onClick={() => { 
+      //TOGGLE LOGIC:
+      if (marioState.brother === "mario") {
+        setMarioState((prevState) => ({
+          ...prevState, brother: "luigi",
+        }));
+      } else {
+        setMarioState((prevState) => ({
+          ...prevState, brother: "mario",
+        }));
+      }
+    }}> {marioState.brother} </button> );
+    
+    const pointsCounter = () => {
+      return ( <div>{marioState.points}</div> )
+    }
+
+    const livesCounter = () => {
+      return ( <div>lives x {marioState.lives}</div> );
+    }
+
+    const coinCounter = () => {
+      // COIN COUNTING LOGIC:
+      let numCoins = addLeadingZeroes(marioState.coins, 2);  /* (marioState.coins < 10) ? "0" + marioState.coins: marioState.coins; */
+      if (marioState.coins > 99) {
+        setMarioState((prevState) => ({
+          ...prevState, coins: 0, lives: marioState.lives +1 }))
+      }
+      return ( <div className="coin-counter">coins x {numCoins} </div> );
+    }
+
+    
+
+    /* const updateTime = () => {
+      if (marioState.timer < 1) {
+        alert("TIME UP");
+      } else {
+        setMarioState((prevState) => ({
+          ...prevState, timer: marioState.timer -1,
+        }));
+      }
+    } */
+    
+    setInterval(updateTime, 3000);
+    
+    const timer = () => {
+      // TIMER LOGIC:
+      if (marioState.timer < 1) {
+        setMarioState((prevState) => ({
+          ...prevState, lives: marioState.lives -1,
+        }));
+      }
+      return ( <div> Time: {marioState.timer} </div> )
+    }
+
+  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} </div>
+  // END SCOREBOARD
 
   // MARIO SPRITE DISPLAY LOGIC:
   switch (true) {
@@ -120,7 +190,19 @@ const MarioStateManager = () => {
       }
   }
 
-  return ( <div><div className={marioClass}></div><div className="blockButtons"> {buttons} </div></div> );
+  return ( <div><div className="scoreboard"> {scoreBoard} </div><div className={marioClass}></div><div className="blockButtons"> {buttons} </div></div> );
 }
+
+let testTimer = 100;
+    
+    const updateTime = () => {
+      
+      /* if (testTimer < 1) {
+        alert("TIME UP");
+      } else { */
+        testTimer = testTimer -1;
+        console.log(testTimer)
+      
+    }
 
 export default RenderBrother;
