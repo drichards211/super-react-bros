@@ -120,7 +120,7 @@ const MarioStateManager = () => {
 
     const coinCounter = () => {
       // COIN COUNTING LOGIC:
-      let numCoins = addLeadingZeroes(marioState.coins, 2);  /* (marioState.coins < 10) ? "0" + marioState.coins: marioState.coins; */
+      let numCoins = addLeadingZeroes(marioState.coins, 2);
       if (marioState.coins > 99) {
         setMarioState((prevState) => ({
           ...prevState, coins: 0, lives: marioState.lives +1 }))
@@ -128,9 +128,8 @@ const MarioStateManager = () => {
       return ( <div className="coin-counter">coins x {numCoins} </div> );
     }
 
-    
-
-    /* const updateTime = () => {
+    const updateTime = () => {
+      console.log("updateTime() ran");
       if (marioState.timer < 1) {
         alert("TIME UP");
       } else {
@@ -138,9 +137,13 @@ const MarioStateManager = () => {
           ...prevState, timer: marioState.timer -1,
         }));
       }
-    } */
-    
-    setInterval(updateTime, 3000);
+    }
+
+    // YOU CANNOT USE setInterval inside the main body of a React function component:
+    // TODO: Re-factor to use a custom hook, and move the timer outside: 
+    // see: https://medium.com/@sdolidze/the-iceberg-of-react-hooks-af0b588f43fb
+
+    /* setInterval(updateTime, 1000); */
     
     const timer = () => {
       // TIMER LOGIC:
@@ -148,11 +151,11 @@ const MarioStateManager = () => {
         setMarioState((prevState) => ({
           ...prevState, lives: marioState.lives -1,
         }));
-      }
+      } 
       return ( <div> Time: {marioState.timer} </div> )
     }
 
-  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} </div>
+  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} </div>
   // END SCOREBOARD
 
   // MARIO SPRITE DISPLAY LOGIC:
@@ -192,17 +195,5 @@ const MarioStateManager = () => {
 
   return ( <div><div className="scoreboard"> {scoreBoard} </div><div className={marioClass}></div><div className="blockButtons"> {buttons} </div></div> );
 }
-
-let testTimer = 100;
-    
-    const updateTime = () => {
-      
-      /* if (testTimer < 1) {
-        alert("TIME UP");
-      } else { */
-        testTimer = testTimer -1;
-        console.log(testTimer)
-      
-    }
 
 export default RenderBrother;

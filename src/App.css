@@ -1,3 +1,8 @@
+@font-face {
+  font-family: PressStart;
+  src: url(./PressStart2P-vaV7.ttf);
+  font-style: normal;
+}
 
 :root {
   --mario: -230px;
@@ -5,6 +10,13 @@
   --super-mario: -0px;
   --super-luigi: -480px; 
 }
+
+html, body {
+  font-size: 16px;
+  font-family: PressStart;
+  min-width: 320px; /* prevents layout from breaking on tiny screens */
+}
+
 .Render-brother {
   width: 160px;
   background-image: url("/mario-grid-a2-enlarged.png");
