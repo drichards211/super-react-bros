@@ -1,51 +1,6 @@
-import React, { createContext, useContext, useReducter, useState } from 'react';
-/* import sprites from './logo.svg'; */
-import './App.css';
-import global from "./global";
-
-const App = () => {
-  global.mario = useMarioState();
-
-
-
-
-
-}
-
-
-
-
-const StoreContext = createContext();
-const initialMarioState = {
-  brother: "mario",
-  super: false,
-  fire: false,
-  invincible: false,
-  invinciTimer: 0,
-  alive: true,
-  points: "000000",
-  lives: 3,
-  coins: 0,
-  timer: 100,
-}
-
-function useMarioState() {
-// Custom Hook for global state management:
-  const [marioStateGlobal, setMarioStateGlobal] = useState({
-    brother: "mario",
-    super: false,
-    fire: false,
-    invincible: false,
-    invinciTimer: 0,
-    alive: true,
-    points: "000000",
-    lives: 3,
-    coins: 0,
-    timer: 100,
-  });
-  
-  return [marioStateGlobal, setMarioStateGlobal];
-}
+import React, { useState } from 'react';
+import '.App.css';
+import global from './global';
 
 // ADMINISTRATIVE TOOLS:
 function addLeadingZeroes(number, places) {
@@ -53,96 +8,9 @@ function addLeadingZeroes(number, places) {
   return String(number).padStart(places, '0');
 }
 
-const newContext = React.createContext(initialMarioState); // rename newContext something like marioContext
-const { Provider, Consumer } = newContext; 
-
-const reducer = (newState) => {
-  return { newState }
-}
-
-function RenderBrother() {
-  // <Provider> makes state available to all child components within, regardless of depth
-  return ( 
-    <div>
-      <MarioStateManager/>
-    </div> 
-  )
-}
-
 function MarioStateManager() {
   
-  const marioState = Provider, setMarioState = Consumer;/* useContext(newContext); */
-
-  // STATE MANAGEMENT:
-  
-  /* const [marioState, setMarioState] = useMarioState(); */ /* useState(initialMarioState); *//* useState(useContext(newContext)); */ // originally: useState(initialMarioState)
-
   let marioClass = "Render-brother ";
-
-  /* initialMarioState.update = "setMarioState()"; */
-
-  
-  // SCOREBOARD
-    let playerToggle = ( <button onClick={() => { 
-      //TOGGLE LOGIC:
-      if (marioState.brother === "mario") {
-        setMarioState(prevState => ({
-          ...prevState, brother: "luigi",
-        }));
-      } else {
-        setMarioState(prevState => ({
-          ...prevState, brother: "mario",
-        }));
-      }
-    }}> {marioState.brother} </button> );
-    
-    const pointsCounter = () => {
-      return ( <div>{marioState.points}</div> )
-    }
-
-    const livesCounter = () => {
-      return ( <div>lives x {marioState.lives}</div> );
-    }
-
-    const coinCounter = () => {
-      // COIN COUNTING LOGIC:
-      let numCoins = addLeadingZeroes(marioState.coins, 2);
-      if (marioState.coins > 99) {
-        setMarioState(prevState => ({
-          ...prevState, coins: 0, lives: marioState.lives +1 }))
-      }
-      return ( <div className="coin-counter">coins x {numCoins} </div> );
-    }
-
-    const updateTime = () => {
-      console.log("updateTime() ran");
-      if (marioState.timer < 1) {
-        alert("TIME UP");
-      } else {
-        setMarioState(prevState => ({
-          ...prevState, timer: marioState.timer -1,
-        }));
-      }
-    }
-
-    // YOU CANNOT USE setInterval inside the main body of a React function component:
-    // TODO: Re-factor to use a custom hook, and move the timer outside: 
-    // see: https://medium.com/@sdolidze/the-iceberg-of-react-hooks-af0b588f43fb
-
-    /* setInterval(updateTime, 1000); */
-    
-    const timer = () => {
-      // TIMER LOGIC:
-      if (marioState.timer < 1) {
-        setMarioState(prevState => ({
-          ...prevState, lives: marioState.lives -1,
-        }));
-      } 
-      return ( <div> Time: {marioState.timer} </div> )
-    }
-
-  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} </div>
-  // END SCOREBOARD
 
   // MARIO SPRITE DISPLAY LOGIC:
   switch (true) {
@@ -179,17 +47,79 @@ function MarioStateManager() {
       }
   }
 
-  return ( <div><div className="scoreboard"> {scoreBoard} </div><div className={marioClass}></div><div className="blockButtons"> <Buttons/> </div></div> );
+  return ( <div className={marioClass}></div> );
+}
+
+function ScoreBoard() {
+  let playerToggle = ( <button onClick={() => { 
+    //TOGGLE LOGIC:
+    if (marioState.brother === "mario") {
+      setMarioState(prevState => ({
+        ...prevState, brother: "luigi",
+      }));
+    } else {
+      setMarioState(prevState => ({
+        ...prevState, brother: "mario",
+      }));
+    }
+  }}> {marioState.brother} </button> );
+  
+  const pointsCounter = () => {
+    return ( <div>{marioState.points}</div> )
+  }
+
+  const livesCounter = () => {
+    return ( <div>lives x {marioState.lives}</div> );
+  }
+
+  const coinCounter = () => {
+    // COIN COUNTING LOGIC:
+    let numCoins = addLeadingZeroes(marioState.coins, 2);
+    if (marioState.coins > 99) {
+      setMarioState(prevState => ({
+        ...prevState, coins: 0, lives: marioState.lives +1 }))
+    }
+    return ( <div className="coin-counter">coins x {numCoins} </div> );
+  }
+
+  const updateTime = () => {
+    console.log("updateTime() ran");
+    if (marioState.timer < 1) {
+      alert("TIME UP");
+    } else {
+      setMarioState(prevState => ({
+        ...prevState, timer: marioState.timer -1,
+      }));
+    }
+  }
+
+  // YOU CANNOT USE setInterval inside the main body of a React function component:
+  // TODO: Re-factor to use a custom hook, and move the timer outside: 
+  // see: https://medium.com/@sdolidze/the-iceberg-of-react-hooks-af0b588f43fb
+
+  /* setInterval(updateTime, 1000); */
+  
+  const timer = () => {
+    // TIMER LOGIC:
+    if (marioState.timer < 1) {
+      setMarioState(prevState => ({
+        ...prevState, lives: marioState.lives -1,
+      }));
+    } 
+    return ( <div> Time: {marioState.timer} </div> )
+  }
+
+  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} </div>;
+
+  return scoreBoard;
+
 }
 
 function Buttons() {
-  // BUTTONS
   let [marioState, setMarioState] = useMarioState();
 
   const buttonMushroom = ( <button onClick={() => setMarioState(prevState => ({
     ...prevState, super: true, }))}> Super Mushroom </button> );
-    
-    /* setMarioState({super: true})}> Super Mushroom </button> ); */
     
   const buttonStar = ( <button onClick={() => setMarioState(prevState => ({
     ...prevState, invincible: true, invinciTimer: 10, }))}> Starman </button> );
@@ -249,7 +179,6 @@ function Buttons() {
   const buttons = <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {tryAgain} {newGame} </div>;
 
   return buttons;
-  // END BUTTONS 
 }
 
-export default RenderBrother;
+export default App;

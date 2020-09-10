@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import RenderBrother from './App';
+import './App.css';
+import ScoreBoard from './scoreboard';
+import MarioContainer from './mariocontainer';
+import Buttons from './buttons';
+import useMarioState from './use.mariostate';
 import * as serviceWorker from './serviceWorker';
+import global from './global';
+
+function App() {
+  global.mario = useMarioState();
+  
+  return ( 
+    <div>
+      <ScoreBoard/>
+      <MarioContainer/>
+      <Buttons/>
+    </div> 
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <RenderBrother />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
