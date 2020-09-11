@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './App.css';
 import ScoreBoard from './scoreboard';
 import MarioContainer from './mariocontainer';
 import Buttons from './buttons';
@@ -10,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import global from './global';
 
 function App() {
-  global.mario = useMarioState();
+  global.mario = useMarioState(); // makes custom hook global.
   
   return ( 
     <div>
