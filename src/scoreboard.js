@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import global from './global';
 
 export default function ScoreBoard() {
-  let playerToggle = ( <button onClick={() => { 
+
+  const m = global.mario;
+  const mState = global.mario.marioState;
+  
+  const playerToggle = ( <button onClick={() => { 
     //TOGGLE LOGIC:
-    if (global.mario.marioState.brother === "mario") {
-      global.mario.setMarioState(prevState => ({
-        ...prevState, brother: "luigi",
-      }));
+    if (mState.brother === "mario") {
+      m.selectBrother("luigi");
     } else {
-      global.mario.setMarioState(prevState => ({
-        ...prevState, brother: "mario",
-      }));
+      m.selectBrother("mario");
     }
-  }}> {global.mario.marioState.brother} </button> );
+  }}> {mState.brother} </button> );
   
   const pointsCounter = () => {
-    return ( <div>{global.mario.marioState.points}</div> )
+    return ( <div>{mState.points}</div> )
   }
 
   const livesCounter = () => {
-    return ( <div>lives x {global.mario.marioState.lives}</div> );
+    return ( <div>lives x {mState.lives}</div> );
   }
 
   const coinCounter = () => {
     // COIN COUNTING LOGIC:
-    let numCoins = addLeadingZeroes(global.mario.marioState.coins, 2);
-    if (global.mario.marioState.coins > 99) {
-      global.mario.setMarioState(prevState => ({
-        ...prevState, coins: 0, lives: global.mario.marioState.lives +1 }))
+    let numCoins = m.addLeadingZeroes(mState.coins, 2);
+    if (mState.coins > 99) { 
+      m.oneHundredCoins(); 
     }
     return ( <div className="coin-counter">coins x {numCoins} </div> );
   }
 
   const updateTime = () => {
     console.log("updateTime() ran");
-    if (global.mario.marioState.timer < 1) {
+    if (mState.timer < 1) {
       alert("TIME UP");
     } else {
       global.setMarioState(prevState => ({
@@ -52,21 +51,14 @@ export default function ScoreBoard() {
   
   const timer = () => {
     // TIMER LOGIC:
-    if (global.mario.marioState.timer < 1) {
-      global.mario.setMarioState(prevState => ({
-        ...prevState, lives: global.mario.marioState.lives -1,
-      }));
-    } 
-    return ( <div> Time: {global.mario.marioState.timer} </div> )
+    /* if (mState.timer < 1) {
+      m.loseLife();
+    }   */
+    return ( <div> Time: {mState.timer} </div> )
   }
 
-  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} </div>;
+  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} </div>;
 
   return scoreBoard;
 }
 
-// ADMINISTRATIVE TOOLS:
-function addLeadingZeroes(number, places) {
-  // Stringifies number and adds leading zeroes:
-    return String(number).padStart(places, '0');
-  }

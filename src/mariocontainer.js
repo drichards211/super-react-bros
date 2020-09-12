@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import global from './global';
 
 export default function MarioContainer() {
   
   let marioClass = "Render-brother ";
-  let mState = global.mario.marioState; // Access global store state:
+  const mState = global.mario.marioState; // Access global store state:
 
   // MARIO SPRITE DISPLAY LOGIC:
   switch (true) {
@@ -27,7 +27,7 @@ export default function MarioContainer() {
       break;
     default: // He's DEAD, Jim!
       switch (true) {
-        case mState.fire && mState.timer === 0: // Timer ran out while Mario/Luigi was Fire:
+        case mState.fire && mState.timer <= 0: // Timer ran out while Mario/Luigi was Fire:
           marioClass += "fire-dead";
           break;
         case mState.brother === "luigi": // Luigi is DEAD:

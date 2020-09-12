@@ -17,6 +17,34 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
   let [marioState, setMarioState] = useState(initialMarioState);
     
   // EXPORTED FUNCTIONS to update state:
+  const resetTimer = () => setMarioState(prevState => ({
+    ...prevState, timer: 100, }));
+
+  const startTimer = () => {
+    // THIS WORKS:
+    setInterval(function(){
+      setMarioState(prevState => ({
+      ...prevState, timer: prevState.timer -1, }));
+    }, 1000);
+  }
+
+  function updateTime() {
+    // TIMER LOGIC:
+    if (marioState.timer < 1) {
+      console.log("TIMES UP");
+    } else {
+      setMarioState(prevState => ({
+        ...prevState, timer: prevState.timer -1, }));
+    }
+  }
+
+  const returnCurrentTime = () => {
+    return marioState.timer;
+  }
+
+  const selectBrother = (bro) => setMarioState(prevState => ({
+    ...prevState, brother: bro, }));
+
   const makeSuper = () => setMarioState(prevState => ({
     ...prevState, super: true }));
 
@@ -37,6 +65,9 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
 
   const addLife = () => setMarioState(prevState => ({
     ...prevState, lives: marioState.lives +1, }));
+
+  const oneHundredCoins = () => setMarioState(prevState => ({
+    ...prevState, coins: 0, lives: marioState.lives +1 }));
 
   const loseLife = () => setMarioState(prevState => ({
     ...prevState, lives: marioState.lives -1, alive: false, }));
@@ -68,8 +99,10 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
     }
   };
 
-  const resetGame = () => setMarioState({ ...initialMarioState, 
-    brother: marioState.brother }); // RESET marioState to initial paramaters, but keep current brother:
+  const resetGame = () => {
+    setMarioState({ ...initialMarioState, brother: marioState.brother }); // RESET marioState to initial paramaters, but keep current brother:
+    startTimer();
+  }
 
   const addCoin = () => setMarioState(prevState => ({
     ...prevState, coins: marioState.coins +1, points: addLeadingZeroes((parseInt(marioState.points) +200), 6) })); 
@@ -79,8 +112,8 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
     return String(number).padStart(places, '0'); // Stringifies number and adds leading zeroes:
   }
     
-  return { marioState, makeSuper, makeSmall, makeFire, loseFire, makeInvincible, endInvincible, addLife, loseLife, 
-    addLeadingZeroes, addCoin, enemyLogic, newLifeLogic, resetGame, };
+  return { marioState, selectBrother, makeSuper, makeSmall, makeFire, loseFire, makeInvincible, endInvincible, addLife, loseLife, 
+    addLeadingZeroes, addCoin, oneHundredCoins, enemyLogic, newLifeLogic, resetGame, startTimer, resetTimer, returnCurrentTime, };
     // DO NOT RETURN setMarioState() and use it to update the state outside useMarioState(). This causes buggy 
     // behavior, (including multiple calls, random timeouts, etc.)
     // INSTEAD: Author a new function here, calling setMarioState (with any desired update parameters, 
