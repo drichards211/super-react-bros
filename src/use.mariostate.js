@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const initialMarioState = {
   brother: "mario",
   super: false,
   fire: false,
   invincible: false,
-  invinciTimer: 0,
+  starManTimer: 0,
   alive: true,
   points: "000000",
   lives: 3,
@@ -15,33 +15,49 @@ const initialMarioState = {
 
 export default function useMarioState() { // This is a custom, GLOBAL hook.
   let [marioState, setMarioState] = useState(initialMarioState);
-    
-  // EXPORTED FUNCTIONS to update state:
-  const resetTimer = () => setMarioState(prevState => ({
-    ...prevState, timer: 100, }));
-
+  
+  // TIMER SPECIFIC FUNCTIONS:
+  let timerCountDown = useRef(marioState.timer); // useRef allows clearInterval to access the variable, (a fun React gotcha).
+  let starManCountDown = useRef(marioState.starManTimer); 
+  
+  useEffect(() => { // Keep timerCountDown current, (another fun React gotcha).
+    timerCountDown.current = marioState.timer 
+  }, [marioState.timer]);
+  useEffect(() => { 
+    starManCountDown.current = marioState.starManTimer 
+  }, [marioState.starManTimer]);
+  
   const startTimer = () => {
-    // THIS WORKS:
-    setInterval(function(){
+    timerCountDown.current = setInterval(function() {
+      handleTimer();
       setMarioState(prevState => ({
       ...prevState, timer: prevState.timer -1, }));
     }, 1000);
   }
 
-  function updateTime() {
-    // TIMER LOGIC:
-    if (marioState.timer < 1) {
-      console.log("TIMES UP");
-    } else {
-      setMarioState(prevState => ({
-        ...prevState, timer: prevState.timer -1, }));
+  const handleTimer = () => {
+    if (timerCountDown.current === 1) { // startTimer calls this exactly 1 second late, thus === 1 instead of 0.
+      console.log("TIMES UP")
+      loseLife();
     }
   }
-
-  const returnCurrentTime = () => {
-    return marioState.timer;
+  
+  const stopTimer = () => { 
+    console.log("stopTimer() ran");
+    console.log(timerCountDown.current);
+    clearInterval(timerCountDown.current); 
   }
 
+  const startStarManTimer = () => {
+    starManCountDown.current = setInterval(function() {
+      setMarioState(prevState => ({
+        ...prevState, starManTimer: prevState.timer -1, }));
+    }, 1000);
+  }
+
+  const stopStarManTimer = () => { clearInterval(starManCountDown.current); }
+
+  // OTHER EXPORTED FUNCTIONS to update state:
   const selectBrother = (bro) => setMarioState(prevState => ({
     ...prevState, brother: bro, }));
 
@@ -69,8 +85,12 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
   const oneHundredCoins = () => setMarioState(prevState => ({
     ...prevState, coins: 0, lives: marioState.lives +1 }));
 
-  const loseLife = () => setMarioState(prevState => ({
+  const loseLife = () => { 
+    setMarioState(prevState => ({
     ...prevState, lives: marioState.lives -1, alive: false, }));
+    stopTimer();
+    clearInterval(timerCountDown.current);
+  }
 
   const enemyLogic = () => {
     switch (true) {
@@ -90,10 +110,10 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
   const newLifeLogic = () => {
     if (marioState.alive) {
       alert("Mario/Luigi is still alive. Try dying first.");
-    } else if (marioState.lives > 1) { // Load new life, reset state
+    } else if (marioState.lives > 0) { // Load new life, reset state
       setMarioState(prevState => ({
-      ...prevState, alive: true, invincible: false, super: false, timer: 100, lives: prevState.lives -1,
-      }));
+      ...prevState, alive: true, invincible: false, super: false, timer: 100, }));
+      startTimer();
     } else {
       alert("GAME OVER. Please start a new game.")
     }
@@ -113,8 +133,8 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
   }
     
   return { marioState, selectBrother, makeSuper, makeSmall, makeFire, loseFire, makeInvincible, endInvincible, addLife, loseLife, 
-    addLeadingZeroes, addCoin, oneHundredCoins, enemyLogic, newLifeLogic, resetGame, startTimer, resetTimer, returnCurrentTime, };
-    // DO NOT RETURN setMarioState() and use it to update the state outside useMarioState(). This causes buggy 
+    addLeadingZeroes, addCoin, oneHundredCoins, enemyLogic, newLifeLogic, resetGame, timerCountDown, startTimer, stopTimer, };
+    // DO NOT RETURN setMarioState and use it to update the state outside useMarioState(). This causes buggy 
     // behavior, (including multiple calls, random timeouts, etc.)
     // INSTEAD: Author a new function here, calling setMarioState (with any desired update parameters, 
     // (see addLife() above as an example)), and return this new function instead.

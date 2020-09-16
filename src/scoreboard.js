@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import global from './global';
 
 export default function ScoreBoard() {
@@ -43,21 +43,24 @@ export default function ScoreBoard() {
     }
   }
 
-  // YOU CANNOT USE setInterval inside the main body of a React function component:
-  // TODO: Re-factor to use a custom hook, and move the timer outside: 
-  // see: https://medium.com/@sdolidze/the-iceberg-of-react-hooks-af0b588f43fb
-
-  /* setInterval(updateTime, 1000); */
-  
   const timer = () => {
-    // TIMER LOGIC:
-    /* if (mState.timer < 1) {
-      m.loseLife();
-    }   */
     return ( <div> Time: {mState.timer} </div> )
   }
 
-  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} </div>;
+  /* const handleTimer = () => {
+    if (mState.timer === 0 ) {
+      m.loseLife();
+    }
+  } */
+
+  // Start timer on initial load only:
+  useEffect(() => {
+    global.mario.startTimer()
+  }, []);
+
+  const invinciTimer = () => ( <div> StarMan timer: {mState.starManTimer} </div> )
+
+  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} {invinciTimer()} </div>;
 
   return scoreBoard;
 }
