@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
+import global from './global';
+import useTimers from './timer';
 
 const initialMarioState = {
   brother: "mario",
@@ -86,10 +88,10 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
     ...prevState, coins: 0, lives: marioState.lives +1 }));
 
   const loseLife = () => { 
+    console.log("global.mario.loseLife() ran")
     setMarioState(prevState => ({
     ...prevState, lives: marioState.lives -1, alive: false, }));
-    stopTimer();
-    clearInterval(timerCountDown.current);
+    global.time.stopTimer();
   }
 
   const enemyLogic = () => {

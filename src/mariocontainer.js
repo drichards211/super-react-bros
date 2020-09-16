@@ -42,18 +42,18 @@ export default function MarioContainer() {
       break;
     default: // He's DEAD, Jim!
       switch (true) {
-        case mState.timer <= 0 && mState.fire: // Timer ran out while Mario/Luigi was Fire:
+        case /* global.time.timer <= 0 && */ mState.fire: // Timer ran out while Mario/Luigi was Fire:
           marioClass += "fire-dead";
           userMessage = (mState.lives === 0) ? "GAME OVER": "TIMES UP";
           break;
-        case mState.timer <= 0: // Timer ran out:
+        /* case global.time.timer <= 0: // Timer ran out:
           userMessage = (mState.lives === 0) ? "GAME OVER": "TIMES UP";
           if (mState.brother === "luigi") {
             marioClass += "luigi-dead";
           } else {
             marioClass += "mario-dead";
           }
-          break;
+          break; */
         case mState.brother === "luigi": // Luigi is DEAD:
           marioClass += "luigi-dead";
           userMessage = (mState.lives === 0) ? "GAME OVER": "";

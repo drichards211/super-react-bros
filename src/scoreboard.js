@@ -44,7 +44,7 @@ export default function ScoreBoard() {
   }
 
   const timer = () => {
-    return ( <div> Time: {mState.timer} </div> )
+    return ( <div> Time: {global.time.timer} </div> )
   }
 
   /* const handleTimer = () => {
@@ -55,7 +55,7 @@ export default function ScoreBoard() {
 
   // Start timer on initial load only:
   useEffect(() => {
-    global.mario.startTimer()
+    global.time.startTimer()
   }, []);
 
   const invinciTimer = () => ( <div> StarMan timer: {mState.starManTimer} </div> )

@@ -4,13 +4,14 @@ import './index.css';
 import ScoreBoard from './scoreboard';
 import MarioContainer from './mariocontainer';
 import Buttons from './buttons';
-import Timer from './timer';
+import useTimers from './timer';
 import useMarioState from './use.mariostate';
 import * as serviceWorker from './serviceWorker';
 import global from './global';
 
 function App() {
   global.mario = useMarioState(); // makes custom hook global.
+  global.time = useTimers();
   /* timer = Timer(); */
   
   return ( 
