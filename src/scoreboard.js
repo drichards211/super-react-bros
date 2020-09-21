@@ -1,38 +1,46 @@
 import React, { useEffect } from 'react';
-import global from './global';
+import { useSelector, useDispatch } from 'react-redux';
+import AddLeadingZeroes from './helpers'; 
 
 export default function ScoreBoard() {
 
-  const m = global.mario;
-  const mState = global.mario.marioState;
-  
-  const playerToggle = ( <button onClick={() => { 
-    //TOGGLE LOGIC:
-    if (mState.brother === "mario") {
-      m.selectBrother("luigi");
+  // Global state management via Redux Hooks:
+  const dispatch = useDispatch();
+  const marioState = useSelector((state) => state);
+  //
+
+  //SCOREBOARD LOGIC HANDLERS:
+  const handlePlayerToggle = () => {
+    if (marioState.brother === "mario") {
+      dispatch({ type: "SELECT_LUIGI" });
     } else {
-      m.selectBrother("mario");
+      dispatch({ type: "SELECT_MARIO" });
     }
-  }}> {mState.brother} </button> );
+  }
+
+  const handleCoinCounter = () => {
+    let numCoins = AddLeadingZeroes(marioState.coins, 2);
+    if (marioState.coins > 99) { 
+      dispatch({ type: "RESET_100_COINS" }); 
+    }
+    return numCoins;
+  }
+  //
+
+  // SCOREBOARD CHILDREN:
+  const PlayerToggle = ( <button onClick={(() => handlePlayerToggle())}> {marioState.brother} </button> );
   
-  const pointsCounter = () => {
-    return ( <div>{mState.points}</div> )
+  
+
+  const LivesCounter = () => {
+    return ( <div>lives x {marioState.lives}</div> ); // updated for Redux Hooks
   }
 
-  const livesCounter = () => {
-    return ( <div>lives x {mState.lives}</div> );
-  }
+  const CoinCounter = () => {
+    return ( <div className="coin-counter">coins x {handleCoinCounter()} </div> );
+  } 
 
-  const coinCounter = () => {
-    // COIN COUNTING LOGIC:
-    let numCoins = m.addLeadingZeroes(mState.coins, 2);
-    if (mState.coins > 99) { 
-      m.oneHundredCoins(); 
-    }
-    return ( <div className="coin-counter">coins x {numCoins} </div> );
-  }
-
-  const updateTime = () => {
+  /* const updateTime = () => {
     console.log("updateTime() ran");
     if (mState.timer < 1) {
       alert("TIME UP");
@@ -41,10 +49,10 @@ export default function ScoreBoard() {
         ...prevState, timer: global.mario.marioState.timer -1,
       }));
     }
-  }
+  } */
 
-  const timer = () => {
-    return ( <div> Time: {global.time.timer} </div> )
+  const Timer = () => {
+    return ( <div> Time: {marioState.timer} </div> )
   }
 
   /* const handleTimer = () => {
@@ -54,14 +62,19 @@ export default function ScoreBoard() {
   } */
 
   // Start timer on initial load only:
-  useEffect(() => {
+  /* useEffect(() => {
     global.time.startTimer()
-  }, []);
+  }, []); */
 
-  const invinciTimer = () => ( <div> StarMan timer: {mState.starManTimer} </div> )
+  const InvinciTimer = () => ( <div> StarMan timer: {marioState.starManTimer} </div> )
 
-  const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} {invinciTimer()} </div>;
+  /* const scoreBoard = <div> {playerToggle} {pointsCounter()} {livesCounter()} {coinCounter()} {timer()} {invinciTimer()} </div>; */
 
+  const scoreBoard = ( <div> {PlayerToggle} <LivesCounter/> <PointsCounter points={marioState.points}/> <CoinCounter/> <Timer/> <InvinciTimer/> </div> )
   return scoreBoard;
 }
 
+//SCOREBOARD CHILDREN:
+const PointsCounter = (props) => {
+  return ( <div> {props.points} </div> );
+}

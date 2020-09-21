@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import global from './global';
-import useTimers from './timer';
+import { useSelector, useDispatch } from 'react-redux';
 
 const initialMarioState = {
   brother: "mario",
@@ -15,8 +14,12 @@ const initialMarioState = {
   timer: 100,
 }
 
-export default function useMarioState() { // This is a custom, GLOBAL hook.
+function useMarioState() { // This is a custom, GLOBAL hook.
   let [marioState, setMarioState] = useState(initialMarioState);
+  
+  // redux hooks specific:
+  const dispatch = useDispatch();
+  const lives = useSelector( (state) => state );
   
   // TIMER SPECIFIC FUNCTIONS:
   let timerCountDown = useRef(marioState.timer); // useRef allows clearInterval to access the variable, (a fun React gotcha).
@@ -81,8 +84,12 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
   const endInvincible = () => setMarioState(prevState => ({
     ...prevState, invincible: false, }));
 
-  const addLife = () => setMarioState(prevState => ({
-    ...prevState, lives: marioState.lives +1, }));
+  const addLife = () => {
+
+  }
+  
+    /* const addLife = () => setMarioState(prevState => ({
+    ...prevState, lives: marioState.lives +1, })); */
 
   const oneHundredCoins = () => setMarioState(prevState => ({
     ...prevState, coins: 0, lives: marioState.lives +1 }));
@@ -134,8 +141,8 @@ export default function useMarioState() { // This is a custom, GLOBAL hook.
     return String(number).padStart(places, '0'); // Stringifies number and adds leading zeroes:
   }
     
-  return { marioState, selectBrother, makeSuper, makeSmall, makeFire, loseFire, makeInvincible, endInvincible, addLife, loseLife, 
-    addLeadingZeroes, addCoin, oneHundredCoins, enemyLogic, newLifeLogic, resetGame, timerCountDown, startTimer, stopTimer, };
+  /* return { marioState, selectBrother, makeSuper, makeSmall, makeFire, loseFire, makeInvincible, endInvincible, addLife, loseLife, 
+    addLeadingZeroes, addCoin, oneHundredCoins, enemyLogic, newLifeLogic, resetGame, timerCountDown, startTimer, stopTimer, }; */
     // DO NOT RETURN setMarioState and use it to update the state outside useMarioState(). This causes buggy 
     // behavior, (including multiple calls, random timeouts, etc.)
     // INSTEAD: Author a new function here, calling setMarioState (with any desired update parameters, 

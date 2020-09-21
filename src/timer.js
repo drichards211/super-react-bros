@@ -19,7 +19,7 @@ export default function useTimers() {
   const startTimer = () => {
     timerCountDown.current = setInterval(function() {
       handleTimer();
-      resetTime(timer => timer -1, );
+      resetTime(t => t -1,); // Functional update form of setState
     }, 1000);
   }
 

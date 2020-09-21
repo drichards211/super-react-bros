@@ -1,10 +1,13 @@
 import React from 'react';
-import global from './global';
+import { useSelector, useDispatch } from 'react-redux';
+/* import global from './global'; */
 
 export default function MarioContainer() {
   
+  const dispatch = useDispatch();
+  const marioState = useSelector((state) => state);
+  
   let marioClass = "Render-brother ";
-  const mState = global.mario.marioState; // Access global store state:
   let userMessage = "";
 
   const MarioMessages = ({ message }) => {
@@ -13,54 +16,44 @@ export default function MarioContainer() {
 
   // MARIO SPRITE DISPLAY LOGIC:
   switch (true) {
-    /* case mState.timer <= 0 && mState.fire: // TIME IS UP for Fire Mario/Luigi:
-      marioClass += "fire-dead";
+    case marioState.alive && marioState.invincible: // Mario-Luigi is INVINCIBLE:
+      marioClass += (marioState.super) ? "invincible-super": "invincible"; 
       break;
-    case mState.timer <= 0: // TIME IS UP:
-      if (mState.brother === "luigi") { // Luigi is DEAD:
-        marioClass += "luigi-dead";
-      } else { // Mario is DEAD:
-        marioClass += "mario-dead";
-      }
-      break; */
-    case mState.alive && mState.invincible: // Mario-Luigi is INVINCIBLE:
-      marioClass += (mState.super) ? "invincible-super": "invincible"; 
-      break;
-    case mState.alive && mState.brother === "mario": // Mario is ALIVE:
-      if (global.mario.marioState.fire) { // Fire Mario
+    case marioState.alive && marioState.brother === "mario": // Mario is ALIVE:
+      if (marioState.fire) { // Fire Mario
         marioClass += "fire";
       } else { 
-        marioClass += (mState.super) ? "mario-super": "mario"; // Super Mario / Mario
+        marioClass += (marioState.super) ? "mario-super": "mario"; // Super Mario / Mario
       }
       break;
-    case mState.alive && mState.brother === "luigi": // Luigi is ALIVE:
-      if (mState.fire) { // Fire Luigi
+    case marioState.alive && marioState.brother === "luigi": // Luigi is ALIVE:
+      if (marioState.fire) { // Fire Luigi
         marioClass +=  "fire";
       } else { 
-        marioClass += (mState.super) ? "luigi-super": "luigi"; // Super Luigi / Luigi
+        marioClass += (marioState.super) ? "luigi-super": "luigi"; // Super Luigi / Luigi
       }
       break;
-    default: // He's DEAD, Jim!
+    default: // MARIO-LUIGI are DEAD:
       switch (true) {
-        case /* global.time.timer <= 0 && */ mState.fire: // Timer ran out while Mario/Luigi was Fire:
+        case marioClass.timer <= 0 && marioState.fire: // Timer ran out while Mario-Luigi was Fire:
           marioClass += "fire-dead";
-          userMessage = (mState.lives === 0) ? "GAME OVER": "TIMES UP";
+          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIMES UP";
           break;
-        /* case global.time.timer <= 0: // Timer ran out:
-          userMessage = (mState.lives === 0) ? "GAME OVER": "TIMES UP";
-          if (mState.brother === "luigi") {
+        case marioClass.timer <= 0: // Timer ran out:
+          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIMES UP";
+          if (marioState.brother === "luigi") {
             marioClass += "luigi-dead";
           } else {
             marioClass += "mario-dead";
           }
-          break; */
-        case mState.brother === "luigi": // Luigi is DEAD:
+          break;
+        case marioState.brother === "luigi": // Luigi is DEAD:
           marioClass += "luigi-dead";
-          userMessage = (mState.lives === 0) ? "GAME OVER": "";
+          userMessage = (marioState.lives === 0) ? "GAME OVER": "";
           break;
         default: // Mario is DEAD:
           marioClass += "mario-dead";
-          userMessage = (mState.lives === 0) ? "GAME OVER": "";
+          userMessage = (marioState.lives === 0) ? "GAME OVER": "";
       }
   }
 
