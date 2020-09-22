@@ -57,6 +57,18 @@ function reducer(state = initialState, action) {
         super: true,
         points: AddLeadingZeroes((parseInt(state.points) +1000), 6),
       }
+    case "MAKE_INVINCIBLE":
+      return {
+        ...state,
+        invincible: true, 
+        starManTimer: 10,
+      }
+    case "END_INVINCIBLE":
+      return {
+        ...state,
+        invincible: false,
+        starManTimer: 0,
+      }
     case "MAKE_SMALL":
       return {
         ...state,
@@ -114,9 +126,6 @@ console.log('created', store.getState());
 /* console.log('updated', store.getState()); */
 
 function App() {
-  /* global.mario = useMarioState(); // makes custom hook global.
-  global.time = useTimers();
-  /* timer = Timer(); */ 
   
   return ( 
     <Provider store={store}>

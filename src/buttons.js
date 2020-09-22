@@ -35,19 +35,27 @@ export default function Buttons() {
     }
   };
 
+  const handleFireLogic = () => {
+    switch (marioState.super) {
+      case true:
+        dispatch({ type: "MAKE_FIRE" });
+        break;
+      default:
+        dispatch({ type: "MAKE_SUPER" });
+    }
+  };
 
-
+  // BUTTONS:
   const buttonMushroom = ( <button onClick={() => dispatch({ type: "MAKE_SUPER" })}> Super Mushroom </button> );
 
-  /* const buttonStar = ( <button onClick={global.mario.makeInvincible}> Starman </button> ); */
+  const buttonStar = ( <button onClick={() => dispatch({ type: "MAKE_INVINCIBLE" })}> Starman </button> );
 
-  /* const buttonEndStar = ( <button onClick={global.mario.endInvincible}> Cancel Starman </button> ); */
+  const buttonEndStar = ( <button onClick={() => dispatch({ type: "END_INVINCIBLE" })}> Cancel Starman </button> );
 
   const buttonEnemy = ( <button onClick={() => handleEnemy()}> Enemy </button> );  
   
-  const buttonFire = ( <button onClick={() => dispatch({ type: "MAKE_FIRE" })}> Fire Flower </button> );
-  // add handleFireLogic() ... if marioState.super: mario becomes Fire, else: becomes Super only
-
+  const buttonFire = ( <button onClick={() => handleFireLogic()}> Fire Flower </button> );
+  
   const buttonCoin = ( <button onClick={() => dispatch({ type: "ADD_COIN" })}> Coin </button> );
 
   const buttonOneUp = ( <button onClick={() => dispatch({ type: "INCREMENT_LIVES" })}> 1 Up </button> )
@@ -56,7 +64,5 @@ export default function Buttons() {
 
   const newGame = ( <button onClick={() => dispatch({ type: "RESET_GAME" })}> New Game </button> );
 
-  /* return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {tryAgain} 
-    {' '} {newGame} </div> ); */
-    return ( <div> {buttonMushroom} {buttonFire} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} </div>);
+  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} </div>);
 }
