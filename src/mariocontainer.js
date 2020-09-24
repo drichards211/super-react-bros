@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-/* import global from './global'; */
 
 export default function MarioContainer() {
   
