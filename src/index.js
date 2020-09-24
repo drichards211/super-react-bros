@@ -1,12 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
-import RenderBrother from './App';
+import store from './store';
+import ScoreBoard from './scoreboard';
+import MarioContainer from './mariocontainer';
+import Buttons from './buttons';
 import * as serviceWorker from './serviceWorker';
+
+function App() {
+  return ( 
+    <Provider store={store}>
+      <ScoreBoard/>
+      <MarioContainer/>
+      <Buttons/>
+    </Provider> 
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <RenderBrother />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
