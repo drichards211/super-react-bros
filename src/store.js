@@ -54,6 +54,7 @@ function reducer(state = initialState, action) {
         ...state,
         invincible: true, 
         starManTimer: 10,
+        points: AddLeadingZeroes((parseInt(state.points) +1000), 6),
       }
     case "END_INVINCIBLE":
       return {
