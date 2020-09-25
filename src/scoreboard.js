@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { StartTimer, StartStarManTimer, } from './timer';
+/* import { startTimer } from './timer'; */
 import AddLeadingZeroes from './helpers'; 
 
 export default function ScoreBoard() {
@@ -62,9 +64,9 @@ export default function ScoreBoard() {
   } */
 
   // Start timer on initial load only:
-  /* useEffect(() => {
-    global.time.startTimer()
-  }, []); */
+  useEffect(() => {
+    StartTimer();
+  }, []);
 
   const InvinciTimer = () => ( <div> StarMan timer: {marioState.starManTimer} </div> )
 

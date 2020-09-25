@@ -1,58 +1,28 @@
 import { useState, useEffect, useRef, } from 'react';
-import global from './global';
+import { useSelector, useDispatch, dispatch, } from 'react-redux';
+import store from './store';
 
-export default function useTimers() {
+let countDown;
+let starManCountDown;
 
-  let [timer, resetTime] = useState(global.mario.marioState.timer);
-  let [invinciTimer, resetInvinciTimer] = useState(10);
+export function StartTimer() {
+  countDown = setInterval(function() {
+    store.dispatch({ type: "DECREMENT_TIMER" })
+    /* resetTime(t => t -1,); // Functional update form of setState */
+  }, 1000);
+}
 
-  let timerCountDown = useRef(timer); // useRef allows clearInterval to access the variable, (a fun React gotcha).
-  let starManCountDown = useRef(invinciTimer); 
-  
-  useEffect(() => { // Keep timerCountDown current, (another fun React gotcha).
-    timerCountDown.current = timer 
-  }, [timer]);
-  useEffect(() => { 
-    starManCountDown.current = invinciTimer 
-  }, [invinciTimer]);
-  
-  const startTimer = () => {
-    timerCountDown.current = setInterval(function() {
-      handleTimer();
-      resetTime(t => t -1,); // Functional update form of setState
-    }, 1000);
-  }
+export function StopTimer() {
+  clearInterval(countDown);
+}
 
-  const handleTimer = () => {
-    if (timerCountDown.current === 1) { // startTimer calls this exactly 1 second late, thus === 1 instead of 0.
-      console.log("TIMES UP");
-      global.mario.loseLife();
-    }
-  }
+export function StartStarManTimer() {
+  starManCountDown = setInterval(function() {
+    store.dispatch({ type: "DECREMENT_STARMANTIMER" })
+    /* resetTime(t => t -1,); // Functional update form of setState */
+  }, 1000);
+}
 
-  const stopTimer = () => {
-    console.log("global.time.stopTimer() ran");
-    console.log(timerCountDown.current);
-    clearInterval(timerCountDown.current); 
-  }
-
-  const resetTimer = () => {
-
-  }
-
-  const startStarManTimer = () => {
-
-  }
-
-  const stopStarManTimer = () => {
-
-  }
-
-  const resetStarManTimer = () => {
-
-  }
-
-
-
-  return { timer, startTimer, stopTimer, resetTimer, startStarManTimer, stopStarManTimer, resetStarManTimer }
-} 
+export function StopStarManTimer() {
+  clearInterval(starManCountDown);
+}

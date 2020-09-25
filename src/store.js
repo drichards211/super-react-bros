@@ -106,6 +106,26 @@ function reducer(state = initialState, action) {
         ...initialState,
         brother: state.brother,
       }
+    case "RESET_TIMER":
+      return {
+        ...initialState,
+        timer: 100,
+      }
+    case "RESET_STARMANTIMER":
+      return {
+        ...state,
+        starManTimer: 0,
+      }
+    case "DECREMENT_TIMER":
+      return {
+        ...state,
+        timer: state.timer -1,
+      }
+    case "DECREMENT_STARMANTIMER":
+      return {
+        ...state,
+        starManTimer: state.starManTimer -1,
+      }
     default:
       console.log(`${action.type} is an invalid reducer action.`);
       return state; // Return the unchanged state if action is unclear

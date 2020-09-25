@@ -1,5 +1,7 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'; // redux hooks specific 
+import { useSelector, useDispatch } from 'react-redux'; // redux hooks specific
+import useTimers from './timer'; 
+import { StartStarManTimer, StopStarManTimer, StartTimer, StopTimer } from './timer';
 
 export default function Buttons() {
 
@@ -45,12 +47,23 @@ export default function Buttons() {
     }
   };
 
+  const handleButtonStar = () => {
+    dispatch({ type: "MAKE_INVINCIBLE" });
+    StopStarManTimer();
+    StartStarManTimer();
+  }
+
+  const handleButtonEndStar = () => {
+    dispatch({ type: "END_INVINCIBLE" });
+    StopStarManTimer();
+  }
+
   // BUTTONS:
   const buttonMushroom = ( <button onClick={() => dispatch({ type: "MAKE_SUPER" })}> Super Mushroom </button> );
 
-  const buttonStar = ( <button onClick={() => dispatch({ type: "MAKE_INVINCIBLE" })}> Starman </button> );
+  const buttonStar = ( <button onClick={() => handleButtonStar()}> Starman </button> );
 
-  const buttonEndStar = ( <button onClick={() => dispatch({ type: "END_INVINCIBLE" })}> Cancel Starman </button> );
+  const buttonEndStar = ( <button onClick={() => handleButtonEndStar()}> Cancel Starman </button> );
 
   const buttonEnemy = ( <button onClick={() => handleEnemy()}> Enemy </button> );  
   
@@ -64,5 +77,9 @@ export default function Buttons() {
 
   const newGame = ( <button onClick={() => dispatch({ type: "RESET_GAME" })}> New Game </button> );
 
-  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} </div>);
+  const startCounter = ( <button onClick={() => StartTimer()}> Start Counter </button> );
+  
+  const stopCounter = ( <button onClick={() => StopTimer()}> Stop Counter </button> );
+
+  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} {stopCounter} </div>);
 }
