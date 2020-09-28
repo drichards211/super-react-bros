@@ -12,7 +12,7 @@ const initialState = {
   points: "000000",
   lives: 3,
   coins: 0,
-  timer: 100,
+  timer: 10,
 };
 
 function reducer(state = initialState, action) {
@@ -34,7 +34,7 @@ function reducer(state = initialState, action) {
         alive: true, 
         invincible: false, 
         super: false, 
-        timer: 100,
+        timer: 10,
       }
     case "MAKE_SUPER":
       return {
@@ -77,6 +77,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         alive: false,
+        lives: state.lives -1,
       }
     case "SELECT_MARIO":
       return {

@@ -34,12 +34,14 @@ export default function MarioContainer() {
       break;
     default: // MARIO-LUIGI are DEAD:
       switch (true) {
-        case marioClass.timer <= 0 && marioState.fire: // Timer ran out while Mario-Luigi was Fire:
+        case marioState.timer === 0 && marioState.fire: // Timer ran out while Mario-Luigi was Fire:
           marioClass += "fire-dead";
           userMessage = (marioState.lives === 0) ? "GAME OVER": "TIMES UP";
+          console.log("Timer ran out while Mario-Luigi was Fire");
           break;
-        case marioClass.timer <= 0: // Timer ran out:
+        case marioState.timer === 0: // Timer ran out:
           userMessage = (marioState.lives === 0) ? "GAME OVER": "TIMES UP";
+          console.log("Timer ran out");
           if (marioState.brother === "luigi") {
             marioClass += "luigi-dead";
           } else {

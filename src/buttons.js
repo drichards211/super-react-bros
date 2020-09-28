@@ -21,7 +21,7 @@ export default function Buttons() {
         dispatch( {type: "MAKE_SMALL"} );
         break;
       default:
-        dispatch({ type: "DECREMENT_LIVES"} );
+        /* dispatch({ type: "DECREMENT_LIVES"} ); */
         dispatch({ type: "LOSE_LIFE"} );
     }
   };
@@ -31,7 +31,7 @@ export default function Buttons() {
       alert("Mario/Luigi is still alive. Try dying first.");
     } else if (marioState.lives > 0) { // Load new life, reset state
       dispatch({ type: "START_NEW_LIFE" });
-      /* startTimer(); */ // dispatch is synchronous... this should work.
+      StartTimer();
     } else {
       alert("GAME OVER. Please start a new game.")
     }
