@@ -12,11 +12,13 @@ const initialState = {
   points: "000000",
   lives: 3,
   coins: 0,
-  timer: 10,
+  timer: 100,
 };
 
 function reducer(state = initialState, action) {
-  console.log('reducer() ran', action);
+  if (action.type !== "DECREMENT_TIMER" && action.type !== "DECREMENT_STARMANTIMER") {
+    console.log(`reducer() ran ${action.type}`);
+  }
   switch(action.type) {
     case "INCREMENT_LIVES":
       return {
@@ -33,8 +35,10 @@ function reducer(state = initialState, action) {
         ...state,
         alive: true, 
         invincible: false, 
-        super: false, 
-        timer: 10,
+        starManTimer: 0,
+        super: false,
+        fire: false, 
+        timer: 100,
       }
     case "MAKE_SUPER":
       return {

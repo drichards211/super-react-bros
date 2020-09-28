@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'; // redux hooks specific
-import useTimers from './timer'; 
-import { StartStarManTimer, StopStarManTimer, StartTimer, StopTimer } from './timer';
+import { StartStarManTimer, StopStarManTimer, StartTimer, StopAllTimers } from './timer';
 
 export default function Buttons() {
 
@@ -21,9 +20,15 @@ export default function Buttons() {
         dispatch( {type: "MAKE_SMALL"} );
         break;
       default:
-        /* dispatch({ type: "DECREMENT_LIVES"} ); */
+        StopAllTimers();
         dispatch({ type: "LOSE_LIFE"} );
     }
+  };
+
+  const handleNewGame = () => {
+    dispatch({ type: "RESET_GAME" });
+    StopAllTimers();
+    StartTimer();
   };
 
   const newLifeLogic = () => {
@@ -49,7 +54,7 @@ export default function Buttons() {
 
   const handleButtonStar = () => {
     dispatch({ type: "MAKE_INVINCIBLE" });
-    StopStarManTimer();
+    StopStarManTimer(); // End any ongoing timer before starting another countdown
     StartStarManTimer();
   }
 
@@ -75,11 +80,7 @@ export default function Buttons() {
 
   const tryAgain = ( <button onClick={() => newLifeLogic()}> Try Again </button> );
 
-  const newGame = ( <button onClick={() => dispatch({ type: "RESET_GAME" })}> New Game </button> );
+  const newGame = ( <button onClick={() => handleNewGame()}> New Game </button> );
 
-  const startCounter = ( <button onClick={() => StartTimer()}> Start Counter </button> );
-  
-  const stopCounter = ( <button onClick={() => StopTimer()}> Stop Counter </button> );
-
-  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEndStar} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} {stopCounter} </div>);
+  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} </div>);
 }
