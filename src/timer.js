@@ -1,58 +1,53 @@
-import { useState, useEffect, useRef, } from 'react';
-import global from './global';
+import store from './store';
 
-export default function useTimers() {
+// Variables declared early so clearInterval() can actually stop the timers:
+let countDown;
+let starManCountDown;
 
-  let [timer, resetTime] = useState(global.mario.marioState.timer);
-  let [invinciTimer, resetInvinciTimer] = useState(10);
-
-  let timerCountDown = useRef(timer); // useRef allows clearInterval to access the variable, (a fun React gotcha).
-  let starManCountDown = useRef(invinciTimer); 
-  
-  useEffect(() => { // Keep timerCountDown current, (another fun React gotcha).
-    timerCountDown.current = timer 
-  }, [timer]);
-  useEffect(() => { 
-    starManCountDown.current = invinciTimer 
-  }, [invinciTimer]);
-  
-  const startTimer = () => {
-    timerCountDown.current = setInterval(function() {
-      handleTimer();
-      resetTime(t => t -1,); // Functional update form of setState
-    }, 1000);
-  }
-
-  const handleTimer = () => {
-    if (timerCountDown.current === 1) { // startTimer calls this exactly 1 second late, thus === 1 instead of 0.
-      console.log("TIMES UP");
-      global.mario.loseLife();
+export function StartTimer() {
+  console.log("StartTimer() ran");
+  let localTimer = 100;
+  countDown = setInterval(function() {
+    if (localTimer === 1) {
+      localTimer = localTimer -1;
+      StopTimer();
+      StopStarManTimer(); // Stop StarMan countdown if Mario/Luigi is invincible when timer runs out
+      store.dispatch({ type: "DECREMENT_TIMER" }); // Final decrement to zero
+      store.dispatch({ type: "LOSE_LIFE"}); // Kill Mario/Luigi if timer runs out
+    } else {
+      localTimer = localTimer -1;
+      store.dispatch({ type: "DECREMENT_TIMER" });
     }
-  }
+  }, 1000);
+}
 
-  const stopTimer = () => {
-    console.log("global.time.stopTimer() ran");
-    console.log(timerCountDown.current);
-    clearInterval(timerCountDown.current); 
-  }
+export function StopTimer() {
+  console.log("StopTimer() ran");
+  clearInterval(countDown);
+}
 
-  const resetTimer = () => {
+export function StartStarManTimer() {
+  console.log("StartStarManTimer() ran");
+  let localStarManTimer = 10;
+  starManCountDown = setInterval(function() {
+    if (localStarManTimer === 1) {
+      localStarManTimer = localStarManTimer -1;
+      StopStarManTimer();
+      store.dispatch({ type: "END_INVINCIBLE" });
+    } else {
+      localStarManTimer = localStarManTimer -1;
+      store.dispatch({ type: "DECREMENT_STARMANTIMER" })
+    }
+  }, 1000);
+}
 
-  }
+export function StopStarManTimer() {
+  console.log("StopStarManTimer() ran");
+  clearInterval(starManCountDown);
+}
 
-  const startStarManTimer = () => {
-
-  }
-
-  const stopStarManTimer = () => {
-
-  }
-
-  const resetStarManTimer = () => {
-
-  }
-
-
-
-  return { timer, startTimer, stopTimer, resetTimer, startStarManTimer, stopStarManTimer, resetStarManTimer }
-} 
+export function StopAllTimers() {
+  console.log("StopAllTimers() ran");
+  clearInterval(countDown);
+  clearInterval(starManCountDown);
+}

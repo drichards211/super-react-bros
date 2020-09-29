@@ -6,7 +6,7 @@ export default function MarioContainer() {
   const dispatch = useDispatch();
   const marioState = useSelector((state) => state);
   
-  let marioClass = "Render-brother ";
+  let marioClass = "Render-brother "; // Holds different CSS class names for rendering Mario/Luigi sprites
   let userMessage = "";
 
   const MarioMessages = ({ message }) => {
@@ -19,27 +19,29 @@ export default function MarioContainer() {
       marioClass += (marioState.super) ? "invincible-super": "invincible"; 
       break;
     case marioState.alive && marioState.brother === "mario": // Mario is ALIVE:
-      if (marioState.fire) { // Fire Mario
+      if (marioState.fire) { // Mario is FIRE:
         marioClass += "fire";
       } else { 
-        marioClass += (marioState.super) ? "mario-super": "mario"; // Super Mario / Mario
+        marioClass += (marioState.super) ? "mario-super": "mario"; // SUPER Mario / Mario
       }
       break;
     case marioState.alive && marioState.brother === "luigi": // Luigi is ALIVE:
-      if (marioState.fire) { // Fire Luigi
+      if (marioState.fire) { // Luigi is FIRE:
         marioClass +=  "fire";
       } else { 
-        marioClass += (marioState.super) ? "luigi-super": "luigi"; // Super Luigi / Luigi
+        marioClass += (marioState.super) ? "luigi-super": "luigi"; // SUPER Luigi / Luigi
       }
       break;
-    default: // MARIO-LUIGI are DEAD:
+    default: // MARIO-LUIGI is DEAD:
       switch (true) {
-        case marioClass.timer <= 0 && marioState.fire: // Timer ran out while Mario-Luigi was Fire:
+        case marioState.timer === 0 && marioState.fire: // TIMER ran out while Mario-Luigi was Fire:
           marioClass += "fire-dead";
-          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIMES UP";
+          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIME UP";
+          console.log("Timer ran out while Mario-Luigi was Fire");
           break;
-        case marioClass.timer <= 0: // Timer ran out:
-          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIMES UP";
+        case marioState.timer === 0: // TIMER ran out:
+          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIME UP";
+          console.log("Timer ran out");
           if (marioState.brother === "luigi") {
             marioClass += "luigi-dead";
           } else {

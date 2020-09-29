@@ -16,7 +16,9 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log('reducer() ran', action);
+  if (action.type !== "DECREMENT_TIMER" && action.type !== "DECREMENT_STARMANTIMER") {
+    console.log(`reducer() ran ${action.type}`);
+  }
   switch(action.type) {
     case "INCREMENT_LIVES":
       return {
@@ -33,7 +35,9 @@ function reducer(state = initialState, action) {
         ...state,
         alive: true, 
         invincible: false, 
-        super: false, 
+        starManTimer: 0,
+        super: false,
+        fire: false, 
         timer: 100,
       }
     case "MAKE_SUPER":
@@ -54,6 +58,7 @@ function reducer(state = initialState, action) {
         ...state,
         invincible: true, 
         starManTimer: 10,
+        points: AddLeadingZeroes((parseInt(state.points) +1000), 6),
       }
     case "END_INVINCIBLE":
       return {
@@ -76,6 +81,7 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         alive: false,
+        lives: state.lives -1,
       }
     case "SELECT_MARIO":
       return {
@@ -104,6 +110,26 @@ function reducer(state = initialState, action) {
       return {
         ...initialState,
         brother: state.brother,
+      }
+    case "RESET_TIMER":
+      return {
+        ...initialState,
+        timer: 100,
+      }
+    case "RESET_STARMANTIMER":
+      return {
+        ...state,
+        starManTimer: 0,
+      }
+    case "DECREMENT_TIMER":
+      return {
+        ...state,
+        timer: state.timer -1,
+      }
+    case "DECREMENT_STARMANTIMER":
+      return {
+        ...state,
+        starManTimer: state.starManTimer -1,
       }
     default:
       console.log(`${action.type} is an invalid reducer action.`);
