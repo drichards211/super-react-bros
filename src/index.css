@@ -103,3 +103,96 @@ html, body {
   height: 160px;
   background-position: -960px -1280px;
 }
+
+/* BUTTON STYLING */
+.button-mushroom {
+  height: 160px;
+  width: 160px;
+  background-image: url("/items-grid-a1-enlarged.png");
+  background-repeat: no-repeat;
+  background-position: -0px -0px;
+}
+
+.button-starman {
+  height: 160px;
+  width: 160px;
+  background-image: url("/items-grid-a1-enlarged.png");
+  background-repeat: no-repeat;
+  background-position: -960px -0px;
+}
+
+.flicker-starman {
+  animation: flicker-star .14s steps(4) infinite;
+}
+@keyframes flicker-star {
+  from { background-position: -960px -0px; }
+    to { background-position: -1600px -0px; }
+}
+
+.button-enemy {
+  height: 160px;
+  width: 160px;
+  background-image: url("/enemies-grid-a1-enlarged.png");
+  background-repeat: no-repeat;
+  background-position: -0px -0px;
+}
+
+.walk-enemy {
+  animation: walk-enemy .33s steps(2) infinite; /* .27s*/
+}
+@keyframes walk-enemy {
+  from { background-position: -0px -0px; }
+    to { background-position: -320px -0px; }
+}
+
+.kill-enemy {
+  background-position: -160px -10px;
+  /* Flip image upside down */
+  -webkit-transform:scaleY(-1);
+  -moz-transform:scaleY(-1);
+  -ms-transform:scaleY(-1);
+  -o-transform:scaleY(-1);
+  transform:scaleY(-1);
+}
+
+.button-fire {
+  height: 160px;
+  width: 160px;
+  background-image: url("/items-grid-a1-enlarged.png");
+  background-repeat: no-repeat;
+  background-position: -960px -0px;
+  animation: glow-fireflower .14s steps(4) infinite;
+}
+@keyframes glow-fireflower {
+  from { background-position: -320px -0px; }
+    to { background-position: -960px -0px; }
+}
+
+.button-oneup {
+  height: 160px;
+  width: 160px;
+  background-image: url("/items-grid-a1-enlarged.png");
+  background-repeat: no-repeat;
+  background-position: -160px -0px;
+}
+
+.button-coin {
+  height: 160px;
+  width: 160px;
+  background-image: url("/items-grid-a1-enlarged.png");
+  background-repeat: no-repeat;
+  background-position: -2240px -0px;
+}
+
+.glow-coin {
+  animation: glow-coin .8s steps(4);
+  animation-iteration-count:infinite;
+}
+@keyframes glow-coin {
+  from { background-position: -2240px -0px; }
+    to { background-position: -2880px -0px; }
+}
+
+.spin-coin {
+
+}
