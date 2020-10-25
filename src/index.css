@@ -13,9 +13,12 @@
 
 html, body {
   font-size: 16px;
+  color: white;
   font-family: PressStart;
-  background: rgb(180, 180, 180);
+  background: #5691e9;
+  /* background: rgb(180, 180, 180); */
   min-width: 320px; /* prevents layout from breaking on tiny screens */
+  box-sizing: border-box;
 }
 
 .Render-brother {
@@ -105,17 +108,40 @@ html, body {
 }
 
 /* BUTTON STYLING */
+button {
+  color: white;
+  border: none;
+  border-radius: 20px;
+  /* background: #b4b4b4; */
+  background: #5691e9;
+  /* box-shadow:  16px 16px 32px #999999, 
+    -16px -16px 32px #cfcfcf; */
+    box-shadow:  16px 16px 35px #497bc6, 
+      -16px -16px 35px #63a7ff;
+}
+/* :focus {
+  outline: none;
+} */
+
 .button-mushroom {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
+  padding: 10px;
+  margin: 10px;
+  background-origin: content-box;
+  background-clip: content-box;
   background-image: url("/items-grid-a1-enlarged.png");
   background-repeat: no-repeat;
   background-position: -0px -0px;
 }
 
 .button-starman {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
+  padding: 10px;
+  margin: 10px;
+  background-origin: content-box;
+  background-clip: content-box;
   background-image: url("/items-grid-a1-enlarged.png");
   background-repeat: no-repeat;
   background-position: -960px -0px;
@@ -130,8 +156,12 @@ html, body {
 }
 
 .button-enemy {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
+  padding: 10px;
+  margin: 10px;
+  background-origin: content-box;
+  background-clip: content-box;
   background-image: url("/enemies-grid-a1-enlarged.png");
   background-repeat: no-repeat;
   background-position: -0px -0px;
@@ -156,12 +186,16 @@ html, body {
 }
 
 .button-fire {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
+  padding: 10px;
+  margin: 10px;
+  background-origin: content-box;
+  background-clip: content-box;
   background-image: url("/items-grid-a1-enlarged.png");
   background-repeat: no-repeat;
-  background-position: -960px -0px;
-  animation: glow-fireflower .14s steps(4) infinite;
+  background-position: -320px -0px;
+  animation: glow-fireflower .33s steps(4) infinite;  /* .14s */
 }
 @keyframes glow-fireflower {
   from { background-position: -320px -0px; }
@@ -169,16 +203,24 @@ html, body {
 }
 
 .button-oneup {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
+  padding: 10px;
+  margin: 10px;
+  background-origin: content-box;
+  background-clip: content-box;
   background-image: url("/items-grid-a1-enlarged.png");
   background-repeat: no-repeat;
   background-position: -160px -0px;
 }
 
 .button-coin {
-  height: 160px;
-  width: 160px;
+  height: 180px;
+  width: 180px;
+  padding: 10px;
+  margin: 10px;
+  background-origin: content-box;
+  background-clip: content-box;
   background-image: url("/items-grid-a1-enlarged.png");
   background-repeat: no-repeat;
   background-position: -2240px -0px;
