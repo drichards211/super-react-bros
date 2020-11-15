@@ -5,14 +5,14 @@
 }
 
 :root {
-  --mario: -230px;
-  --luigi: -800px;
+  --mario: -115px;
+  --luigi: -400px;
   --super-mario: -0px;
-  --super-luigi: -480px; 
+  --super-luigi: -240px; 
 }
 
 html, body {
-  font-size: 80px;
+  font-size: 40px;
   color: black;
   font-family: PressStart;
   background: #c8c8c8;  
@@ -22,89 +22,89 @@ html, body {
 }
 
 .Render-brother {
-  width: 160px;
-  background-image: url("/mario-grid-a2-enlarged.png");
+  width: 80px;
+  background-image: url("/mario-grid-a2-half-size.png");
   background-repeat: no-repeat;
   /* SHORTHAND background: url("/mario-luigi-sprites.png") -80px -1px no-repeat; */
 }
 
 /* DIFFERENT BROS STATES */
 .mario {
-  height: 160px;
-  background-position: -0px -320px;
+  height: 80px;
+  background-position: -0px -160px;
   animation: walk-mario .33s steps(3) infinite;
 }
 @keyframes walk-mario {
-  from { background-position: -160px -320px; }
-    to { background-position: -640px -320px; }
+  from { background-position: -80px -160px; }
+    to { background-position: -320px -160px; }
 }
 .luigi {
-  height: 160px;
-  background-position: -0px -800px;
+  height: 80px;
+  background-position: -0px -400px;
   animation: walk-luigi .33s steps(3) infinite;
 }
 @keyframes walk-luigi {
-  from { background-position: -160px -800px; }
-    to { background-position: -640px -800px; }
+  from { background-position: -80px -400px; }
+    to { background-position: -320px -400px; }
 }
 .mario-super {
-  height: 320px;
+  height: 160px;
   background-position: -0px -0px;
   animation: walk-super-mario .33s steps(3) infinite;
 }
 @keyframes walk-super-mario {
-  from { background-position: -160px -0px; }
-    to { background-position: -640px -0px; }
+  from { background-position: -80px -0px; }
+    to { background-position: -320px -0px; }
 }
 .luigi-super {
-  height: 320px;
-  background-position: -0px -480px;
+  height: 160px;
+  background-position: -0px -240px;
   animation: walk-super-luigi .33s steps(3) infinite;
 }
 @keyframes walk-super-luigi {
-  from { background-position: -160px -480px; }
-    to { background-position: -640px -480px; }
+  from { background-position: -80px -240px; }
+    to { background-position: -320px -240px; }
 }
 .fire {
 /* Identical sprites used for Mario and Luigi in Fire form */
-  height: 320px;
-  background-position: -0px -960px;
+  height: 160px;
+  background-position: -0px -480px;
   animation: walk-fire .33s steps(3) infinite;
 }
 @keyframes walk-fire {
-  from { background-position: -160px -960px; }
-    to { background-position: -640px -960px; }
+  from { background-position: -80px -480px; }
+    to { background-position: -320px -480px; }
 }
 .invincible {
-  height: 160px;
-  background-position: -160px -3200px;
+  height: 80px;
+  background-position: -80px -1600px;
   animation: invincible .33s steps(9) infinite;
 }
 @keyframes invincible {
-  0% { background-position: -160px -3200px; }
-  100% { background-position: -1600px -3200px; }
+  0% { background-position: -80px -1600px; }
+  100% { background-position: -800px -1600px; }
 }
 .invincible-super {
-  height: 320px;
-  background-position: -160px -2880px;
+  height: 160px;
+  background-position: -80px -1440px;
   animation: invincible-super .33s steps(9) infinite;
 }
 @keyframes invincible-super {
-  0% { background-position: -160px -2880px; }
-  100% { background-position: -1600px -2880px; }
+  0% { background-position: -80px -1440px; }
+  100% { background-position: -800px -1440px; }
 }
 .mario-dead {
-  height: 160px;
-  background-position: -960px -320px;
+  height: 80px;
+  background-position: -480px -160px;
 }
 .luigi-dead {
-  height: 160px;
-  background-position: -960px -800px;
+  height: 80px;
+  background-position: -480px -400px;
 }
 .fire-dead { 
 /* When timer runs out if Mario/Luigi is in fire-form */
-  height: 160px;
-  background-position: -960px -1280px;
+  height: 80px;
+  background-position: -480px -640px;
 }
 
 /* BUTTON STYLING */
