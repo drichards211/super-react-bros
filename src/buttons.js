@@ -64,23 +64,23 @@ export default function Buttons() {
   }
 
   // BUTTONS:
-  const buttonMushroom = ( <button onClick={() => dispatch({ type: "MAKE_SUPER" })}> Super Mushroom </button> );
+  const buttonMushroom = ( <button className="button-mushroom" onClick={() => dispatch({ type: "MAKE_SUPER" })}></button> );
 
-  const buttonStar = ( <button onClick={() => handleButtonStar()}> Starman </button> );
+  const buttonStar = ( <button className="button-starman" onClick={() => handleButtonStar()}></button> );
 
   const buttonEndStar = ( <button onClick={() => handleButtonEndStar()}> Cancel Starman </button> );
 
-  const buttonEnemy = ( <button onClick={() => handleEnemy()}> Enemy </button> );  
+  const buttonEnemy = ( <button className="button-enemy walk-enemy" onClick={() => handleEnemy()}></button> );  
   
-  const buttonFire = ( <button onClick={() => handleFireLogic()}> Fire Flower </button> );
+  const buttonFire = ( <button className="button-fire" onClick={() => handleFireLogic()}></button> );
   
-  const buttonCoin = ( <button onClick={() => dispatch({ type: "ADD_COIN" })}> Coin </button> );
+  const buttonCoin = ( <button className="button-coin glow-coin" onClick={() => dispatch({ type: "ADD_COIN" })}></button> );
 
-  const buttonOneUp = ( <button onClick={() => dispatch({ type: "INCREMENT_LIVES" })}> 1 Up </button> )
+  const buttonOneUp = ( <button className="button-oneup" onClick={() => dispatch({ type: "INCREMENT_LIVES" })}></button> )
 
   const tryAgain = ( <button onClick={() => newLifeLogic()}> Try Again </button> );
 
   const newGame = ( <button onClick={() => handleNewGame()}> New Game </button> );
 
-  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonOneUp} {buttonEnemy} {buttonCoin} {tryAgain} {newGame} </div>);
+  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {tryAgain} {newGame} </div>);
 }
