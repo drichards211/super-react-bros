@@ -121,20 +121,20 @@ html, body {
 /* BUTTON STYLING */
 button {
   border: none;
-  border-radius: 8px;
+  border-radius: 0.2rem;
   background: #c8c8c8;
-  box-shadow:  8px 8px 16px #aaaaaa, 
-    -8px -8px 16px #e6e6e6;
+  box-shadow:  0.2rem 0.2rem 0.2rem #aaaaaa, 
+    -0.2rem -0.2rem 0.4rem #e6e6e6;
 }
-/* :focus {
+:focus {
   outline: none;
-} */
+}
 
 .button-mushroom {
   height: 2.25rem;
   width: 2.25rem;
   padding: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
-  margin: 0.125rem;
+  margin: 0.126rem; /* "" */
   background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
@@ -144,23 +144,24 @@ button {
 }
 
 .button-starman {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem; 
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-half-size.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -960px -0px;
+  background-position: 20.6897% 0%;
 }
 
-.flicker-starman {
+.flicker-star {
   animation: flicker-star .14s steps(4) infinite;
 }
 @keyframes flicker-star {
-  from { background-position: -960px -0px; }
-    to { background-position: -1600px -0px; }
+  from { background-position: 20.6897% 0%; }
+    to { background-position: 34.4828% 0%; }
 }
 
 .button-enemy {
@@ -195,44 +196,46 @@ button {
 }
 
 .button-fire {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-half-size.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -320px -0px;
-  animation: glow-fireflower .33s steps(4) infinite;  /* .14s */
+  background-position: 6.8978% 0%;
+  animation: glow-fireflower .33s steps(4) infinite;
 }
 @keyframes glow-fireflower {
-  from { background-position: -320px -0px; }
-    to { background-position: -960px -0px; }
+  from { background-position: 6.8978% 0%; }
+    to { background-position: 20.6897% 0%; }
 }
-
 .button-oneup {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-half-size.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -160px -0px;
+  background-position: 3.4482% 0%;
 }
 
 .button-coin {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-half-size.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -2240px -0px;
+  background-position: 48.2759% 0%;
 }
 
 .glow-coin {
@@ -240,8 +243,8 @@ button {
   animation-iteration-count:infinite;
 }
 @keyframes glow-coin {
-  from { background-position: -2240px -0px; }
-    to { background-position: -2880px -0px; }
+  from { background-position: 48.2759% 0%; }
+    to { background-position: 62.0690% 0%; }
 }
 
 .spin-coin {
