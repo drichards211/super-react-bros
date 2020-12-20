@@ -5,170 +5,184 @@
 }
 
 :root {
-  --mario: -230px;
-  --luigi: -800px;
+  /* --mario: -115px;
+  --luigi: -400px;
   --super-mario: -0px;
-  --super-luigi: -480px; 
+  --super-luigi: -240px;  */
 }
 
 html, body {
-  font-size: 80px;
+  font-size: 40px;
   color: black;
   font-family: PressStart;
   background: #c8c8c8;  
   /* background: #5691e9; */ /* Sky Blue */
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   box-sizing: border-box;
+  image-rendering: pixelated; /* Forces nearest-neighbor algorithm for image scaling */
+  image-rendering: -moz-crisp-edges; /* Firefox isn't compatible with "pixelated" yet; 
+    still interprets "crisp-edges" as nearest-neighbor, (November 2020) */
 }
 
 .Render-brother {
-  width: 160px;
-  background-image: url("/mario-grid-a2-enlarged.png");
+  width: 2rem;
+  /* width: 10%; */ /* Responsive sizing test */
+  background-image: url("/mario-grid-a2.png");
   background-repeat: no-repeat;
+  background-size: 2100%;
   /* SHORTHAND background: url("/mario-luigi-sprites.png") -80px -1px no-repeat; */
 }
 
 /* DIFFERENT BROS STATES */
 .mario {
-  height: 160px;
-  background-position: -0px -320px;
+  height: 2rem;
+  /* height: 0; */ /* Responsive sizing test */
+  /* padding-bottom: 10%; */ /* Responsive sizing test */
+  background-position: 0 10%;
   animation: walk-mario .33s steps(3) infinite;
 }
 @keyframes walk-mario {
-  from { background-position: -160px -320px; }
-    to { background-position: -640px -320px; }
+  from { background-position: 5% 10%; }
+    to { background-position: 20% 10%; }
 }
+/* @keyframes walk-mario {
+  from { background-position: -80px -160px; }
+    to { background-position: -320px -160px; }
+} */
 .luigi {
-  height: 160px;
-  background-position: -0px -800px;
+  height: 2rem;
+  background-position: 0% 25%;
   animation: walk-luigi .33s steps(3) infinite;
 }
 @keyframes walk-luigi {
-  from { background-position: -160px -800px; }
-    to { background-position: -640px -800px; }
+  from { background-position: 5% 25%; }
+    to { background-position: 20% 25%; }
 }
 .mario-super {
-  height: 320px;
-  background-position: -0px -0px;
+  height: 4rem;
+  background-position: 0% 0%;
   animation: walk-super-mario .33s steps(3) infinite;
 }
 @keyframes walk-super-mario {
-  from { background-position: -160px -0px; }
-    to { background-position: -640px -0px; }
+  from { background-position: 5% 0%; }
+    to { background-position: 20% 0%; }
 }
 .luigi-super {
-  height: 320px;
-  background-position: -0px -480px;
+  height: 4rem;
+  background-position: 0% 15.8%;
   animation: walk-super-luigi .33s steps(3) infinite;
 }
 @keyframes walk-super-luigi {
-  from { background-position: -160px -480px; }
-    to { background-position: -640px -480px; }
+  from { background-position: 5% 15.8%; }
+    to { background-position: 20% 15.8%; }
 }
 .fire {
 /* Identical sprites used for Mario and Luigi in Fire form */
-  height: 320px;
-  background-position: -0px -960px;
+  height: 4rem;
+  background-position: 0% 31.6%;
   animation: walk-fire .33s steps(3) infinite;
 }
 @keyframes walk-fire {
-  from { background-position: -160px -960px; }
-    to { background-position: -640px -960px; }
+  from { background-position: 5% 31.6%; }
+    to { background-position: 20% 31.6%; }
 }
 .invincible {
-  height: 160px;
-  background-position: -160px -3200px;
+  height: 2rem;
+  background-position: 0% 75%;
   animation: invincible .33s steps(9) infinite;
 }
 @keyframes invincible {
-  0% { background-position: -160px -3200px; }
-  100% { background-position: -1600px -3200px; }
+  0% { background-position: 5% 100%; }
+  100% { background-position: 50% 100%; }
 }
 .invincible-super {
-  height: 320px;
-  background-position: -160px -2880px;
+  height: 4rem;
+  background-position: 0% 47.4%;
   animation: invincible-super .33s steps(9) infinite;
 }
 @keyframes invincible-super {
-  0% { background-position: -160px -2880px; }
-  100% { background-position: -1600px -2880px; }
+  0% { background-position: 5% 94.75%; }
+  100% { background-position: 50% 94.75%; }
 }
 .mario-dead {
-  height: 160px;
-  background-position: -960px -320px;
+  height: 2rem;
+  background-position: 30% 10%;
 }
 .luigi-dead {
-  height: 160px;
-  background-position: -960px -800px;
+  height: 2rem;
+  background-position: 30% 25%;
 }
 .fire-dead { 
 /* When timer runs out if Mario/Luigi is in fire-form */
-  height: 160px;
-  background-position: -960px -1280px;
+  height: 2rem;
+  background-position: 30% 40%;
 }
 
 /* BUTTON STYLING */
 button {
   border: none;
-  border-radius: 8px;
+  border-radius: 0.2rem;
   background: #c8c8c8;
-  box-shadow:  8px 8px 16px #aaaaaa, 
-    -8px -8px 16px #e6e6e6;
+  box-shadow:  0.2rem 0.2rem 0.2rem #aaaaaa, 
+    -0.2rem -0.2rem 0.4rem #e6e6e6;
 }
-/* :focus {
+:focus {
   outline: none;
-} */
+}
 
 .button-mushroom {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  margin: 0.126rem; /* "" */
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-enlarged.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -0px -0px;
+  background-position: 0% 0%;
 }
 
 .button-starman {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem; 
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-enlarged.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -960px -0px;
+  background-position: 20.6897% 0%;
 }
 
-.flicker-starman {
+.flicker-star {
   animation: flicker-star .14s steps(4) infinite;
 }
 @keyframes flicker-star {
-  from { background-position: -960px -0px; }
-    to { background-position: -1600px -0px; }
+  from { background-position: 20.6897% 0%; }
+    to { background-position: 34.4828% 0%; }
 }
 
 .button-enemy {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  margin: 0.125rem;
+  background-size: 200%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/enemies-grid-a1-enlarged.png");
+  background-image: url("/enemies-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -0px -0px;
+  background-position: 0% 0%;
 }
 
 .walk-enemy {
   animation: walk-enemy .33s steps(2) infinite; /* .27s*/
 }
 @keyframes walk-enemy {
-  from { background-position: -0px -0px; }
-    to { background-position: -320px -0px; }
+  from { background-position: 0% 0%; }
+    to { background-position: 200% 0%; }
 }
 
 .kill-enemy {
@@ -182,44 +196,46 @@ button {
 }
 
 .button-fire {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-enlarged.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -320px -0px;
-  animation: glow-fireflower .33s steps(4) infinite;  /* .14s */
+  background-position: 6.8978% 0%;
+  animation: glow-fireflower .33s steps(4) infinite;
 }
 @keyframes glow-fireflower {
-  from { background-position: -320px -0px; }
-    to { background-position: -960px -0px; }
+  from { background-position: 6.8978% 0%; }
+    to { background-position: 20.6897% 0%; }
 }
-
 .button-oneup {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-enlarged.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -160px -0px;
+  background-position: 3.4482% 0%;
 }
 
 .button-coin {
-  height: 180px;
-  width: 180px;
-  padding: 10px;
-  margin: 10px;
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
-  background-image: url("/items-grid-a1-enlarged.png");
+  background-image: url("/items-grid-a1.png");
   background-repeat: no-repeat;
-  background-position: -2240px -0px;
+  background-position: 48.2759% 0%;
 }
 
 .glow-coin {
@@ -227,8 +243,8 @@ button {
   animation-iteration-count:infinite;
 }
 @keyframes glow-coin {
-  from { background-position: -2240px -0px; }
-    to { background-position: -2880px -0px; }
+  from { background-position: 48.2759% 0%; }
+    to { background-position: 62.0690% 0%; }
 }
 
 .spin-coin {
