@@ -249,3 +249,21 @@ Solution: add a bit of invisible text to all buttons. */
 .spin-coin {
 
 }
+
+.button-bros-toggle {
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.126rem;
+  margin: 0.126rem;
+  background-size: 2100%;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-image: url("/mario-grid-a2.png");
+  background-repeat: no-repeat;
+}
+.toggle-mario {
+  background-position: 0% 10%;
+}
+.toggle-luigi {
+  background-position: 0% 25%;
+}

@@ -15,14 +15,6 @@ export default function ScoreBoard() {
   }, []);
 
   //SCOREBOARD LOGIC HANDLERS:
-  const handlePlayerToggle = () => {
-    if (marioState.brother === "mario") {
-      dispatch({ type: "SELECT_LUIGI" });
-    } else {
-      dispatch({ type: "SELECT_MARIO" });
-    }
-  }
-
   const handleCoinCounter = () => {
     let numCoins = AddLeadingZeroes(marioState.coins, 2);
     if (marioState.coins > 99) { 
@@ -32,7 +24,7 @@ export default function ScoreBoard() {
   }
 
   // SCOREBOARD CHILDREN:
-  const PlayerToggle = ( <button onClick={(() => handlePlayerToggle())}> {marioState.brother} </button> );
+  const PlayerToggle = ( <div> {marioState.brother} </div> );
   
   const PointsCounter = (props) => {
     return ( <div> {props.points} </div> );

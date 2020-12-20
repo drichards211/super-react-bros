@@ -8,8 +8,9 @@ export default function Buttons() {
   const dispatch = useDispatch();
   const marioState = useSelector( (state) => state);
   
-  // Holds different CSS class names for buttonStar:
+  // Holds update-able CSS class names for buttons:
   let buttonStarClass = "button-starman "; 
+  let buttonBrosToggleClass = "button-bros-toggle ";
 
   // Manage buttonStar appearance:
   switch (true) {
@@ -18,6 +19,15 @@ export default function Buttons() {
       break;
     default: // Mario-Luigi is NOT invincible:
       buttonStarClass += "hide-star-countdown";
+  }
+
+  // Manage buttonToggleBros appearance:
+  switch (true) {
+    case marioState.brother === "luigi": // Active bros is Luigi:
+      buttonBrosToggleClass += "toggle-mario"; // Display Mario toggle
+      break;
+    default: // Active bros is Mario:
+      buttonBrosToggleClass += "toggle-luigi"; // Display Luigi toggle
   }
   
   // Button-specific helper functions:
@@ -75,6 +85,14 @@ export default function Buttons() {
     StopStarManTimer();
   }
 
+  const handlePlayerToggle = () => {
+    if (marioState.brother === "mario") {
+      dispatch({ type: "SELECT_LUIGI" });
+    } else {
+      dispatch({ type: "SELECT_MARIO" });
+    }
+  }
+
   // BUTTONS:
   const buttonMushroom = ( <button className="button-mushroom" onClick={() => dispatch({ type: "MAKE_SUPER" })}><div className="align-me">_</div></button> );
 
@@ -90,9 +108,11 @@ export default function Buttons() {
 
   const buttonOneUp = ( <button className="button-oneup" onClick={() => dispatch({ type: "INCREMENT_LIVES" })}><div className="align-me">_</div></button> )
 
+  const buttonBrosToggle = ( <button className={buttonBrosToggleClass} onClick={() => handlePlayerToggle()}><div className="align-me">_</div></button> );
+
   const tryAgain = ( <button onClick={() => newLifeLogic()}> Try Again </button> );
 
   const newGame = ( <button onClick={() => handleNewGame()}> New Game </button> );
 
-  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {tryAgain} {newGame} </div>);
+  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {buttonBrosToggle} {tryAgain} {newGame} </div>);
 }
