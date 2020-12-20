@@ -12,7 +12,7 @@ const initialState = {
   points: "000000",
   lives: 3,
   coins: 0,
-  timer: 100,
+  timer: 400,
 };
 
 function reducer(state = initialState, action) {
@@ -38,7 +38,7 @@ function reducer(state = initialState, action) {
         starManTimer: 0,
         super: false,
         fire: false, 
-        timer: 100,
+        timer: 400,
       }
     case "MAKE_SUPER":
       return {
@@ -114,7 +114,7 @@ function reducer(state = initialState, action) {
     case "RESET_TIMER":
       return {
         ...initialState,
-        timer: 100,
+        timer: 400,
       }
     case "RESET_STARMANTIMER":
       return {

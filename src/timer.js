@@ -6,7 +6,7 @@ let starManCountDown;
 
 export function StartTimer() {
   console.log("StartTimer() ran");
-  let localTimer = 100;
+  let localTimer = 400;
   countDown = setInterval(function() {
     if (localTimer === 1) {
       localTimer = localTimer -1;
@@ -18,7 +18,7 @@ export function StartTimer() {
       localTimer = localTimer -1;
       store.dispatch({ type: "DECREMENT_TIMER" });
     }
-  }, 1000);
+  }, 420);
 }
 
 export function StopTimer() {
