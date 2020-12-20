@@ -7,8 +7,20 @@ export default function Buttons() {
   // Global state management via Redux Hooks:
   const dispatch = useDispatch();
   const marioState = useSelector( (state) => state);
+  
+  // Holds different CSS class names for buttonStar:
+  let buttonStarClass = "button-starman "; 
 
-  // Button logic handlers:
+  // Manage buttonStar appearance:
+  switch (true) {
+    case marioState.invincible: // Mario-Luigi is INVINCIBLE:
+      buttonStarClass += "show-star-countdown";
+      break;
+    default: // Mario-Luigi is NOT invincible:
+      buttonStarClass += "hide-star-countdown";
+  }
+  
+  // Button-specific helper functions:
   const handleEnemy = () => {
     switch (true) {
       case marioState.invincible: // Mario/Luigi is Invincible, no state change
@@ -64,19 +76,19 @@ export default function Buttons() {
   }
 
   // BUTTONS:
-  const buttonMushroom = ( <button className="button-mushroom" onClick={() => dispatch({ type: "MAKE_SUPER" })}></button> );
+  const buttonMushroom = ( <button className="button-mushroom" onClick={() => dispatch({ type: "MAKE_SUPER" })}><div className="align-me">_</div></button> );
 
-  const buttonStar = ( <button className="button-starman" onClick={() => handleButtonStar()}></button> );
+  const buttonStar = ( <button className={buttonStarClass} onClick={() => handleButtonStar()}> {marioState.starManTimer} </button> );
 
   const buttonEndStar = ( <button onClick={() => handleButtonEndStar()}> Cancel Starman </button> );
 
-  const buttonEnemy = ( <button className="button-enemy walk-enemy" onClick={() => handleEnemy()}></button> );  
+  const buttonEnemy = ( <button className="button-enemy walk-enemy" onClick={() => handleEnemy()}><div className="align-me">_</div></button> );  
   
-  const buttonFire = ( <button className="button-fire" onClick={() => handleFireLogic()}></button> );
+  const buttonFire = ( <button className="button-fire" onClick={() => handleFireLogic()}><div className="align-me">_</div></button> );
   
-  const buttonCoin = ( <button className="button-coin glow-coin" onClick={() => dispatch({ type: "ADD_COIN" })}></button> );
+  const buttonCoin = ( <button className="button-coin glow-coin" onClick={() => dispatch({ type: "ADD_COIN" })}><div className="align-me">_</div></button> );
 
-  const buttonOneUp = ( <button className="button-oneup" onClick={() => dispatch({ type: "INCREMENT_LIVES" })}></button> )
+  const buttonOneUp = ( <button className="button-oneup" onClick={() => dispatch({ type: "INCREMENT_LIVES" })}><div className="align-me">_</div></button> )
 
   const tryAgain = ( <button onClick={() => newLifeLogic()}> Try Again </button> );
 
