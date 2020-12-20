@@ -4,19 +4,11 @@
   font-style: normal;
 }
 
-:root {
-  /* --mario: -115px;
-  --luigi: -400px;
-  --super-mario: -0px;
-  --super-luigi: -240px;  */
-}
-
 html, body {
   font-size: 40px;
   color: black;
   font-family: PressStart;
   background: #c8c8c8;  
-  /* background: #5691e9; */ /* Sky Blue */
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   box-sizing: border-box;
   image-rendering: pixelated; /* Forces nearest-neighbor algorithm for image scaling */
@@ -26,18 +18,14 @@ html, body {
 
 .Render-brother {
   width: 2rem;
-  /* width: 10%; */ /* Responsive sizing test */
   background-image: url("/mario-grid-a2.png");
   background-repeat: no-repeat;
   background-size: 2100%;
-  /* SHORTHAND background: url("/mario-luigi-sprites.png") -80px -1px no-repeat; */
 }
 
 /* DIFFERENT BROS STATES */
 .mario {
   height: 2rem;
-  /* height: 0; */ /* Responsive sizing test */
-  /* padding-bottom: 10%; */ /* Responsive sizing test */
   background-position: 0 10%;
   animation: walk-mario .33s steps(3) infinite;
 }
@@ -45,10 +33,6 @@ html, body {
   from { background-position: 5% 10%; }
     to { background-position: 20% 10%; }
 }
-/* @keyframes walk-mario {
-  from { background-position: -80px -160px; }
-    to { background-position: -320px -160px; }
-} */
 .luigi {
   height: 2rem;
   background-position: 0% 25%;
@@ -134,7 +118,7 @@ button {
   height: 2.25rem;
   width: 2.25rem;
   padding: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
-  margin: 0.126rem; /* "" */
+  margin: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
   background-size: 3000%;
   background-origin: content-box;
   background-clip: content-box;
@@ -167,7 +151,7 @@ button {
 .button-enemy {
   height: 2.25rem;
   width: 2.25rem;
-  padding: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  padding: 0.126rem; 
   margin: 0.125rem;
   background-size: 200%;
   background-origin: content-box;
@@ -178,7 +162,7 @@ button {
 }
 
 .walk-enemy {
-  animation: walk-enemy .33s steps(2) infinite; /* .27s*/
+  animation: walk-enemy .33s steps(2) infinite; 
 }
 @keyframes walk-enemy {
   from { background-position: 0% 0%; }
