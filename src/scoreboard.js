@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StartTimer } from './timer';
-import AddLeadingZeroes from './helpers'; 
+import { AddLeadingZeroes } from './helpers'; 
 
 export default function ScoreBoard() {
 
@@ -24,8 +24,8 @@ export default function ScoreBoard() {
   }
 
   // SCOREBOARD CHILDREN:
-  const PlayerToggle = ( <div> {marioState.brother} </div> );
-  
+  const PlayerNumLives = ( <div> {marioState.brother.toUpperCase()} x {marioState.lives} </div> );
+    
   const PointsCounter = (props) => {
     return ( <div> {props.points} </div> );
   }
@@ -35,14 +35,34 @@ export default function ScoreBoard() {
   }
 
   const CoinCounter = () => {
-    return ( <div className="coin-counter">coins x {handleCoinCounter()} </div> );
+    return ( <div 
+      className="coin-counter">
+      <div className="mini-coin-sprite"></div>
+      {' '} x {handleCoinCounter()} 
+    </div> );
   } 
 
   const Timer = () => {
-    return ( <div> Time: {marioState.timer} </div> )
+    return ( <div> TIME <br /> 
+      {marioState.timer} 
+    </div> )
   }
 
   const InvinciTimer = () => ( <div> StarMan timer: {marioState.starManTimer} </div> )
 
-  return ( <div> {PlayerToggle} <LivesCounter/> <PointsCounter points={marioState.points}/> <CoinCounter/> <Timer/> </div> );
+  return ( <div> 
+    <div className="row"> 
+      <div className="col-33"> 
+        {PlayerNumLives} 
+        <PointsCounter points={marioState.points}/>
+      </div> 
+      <div className="col-33">
+        <br /> 
+        <CoinCounter/> 
+      </div>
+      <div className="col-33"> 
+        <Timer/>
+      </div>
+    </div>
+  </div> );
 }

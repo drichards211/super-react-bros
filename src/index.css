@@ -267,3 +267,21 @@ Solution: add a bit of invisible text to all buttons. */
 .toggle-luigi {
   background-position: 0% 25%;
 }
+
+/* SCOREBOARD ELEMENTS */
+.mini-coin-sprite {
+  display: inline-block;
+  height: 1rem;
+  width: .625rem;
+  background-size: 400%;
+  background-image: url("/scoreboard-grid-a1.png");
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  animation: glow-mini-coin 1s steps(4) infinite; /* Animation duration isn't working properly. Values above 1s don't work at all.
+  CSS edge-case bug??? */
+}
+@keyframes glow-mini-coin {
+  from { background-position: 0% 0%; }
+    to { background-position: 133.25% 0%; } /* This isn't working properly either. % location is VERY inaccurate.
+    Something is messed-up here. */
+}
