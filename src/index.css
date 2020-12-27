@@ -269,6 +269,13 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 /* SCOREBOARD ELEMENTS */
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+}
+.scoreboard:nth-child(3) {
+  text-align: right;
+}
 .mini-coin-sprite {
   display: inline-block;
   height: 1rem;
@@ -284,4 +291,9 @@ Solution: add a bit of invisible text to all buttons. */
   from { background-position: 0% 0%; }
     to { background-position: 133.25% 0%; } /* This isn't working properly either. % location is VERY inaccurate.
     Something is messed-up here. */
+}
+
+/* COLUMN LAYOUT */
+.row {
+  width: 100%;
 }

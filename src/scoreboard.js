@@ -51,7 +51,7 @@ export default function ScoreBoard() {
   const InvinciTimer = () => ( <div> StarMan timer: {marioState.starManTimer} </div> )
 
   return ( <div> 
-    <div className="row"> 
+    <div className="scoreboard row"> 
       <div className="col-33"> 
         {PlayerNumLives} 
         <PointsCounter points={marioState.points}/>
