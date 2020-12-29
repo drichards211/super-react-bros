@@ -114,5 +114,5 @@ export default function Buttons() {
 
   const newGame = ( <button onClick={() => handleNewGame()}> New Game </button> );
 
-  return ( <div> {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {buttonBrosToggle} {tryAgain} {newGame} </div>);
+  return ( <div className="button-container"> {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin} {buttonOneUp} {buttonBrosToggle} {/* {tryAgain} {newGame} */} </div>);
 }

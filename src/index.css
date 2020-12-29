@@ -5,10 +5,11 @@
 }
 
 html, body {
-  font-size: 40px;
-  color: black;
+  font-size: 46px;
+  color: white;
   font-family: PressStart;
-  background: #c8c8c8;  
+  background: rgb(76 132 255);
+  /* background: #c8c8c8;   */
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   box-sizing: border-box;
   image-rendering: pixelated; /* Forces nearest-neighbor algorithm for image scaling */
@@ -16,8 +17,14 @@ html, body {
     still interprets "crisp-edges" as nearest-neighbor, (November 2020) */
 }
 
+.mario-container {
+  display: inline-block;
+  width: 16rem;
+}
+
 .Render-brother {
   width: 2rem;
+  margin-left: 5rem;
   background-image: url("/mario-grid-a2.png");
   background-repeat: no-repeat;
   background-size: 2100%;
@@ -26,6 +33,7 @@ html, body {
 /* DIFFERENT BROS STATES */
 .mario {
   height: 2rem;
+  margin-top: 2rem;
   background-position: 0 10%;
   animation: walk-mario .33s steps(3) infinite;
 }
@@ -35,6 +43,7 @@ html, body {
 }
 .luigi {
   height: 2rem;
+  margin-top: 2rem;
   background-position: 0% 25%;
   animation: walk-luigi .33s steps(3) infinite;
 }
@@ -72,6 +81,7 @@ html, body {
 }
 .invincible {
   height: 2rem;
+  margin-top: 2rem;
   background-position: 0% 75%;
   animation: invincible .33s steps(9) infinite;
 }
@@ -90,54 +100,60 @@ html, body {
 }
 .mario-dead {
   height: 2rem;
+  margin-top: 2rem;
   background-position: 30% 10%;
 }
 .luigi-dead {
   height: 2rem;
+  margin-top: 2rem;
   background-position: 30% 25%;
 }
 .fire-dead { 
 /* When timer runs out if Mario/Luigi is in fire-form */
   height: 2rem;
+  margin-top: 2rem;
   background-position: 30% 40%;
 }
 
 /* BUTTON STYLING */
+.button-container {
+  display: inline-block;
+  float: right;
+  width: 7rem;
+  margin-right: 2rem;
+}
 button {
   display: inline-block;
   border: none;
   border-radius: 0.2rem;
-  background: #c8c8c8;
-  box-shadow:  0.2rem 0.2rem 0.2rem #aaaaaa, 
-    -0.2rem -0.2rem 0.4rem #e6e6e6;
+  border-radius: 19px;
+  background: #4c84ff;
+  box-shadow:  0.25rem 0.25rem 0.5rem #4170d9, 
+    -0.25rem -0.25rem 0.5rem #5798ff;
+  /* box-shadow:  10px 10px 20px #4170d9, 
+    -10px -10px 20px #5798ff; */
+  height: 2.75rem;
+  width: 2.75rem;
+  padding: 0.376rem;
+  margin-top: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  margin-bottom: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  background-origin: content-box;
+  background-clip: content-box;
+  background-repeat: no-repeat;
 }
 :focus {
   outline: none;
 }
 
 .button-mushroom {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
-  margin: 0.126rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
   background-size: 3000%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/items-grid-a1.png");
-  background-repeat: no-repeat;
   background-position: 0% 0%;
 }
 
 .button-starman {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem; 
-  margin: 0.126rem;
   background-size: 3000%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/items-grid-a1.png");
-  background-repeat: no-repeat;
   background-position: 20.6897% 0%;
 }
 
@@ -164,15 +180,8 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .button-enemy {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem; 
-  margin: 0.125rem;
   background-size: 200%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/enemies-grid-a1.png");
-  background-repeat: no-repeat;
   background-position: 0% 0%;
 }
 
@@ -195,15 +204,8 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .button-fire {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem;
-  margin: 0.126rem;
   background-size: 3000%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/items-grid-a1.png");
-  background-repeat: no-repeat;
   background-position: 6.8978% 0%;
   animation: glow-fireflower .33s steps(4) infinite;
 }
@@ -212,28 +214,14 @@ Solution: add a bit of invisible text to all buttons. */
     to { background-position: 20.6897% 0%; }
 }
 .button-oneup {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem;
-  margin: 0.126rem;
   background-size: 3000%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/items-grid-a1.png");
-  background-repeat: no-repeat;
   background-position: 3.4482% 0%;
 }
 
 .button-coin {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem;
-  margin: 0.126rem;
   background-size: 3000%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/items-grid-a1.png");
-  background-repeat: no-repeat;
   background-position: 48.2759% 0%;
 }
 
@@ -251,15 +239,8 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .button-bros-toggle {
-  height: 2.25rem;
-  width: 2.25rem;
-  padding: 0.126rem;
-  margin: 0.126rem;
   background-size: 2100%;
-  background-origin: content-box;
-  background-clip: content-box;
   background-image: url("/mario-grid-a2.png");
-  background-repeat: no-repeat;
 }
 .toggle-mario {
   background-position: 0% 10%;
@@ -272,9 +253,14 @@ Solution: add a bit of invisible text to all buttons. */
 .scoreboard {
   display: flex;
   justify-content: space-between;
+  margin-top: .25rem;
+  margin-bottom: 2rem;
 }
-.scoreboard:nth-child(3) {
-  text-align: right;
+.sb-col-01 {
+  margin-left: 3rem;
+}
+.sb-col-03 {
+  margin-right: 3rem;
 }
 .mini-coin-sprite {
   display: inline-block;

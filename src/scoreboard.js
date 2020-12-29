@@ -26,14 +26,10 @@ export default function ScoreBoard() {
   // SCOREBOARD CHILDREN:
   const PlayerNumLives = ( <div> {marioState.brother.toUpperCase()} x {marioState.lives} </div> );
     
-  const PointsCounter = (props) => {
-    return ( <div> {props.points} </div> );
+  const PointsCounter = () => {
+    return ( <div> {marioState.points} </div> );
   }
   
-  const LivesCounter = () => {
-    return ( <div>lives x {marioState.lives}</div> );
-  }
-
   const CoinCounter = () => {
     return ( <div 
       className="coin-counter">
@@ -48,19 +44,17 @@ export default function ScoreBoard() {
     </div> )
   }
 
-  const InvinciTimer = () => ( <div> StarMan timer: {marioState.starManTimer} </div> )
-
   return ( <div> 
     <div className="scoreboard row"> 
-      <div className="col-33"> 
+      <div className="sb-col-01"> 
         {PlayerNumLives} 
-        <PointsCounter points={marioState.points}/>
+        <PointsCounter/>
       </div> 
-      <div className="col-33">
+      <div className="sb-col-02">
         <br /> 
         <CoinCounter/> 
       </div>
-      <div className="col-33"> 
+      <div className="sb-col-03"> 
         <Timer/>
       </div>
     </div>
