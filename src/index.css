@@ -146,8 +146,7 @@ html, body {
 button {
   display: inline-block;
   border: none;
-  border-radius: 0.2rem;
-  border-radius: 19px;
+  border-radius: 0.4rem;
   background: #4c84ff;
   box-shadow:  0.25rem 0.25rem 0.5rem #4170d9, 
     -0.25rem -0.25rem 0.5rem #5798ff;
