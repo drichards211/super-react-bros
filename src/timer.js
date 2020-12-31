@@ -14,6 +14,7 @@ export function StartTimer() {
       StopStarManTimer(); // Stop StarMan countdown if Mario/Luigi is invincible when timer runs out
       store.dispatch({ type: "DECREMENT_TIMER" }); // Final decrement to zero
       store.dispatch({ type: "LOSE_LIFE"}); // Kill Mario/Luigi if timer runs out
+      store.dispatch({ type: "SHOW_DEATH_SCREEN"} );
     } else {
       localTimer = localTimer -1;
       store.dispatch({ type: "DECREMENT_TIMER" });
@@ -50,4 +51,12 @@ export function StopAllTimers() {
   console.log("StopAllTimers() ran");
   clearInterval(countDown);
   clearInterval(starManCountDown);
+}
+
+export function CountDownDeathScreen() {
+  console.log("CountDownDeathScreen() ran");
+  store.dispatch({ type: "SHOW_DEATH_SCREEN" });
+  setInterval(function() {
+    store.dispatch({ type: "HIDE_DEATH_SCREEN" });
+  }, 3000);
 }

@@ -7,12 +7,7 @@ export default function MarioContainer() {
   const marioState = useSelector((state) => state);
   
   let marioClass = "Render-brother "; // Holds different CSS class names for rendering Mario/Luigi sprites
-  let userMessage = "";
-
-  const MarioMessages = ({ message }) => {
-    return ( <div> {message} </div>);
-  }
-
+  
   // MARIO SPRITE DISPLAY LOGIC:
   switch (true) {
     case marioState.alive && marioState.invincible: // Mario-Luigi is INVINCIBLE:
@@ -36,11 +31,9 @@ export default function MarioContainer() {
       switch (true) {
         case marioState.timer === 0 && marioState.fire: // TIMER ran out while Mario-Luigi was Fire:
           marioClass += "fire-dead";
-          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIME UP";
           console.log("Timer ran out while Mario-Luigi was Fire");
           break;
         case marioState.timer === 0: // TIMER ran out:
-          userMessage = (marioState.lives === 0) ? "GAME OVER": "TIME UP";
           console.log("Timer ran out");
           if (marioState.brother === "luigi") {
             marioClass += "luigi-dead";
@@ -50,13 +43,11 @@ export default function MarioContainer() {
           break;
         case marioState.brother === "luigi": // Luigi is DEAD:
           marioClass += "luigi-dead";
-          userMessage = (marioState.lives === 0) ? "GAME OVER": "";
           break;
         default: // Mario is DEAD:
           marioClass += "mario-dead";
-          userMessage = (marioState.lives === 0) ? "GAME OVER": "";
       }
   }
 
-  return ( <div className="mario-container"> <div className={marioClass}></div> <MarioMessages message={userMessage}/> </div> );
+  return ( <div className="mario-container"> <div className={marioClass}></div> </div> );
 }

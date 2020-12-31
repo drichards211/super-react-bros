@@ -44,6 +44,7 @@ export default function Buttons() {
       default:
         StopAllTimers();
         dispatch({ type: "LOSE_LIFE"} );
+        dispatch({ type: "SHOW_DEATH_SCREEN"} );
     }
   };
 

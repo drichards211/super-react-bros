@@ -36,11 +36,11 @@ export default function ScoreBoard() {
       <div className="mini-coin-sprite"></div>
       {' '} x {handleCoinCounter()} 
     </div> );
-  } 
-
+  }
+  
   const Timer = () => {
     return ( <div> TIME <br /> 
-      {marioState.timer} 
+      {AddLeadingZeroes(marioState.timer, 3)} 
     </div> )
   }
 

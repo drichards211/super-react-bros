@@ -9,6 +9,7 @@ const initialState = {
   invincible: false,
   starManTimer: 0,
   alive: true,
+  inPlay: true,
   points: "000000",
   lives: 3,
   coins: 0,
@@ -130,6 +131,16 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         starManTimer: state.starManTimer -1,
+      }
+    case "SHOW_DEATH_SCREEN":
+      return {
+        ...state,
+        inPlay: false,
+      }
+    case "HIDE_DEATH_SCREEN":
+      return {
+        ...state,
+        inPlay: true,
       }
     default:
       console.log(`${action.type} is an invalid reducer action.`);

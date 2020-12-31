@@ -6,6 +6,7 @@ import './normalize.css';
 import store from './store';
 import ScoreBoard from './scoreboard';
 import MarioContainer from './mariocontainer';
+import DeathScreen from './deathscreen';
 import Buttons from './buttons';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,6 +15,7 @@ function App() {
     <Provider store={store}>
       <ScoreBoard/>
       <MarioContainer/>
+      <DeathScreen/>
       <Buttons/>
     </Provider> 
   )
