@@ -24,7 +24,7 @@ export default function ScoreBoard() {
   }
 
   // SCOREBOARD CHILDREN:
-  const PlayerNumLives = ( <div> {marioState.brother.toUpperCase()} x {marioState.lives} </div> );
+  const PlayerNumLives = ( <div> {marioState.brother.toUpperCase()}<span className="small-spacer">×</span>{marioState.lives} </div> );
     
   const PointsCounter = () => {
     return ( <div> {marioState.points} </div> );
@@ -34,7 +34,7 @@ export default function ScoreBoard() {
     return ( <div 
       className="coin-counter">
       <div className="mini-coin-sprite"></div>
-      {' '} x {handleCoinCounter()} 
+        ×{handleCoinCounter()} 
     </div> );
   }
   

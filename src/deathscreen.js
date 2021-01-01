@@ -23,7 +23,7 @@ export default function DeathScreen() {
       break;
     case !marioState.alive: // Mario-Luigi is DEAD:
       userMessage = (marioState.lives === 0) ? "GAME OVER": 
-        (marioState.brother === "luigi") ? "LUIGI X "+marioState.lives: "MARIO X "+marioState.lives;
+        (marioState.brother === "luigi") ? "LUIGI × "+marioState.lives: "MARIO × "+marioState.lives;
       break;
     default: // Mario-Luigi is ALIVE:
       userMessage = userMessage;

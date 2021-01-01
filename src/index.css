@@ -286,6 +286,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .mini-coin-sprite {
   display: inline-block;
+  margin-right: 0.25rem;
   height: 1rem;
   width: .625rem;
   background-size: 400%;
@@ -299,6 +300,10 @@ Solution: add a bit of invisible text to all buttons. */
   from { background-position: 0% 0%; }
     to { background-position: 133.25% 0%; } /* This isn't working properly either. % location is VERY inaccurate.
     Something is messed-up here. */
+}
+.small-spacer {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 /* COLUMN LAYOUT */
