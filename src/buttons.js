@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'; // redux hooks specific
-import { StartStarManTimer, StopStarManTimer, StartTimer, StopAllTimers } from './timer';
+import { StartStarManTimer, StopStarManTimer, StartTimer, StopAllTimers, ManageDeathScreen } from './timer';
 
 export default function Buttons() {
 
@@ -44,7 +44,7 @@ export default function Buttons() {
       default:
         StopAllTimers();
         dispatch({ type: "LOSE_LIFE"} );
-        dispatch({ type: "SHOW_DEATH_SCREEN"} );
+        ManageDeathScreen();
     }
   };
 
