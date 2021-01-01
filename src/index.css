@@ -4,7 +4,8 @@
   font-style: normal;
 }
 
-html, body {
+html,
+body {
   font-size: 46px;
   color: white;
   font-family: PressStart;
@@ -35,68 +36,96 @@ html, body {
   height: 2rem;
   margin-top: 2rem;
   background-position: 0 10%;
-  animation: walk-mario .33s steps(3) infinite;
+  animation: walk-mario 0.33s steps(3) infinite;
 }
 @keyframes walk-mario {
-  from { background-position: 5% 10%; }
-    to { background-position: 20% 10%; }
+  from {
+    background-position: 5% 10%;
+  }
+  to {
+    background-position: 20% 10%;
+  }
 }
 .luigi {
   height: 2rem;
   margin-top: 2rem;
   background-position: 0% 25%;
-  animation: walk-luigi .33s steps(3) infinite;
+  animation: walk-luigi 0.33s steps(3) infinite;
 }
 @keyframes walk-luigi {
-  from { background-position: 5% 25%; }
-    to { background-position: 20% 25%; }
+  from {
+    background-position: 5% 25%;
+  }
+  to {
+    background-position: 20% 25%;
+  }
 }
 .mario-super {
   height: 4rem;
   background-position: 0% 0%;
-  animation: walk-super-mario .33s steps(3) infinite;
+  animation: walk-super-mario 0.33s steps(3) infinite;
 }
 @keyframes walk-super-mario {
-  from { background-position: 5% 0%; }
-    to { background-position: 20% 0%; }
+  from {
+    background-position: 5% 0%;
+  }
+  to {
+    background-position: 20% 0%;
+  }
 }
 .luigi-super {
   height: 4rem;
   background-position: 0% 15.8%;
-  animation: walk-super-luigi .33s steps(3) infinite;
+  animation: walk-super-luigi 0.33s steps(3) infinite;
 }
 @keyframes walk-super-luigi {
-  from { background-position: 5% 15.8%; }
-    to { background-position: 20% 15.8%; }
+  from {
+    background-position: 5% 15.8%;
+  }
+  to {
+    background-position: 20% 15.8%;
+  }
 }
 .fire {
-/* Identical sprites used for Mario and Luigi in Fire form */
+  /* Identical sprites used for Mario and Luigi in Fire form */
   height: 4rem;
   background-position: 0% 31.6%;
-  animation: walk-fire .33s steps(3) infinite;
+  animation: walk-fire 0.33s steps(3) infinite;
 }
 @keyframes walk-fire {
-  from { background-position: 5% 31.6%; }
-    to { background-position: 20% 31.6%; }
+  from {
+    background-position: 5% 31.6%;
+  }
+  to {
+    background-position: 20% 31.6%;
+  }
 }
 .invincible {
   height: 2rem;
   margin-top: 2rem;
   background-position: 0% 75%;
-  animation: invincible .33s steps(9) infinite;
+  animation: invincible 0.33s steps(9) infinite;
 }
 @keyframes invincible {
-  0% { background-position: 5% 100%; }
-  100% { background-position: 50% 100%; }
+  0% {
+    background-position: 5% 100%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
 }
 .invincible-super {
   height: 4rem;
   background-position: 0% 47.4%;
-  animation: invincible-super .33s steps(9) infinite;
+  animation: invincible-super 0.33s steps(9) infinite;
 }
 @keyframes invincible-super {
-  0% { background-position: 5% 94.75%; }
-  100% { background-position: 50% 94.75%; }
+  0% {
+    background-position: 5% 94.75%;
+  }
+  100% {
+    background-position: 50% 94.75%;
+  }
 }
 .mario-dead {
   height: 2rem;
@@ -108,8 +137,8 @@ html, body {
   margin-top: 2rem;
   background-position: 30% 25%;
 }
-.fire-dead { 
-/* When timer runs out if Mario/Luigi is in fire-form */
+.fire-dead {
+  /* When timer runs out if Mario/Luigi is in fire-form */
   height: 2rem;
   margin-top: 2rem;
   background-position: 30% 40%;
@@ -135,7 +164,6 @@ html, body {
   background-color: rgb(0 0 0);
 }
 
-
 /* BUTTON STYLING */
 .button-container {
   display: block;
@@ -148,8 +176,7 @@ button {
   border: none;
   border-radius: 0.4rem;
   background: #4c84ff;
-  box-shadow:  0.25rem 0.25rem 0.5rem #4170d9, 
-    -0.25rem -0.25rem 0.5rem #5798ff;
+  box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
   /* box-shadow:  10px 10px 20px #4170d9, 
     -10px -10px 20px #5798ff; */
   height: 2.75rem;
@@ -178,11 +205,15 @@ button {
 }
 
 .flicker-star {
-  animation: flicker-star .14s steps(4) infinite;
+  animation: flicker-star 0.14s steps(4) infinite;
 }
 @keyframes flicker-star {
-  from { background-position: 20.6897% 0%; }
-    to { background-position: 34.4828% 0%; }
+  from {
+    background-position: 20.6897% 0%;
+  }
+  to {
+    background-position: 34.4828% 0%;
+  }
 }
 
 .hide-star-countdown {
@@ -195,7 +226,7 @@ button {
 }
 
 .align-me {
-/* Some buttons have text. This unfortunately moves their position because built-in browser styles are insane.
+  /* Some buttons have text. This unfortunately moves their position because built-in browser styles are insane.
 Solution: add a bit of invisible text to all buttons. */
   opacity: 0%;
 }
@@ -207,32 +238,40 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .walk-enemy {
-  animation: walk-enemy .33s steps(2) infinite; 
+  animation: walk-enemy 0.33s steps(2) infinite;
 }
 @keyframes walk-enemy {
-  from { background-position: 0% 0%; }
-    to { background-position: 200% 0%; }
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 200% 0%;
+  }
 }
 
 .kill-enemy {
   background-position: -160px -10px;
   /* Flip image upside down */
-  -webkit-transform:scaleY(-1);
-  -moz-transform:scaleY(-1);
-  -ms-transform:scaleY(-1);
-  -o-transform:scaleY(-1);
-  transform:scaleY(-1);
+  -webkit-transform: scaleY(-1);
+  -moz-transform: scaleY(-1);
+  -ms-transform: scaleY(-1);
+  -o-transform: scaleY(-1);
+  transform: scaleY(-1);
 }
 
 .button-fire {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 6.8978% 0%;
-  animation: glow-fireflower .33s steps(4) infinite;
+  animation: glow-fireflower 0.33s steps(4) infinite;
 }
 @keyframes glow-fireflower {
-  from { background-position: 6.8978% 0%; }
-    to { background-position: 20.6897% 0%; }
+  from {
+    background-position: 6.8978% 0%;
+  }
+  to {
+    background-position: 20.6897% 0%;
+  }
 }
 .button-oneup {
   background-size: 3000%;
@@ -247,16 +286,19 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .glow-coin {
-  animation: glow-coin .8s steps(4);
-  animation-iteration-count:infinite;
+  animation: glow-coin 0.8s steps(4);
+  animation-iteration-count: infinite;
 }
 @keyframes glow-coin {
-  from { background-position: 48.2759% 0%; }
-    to { background-position: 62.0690% 0%; }
+  from {
+    background-position: 48.2759% 0%;
+  }
+  to {
+    background-position: 62.069% 0%;
+  }
 }
 
 .spin-coin {
-
 }
 
 .button-bros-toggle {
@@ -274,7 +316,7 @@ Solution: add a bit of invisible text to all buttons. */
 .scoreboard {
   display: flex;
   justify-content: space-between;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   margin-bottom: 2rem;
 }
 .sb-col-01 {
@@ -288,7 +330,7 @@ Solution: add a bit of invisible text to all buttons. */
   display: inline-block;
   margin-right: 0.25rem;
   height: 1rem;
-  width: .625rem;
+  width: 0.625rem;
   background-size: 400%;
   background-image: url("/scoreboard-grid-a1.png");
   background-repeat: no-repeat;
@@ -297,8 +339,12 @@ Solution: add a bit of invisible text to all buttons. */
   CSS edge-case bug??? */
 }
 @keyframes glow-mini-coin {
-  from { background-position: 0% 0%; }
-    to { background-position: 133.25% 0%; } /* This isn't working properly either. % location is VERY inaccurate.
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 133.25% 0%;
+  } /* This isn't working properly either. % location is VERY inaccurate.
     Something is messed-up here. */
 }
 .small-spacer {

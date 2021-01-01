@@ -1,4 +1,4 @@
-import store from './store';
+import store from "./store";
 
 // Variables declared early so clearInterval() can actually stop the timers:
 let countDown;
@@ -6,13 +6,13 @@ let starManCountDown;
 
 export function StartTimer() {
   console.log("StartTimer() ran");
-  countDown = setInterval(function() {
+  countDown = setInterval(function () {
     const marioState = store.getState(); // obtain fresh copy of redux state on each iteration:
     if (marioState.timer === 1) {
       StopTimer();
       StopStarManTimer(); // Stop StarMan countdown if Mario/Luigi is invincible when timer runs out
       store.dispatch({ type: "DECREMENT_TIMER" }); // Final decrement to zero
-      store.dispatch({ type: "LOSE_LIFE"}); // Kill Mario/Luigi if timer runs out
+      store.dispatch({ type: "LOSE_LIFE" }); // Kill Mario/Luigi if timer runs out
       ManageDeathScreen();
     } else {
       store.dispatch({ type: "DECREMENT_TIMER" });
@@ -27,13 +27,13 @@ export function StopTimer() {
 
 export function StartStarManTimer() {
   console.log("StartStarManTimer() ran");
-  starManCountDown = setInterval(function() {
+  starManCountDown = setInterval(function () {
     const marioState = store.getState(); // obtain fresh copy of redux state on each iteration:
     if (marioState.starManTimer === 1) {
       StopStarManTimer();
       store.dispatch({ type: "END_INVINCIBLE" });
     } else {
-      store.dispatch({ type: "DECREMENT_STARMANTIMER" })
+      store.dispatch({ type: "DECREMENT_STARMANTIMER" });
     }
   }, 1000);
 }
@@ -50,14 +50,15 @@ export function StopAllTimers() {
 }
 
 export function ManageDeathScreen() {
-// Wait 2 seconds for death animation to finish, then show Death Screen:
+  // Wait 2 seconds for death animation to finish, then show Death Screen:
   console.log("ManageDeathScreen() ran");
   const marioState = store.getState();
-  setTimeout(function() {
+  setTimeout(function () {
     store.dispatch({ type: "SHOW_DEATH_SCREEN" });
-    if (marioState.lives > 0) { // Mario-Luigi has extra lives remaining. Hold death screen for 3 seconds, then resume game.
+    if (marioState.lives > 0) {
+      // Mario-Luigi has extra lives remaining. Hold death screen for 3 seconds, then resume game.
       /* if (marioState.timer) */
-      setTimeout(function() {
+      setTimeout(function () {
         store.dispatch({ type: "START_NEW_LIFE" });
         store.dispatch({ type: "HIDE_DEATH_SCREEN" });
         StartTimer();
