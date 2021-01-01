@@ -40,7 +40,7 @@ export default function ScoreBoard() {
   
   const Timer = () => {
     return ( <div> TIME <br /> 
-      {(marioState.timer > -1) ? AddLeadingZeroes(marioState.timer, 3): ""} 
+      {AddLeadingZeroes(marioState.timer, 3)} 
     </div> )
   }
 

@@ -56,6 +56,7 @@ export function ManageDeathScreen() {
   setTimeout(function() {
     store.dispatch({ type: "SHOW_DEATH_SCREEN" });
     if (marioState.lives > 0) { // Mario-Luigi has extra lives remaining. Hold death screen for 3 seconds, then resume game.
+      /* if (marioState.timer) */
       setTimeout(function() {
         store.dispatch({ type: "START_NEW_LIFE" });
         store.dispatch({ type: "HIDE_DEATH_SCREEN" });

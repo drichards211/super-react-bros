@@ -17,17 +17,14 @@ export default function DeathScreen() {
   if (!marioState.inPlay) { // Display Death Screen:
     messageClass += "death-screen";
   } 
-  switch (true) {
-    case marioState.timer === 0: // TIMER ran out:
+  if (!marioState.alive) { // Mario-Luigi is DEAD:
+    if (marioState.timer === 0) { // Timer ran out:
       userMessage = (marioState.lives === 0) ? "GAME OVER": "TIME UP";
-      break;
-    case !marioState.alive: // Mario-Luigi is DEAD:
+    } else { // Mario-Luigi DEAD from enemy:
       userMessage = (marioState.lives === 0) ? "GAME OVER": 
         (marioState.brother === "luigi") ? "LUIGI × "+marioState.lives: "MARIO × "+marioState.lives;
-      break;
-    default: // Mario-Luigi is ALIVE:
-      userMessage = userMessage;
+    }
   }
-
+    
   return ( <MarioMessages message={userMessage}/> )
 }

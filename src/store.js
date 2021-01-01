@@ -136,7 +136,6 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         inPlay: false,
-        timer: -1, // Negative value forces Timer component to display nothing
       }
     case "HIDE_DEATH_SCREEN":
       return {
