@@ -162,6 +162,15 @@ export default function Buttons() {
     </button>
   );
 
+  const buttonQuestion = (
+    <button
+      className="button-question"
+      onClick={() => dispatch({ type: "SHOW_HELP" })}
+    >
+      <div className="align-me">_</div>
+    </button>
+  );
+
   const tryAgain = <button onClick={() => newLifeLogic()}> Try Again </button>;
 
   const newGame = <button onClick={() => handleNewGame()}> New Game </button>;
@@ -170,7 +179,7 @@ export default function Buttons() {
     <div className="button-container">
       {" "}
       {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin}{" "}
-      {buttonOneUp} {buttonBrosToggle} {/* {tryAgain} {newGame} */}{" "}
+      {buttonOneUp} {buttonBrosToggle} {buttonQuestion} {/* {tryAgain} {newGame} */}{" "}
     </div>
   );
 }

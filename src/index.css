@@ -312,6 +312,21 @@ Solution: add a bit of invisible text to all buttons. */
   background-position: 0% 25%;
 }
 
+.button-question {
+  background-size: 3000%;
+  background-image: url("/items-grid-a1.png");
+  background-position: 34.4828% 0%;
+  /* animation: glow-question 0.8s steps(4) infinite; */
+}
+@keyframes glow-question {
+  from {
+    background-position: 34.4828% 0%;
+  }
+  to {
+    background-position: 48.2759% 0%;
+  }
+}
+
 /* SCOREBOARD ELEMENTS */
 .scoreboard {
   display: flex;

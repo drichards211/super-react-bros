@@ -10,6 +10,7 @@ const initialState = {
   starManTimer: 0,
   alive: true,
   inPlay: true,
+  helpVisible: false,
   points: "000000",
   lives: 3,
   coins: 0,
@@ -144,6 +145,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         inPlay: true,
+      };
+    case "SHOW_HELP":
+      return {
+        ...state,
+        helpVisible: true,
       };
     default:
       console.log(`${action.type} is an invalid reducer action.`);
