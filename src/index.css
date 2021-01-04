@@ -250,7 +250,8 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .kill-enemy {
-  background-position: -160px -10px;
+  background-position: 100% 0%;
+  animation: none;
   /* Flip image upside down */
   -webkit-transform: scaleY(-1);
   -moz-transform: scaleY(-1);
