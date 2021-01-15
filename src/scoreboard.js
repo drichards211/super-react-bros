@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StartTimer } from './timer';
-import { AddLeadingZeroes } from './helpers'; 
+import { AddLeadingZeroes, NoiseMaker } from './helpers'; 
 
 export default function ScoreBoard() {
 
@@ -17,7 +17,8 @@ export default function ScoreBoard() {
   //SCOREBOARD LOGIC HANDLERS:
   const handleCoinCounter = () => {
     let numCoins = AddLeadingZeroes(marioState.coins, 2);
-    if (marioState.coins > 99) { 
+    if (marioState.coins > 99) {
+      NoiseMaker("1up"); 
       dispatch({ type: "RESET_100_COINS" }); 
     }
     return numCoins;

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NoiseMaker } from "./helpers";
 
 export default function MarioContainer() {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ export default function MarioContainer() {
         default:
           // Mario is DEAD:
           marioClass += "mario-dead";
-      }
+        }
   }
 
   return (

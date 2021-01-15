@@ -1,3 +1,4 @@
+import { NoiseMaker } from "./helpers";
 import store from "./store";
 
 // Variables declared early so clearInterval() can actually stop the timers:
@@ -55,6 +56,9 @@ export function ManageDeathScreen() {
   const marioState = store.getState();
   setTimeout(function () {
     store.dispatch({ type: "SHOW_DEATH_SCREEN" });
+    if (marioState.lives === 0) {
+      NoiseMaker("game-over");
+    }
     if (marioState.lives > 0) {
       // Mario-Luigi has extra lives remaining. Hold death screen for 3 seconds, then resume game.
       /* if (marioState.timer) */
