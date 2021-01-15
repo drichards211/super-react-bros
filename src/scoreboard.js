@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { StartTimer } from './timer';
-import AddLeadingZeroes from './helpers'; 
+import { AddLeadingZeroes } from './helpers'; 
 
 export default function ScoreBoard() {
 
@@ -15,14 +15,6 @@ export default function ScoreBoard() {
   }, []);
 
   //SCOREBOARD LOGIC HANDLERS:
-  const handlePlayerToggle = () => {
-    if (marioState.brother === "mario") {
-      dispatch({ type: "SELECT_LUIGI" });
-    } else {
-      dispatch({ type: "SELECT_MARIO" });
-    }
-  }
-
   const handleCoinCounter = () => {
     let numCoins = AddLeadingZeroes(marioState.coins, 2);
     if (marioState.coins > 99) { 
@@ -32,25 +24,39 @@ export default function ScoreBoard() {
   }
 
   // SCOREBOARD CHILDREN:
-  const PlayerToggle = ( <button onClick={(() => handlePlayerToggle())}> {marioState.brother} </button> );
-  
-  const PointsCounter = (props) => {
-    return ( <div> {props.points} </div> );
+  const PlayerNumLives = ( <div> {marioState.brother.toUpperCase()}<span className="small-spacer">×</span>{marioState.lives} </div> );
+    
+  const PointsCounter = () => {
+    return ( <div> {marioState.points} </div> );
   }
   
-  const LivesCounter = () => {
-    return ( <div>lives x {marioState.lives}</div> );
-  }
-
   const CoinCounter = () => {
-    return ( <div className="coin-counter">coins x {handleCoinCounter()} </div> );
-  } 
-
+    return ( <div 
+      className="coin-counter">
+      <div className="mini-coin-sprite"></div>
+        ×{handleCoinCounter()} 
+    </div> );
+  }
+  
   const Timer = () => {
-    return ( <div> Time: {marioState.timer} </div> )
+    return ( <div> TIME <br /> 
+      {AddLeadingZeroes(marioState.timer, 3)} 
+    </div> )
   }
 
-  const InvinciTimer = () => ( <div> StarMan timer: {marioState.starManTimer} </div> )
-
-  return ( <div> {PlayerToggle} <LivesCounter/> <PointsCounter points={marioState.points}/> <CoinCounter/> <Timer/> <InvinciTimer/> </div> );
+  return ( <div> 
+    <div className="scoreboard row"> 
+      <div className="sb-col-01"> 
+        {PlayerNumLives} 
+        <PointsCounter/>
+      </div> 
+      <div className="sb-col-02">
+        <br /> 
+        <CoinCounter/> 
+      </div>
+      <div className="sb-col-03"> 
+        <Timer/>
+      </div>
+    </div>
+  </div> );
 }
