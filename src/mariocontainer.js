@@ -49,7 +49,7 @@ export default function MarioContainer() {
         default:
           // Mario is DEAD:
           marioClass += "mario-dead";
-      }
+        }
   }
 
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux"; // redux hooks specific
+import { NoiseMaker } from "./helpers";
 import {
   StartStarManTimer,
   StopStarManTimer,
@@ -44,13 +45,16 @@ export default function Buttons() {
         break;
       case marioState.fire:
         dispatch({ type: "LOSE_FIRE" });
+        NoiseMaker("shrink");
         break;
       case marioState.super:
         dispatch({ type: "MAKE_SMALL" });
+        NoiseMaker("shrink");
         break;
       default:
         StopAllTimers();
         dispatch({ type: "LOSE_LIFE" });
+        NoiseMaker("death");
         ManageDeathScreen();
     }
   };
@@ -74,6 +78,7 @@ export default function Buttons() {
   };
 
   const handleFireLogic = () => {
+    NoiseMaker("power-up");
     switch (marioState.super) {
       case true:
         dispatch({ type: "MAKE_FIRE" });
@@ -85,6 +90,7 @@ export default function Buttons() {
 
   const handleButtonStar = () => {
     dispatch({ type: "MAKE_INVINCIBLE" });
+    NoiseMaker("power-up");
     StopStarManTimer(); // End any ongoing timer before starting another countdown
     StartStarManTimer();
   };
@@ -106,7 +112,10 @@ export default function Buttons() {
   const buttonMushroom = (
     <button
       className="button-mushroom"
-      onClick={() => dispatch({ type: "MAKE_SUPER" })}
+      onClick={() => {
+        dispatch({ type: "MAKE_SUPER" })
+        NoiseMaker("power-up");
+      }}
     >
       <div className="align-me">_</div>
     </button>
@@ -119,9 +128,9 @@ export default function Buttons() {
     </button>
   );
 
-  const buttonEndStar = (
+  const buttonEndStar = ( 
     <button onClick={() => handleButtonEndStar()}> Cancel Starman </button>
-  );
+  ); // USED FOR TESTING
 
   const buttonEnemy = (
     <button className="button-enemy walk-enemy" onClick={() => handleEnemy()}>
@@ -138,7 +147,12 @@ export default function Buttons() {
   const buttonCoin = (
     <button
       className="button-coin glow-coin"
-      onClick={() => dispatch({ type: "ADD_COIN" })}
+      onClick={() => {
+        dispatch({ type: "ADD_COIN" });
+        if (marioState.coins < 99) {
+          NoiseMaker("coin");
+        }
+      }}
     >
       <div className="align-me">_</div>
     </button>
@@ -147,8 +161,10 @@ export default function Buttons() {
   const buttonOneUp = (
     <button
       className="button-oneup"
-      onClick={() => dispatch({ type: "INCREMENT_LIVES" })}
-    >
+      onClick={() => {
+        dispatch({ type: "INCREMENT_LIVES" });
+        NoiseMaker("1up");
+      }}>
       <div className="align-me">_</div>
     </button>
   );
@@ -165,21 +181,25 @@ export default function Buttons() {
   const buttonQuestion = (
     <button
       className="button-question"
-      onClick={() => dispatch({ type: "SHOW_HELP" })}
+      onClick={() => {
+        dispatch({ type: "SHOW_HELP" });
+        NoiseMaker("pause");
+      }}
     >
       <div className="align-me">_</div>
     </button>
   );
 
-  const tryAgain = <button onClick={() => newLifeLogic()}> Try Again </button>;
+  const tryAgain = <button onClick={() => newLifeLogic()}> Try Again </button>; // USED FOR TESTING
 
-  const newGame = <button onClick={() => handleNewGame()}> New Game </button>;
-
+  const newGame = <button onClick={() => handleNewGame()}> New Game </button>; // USED FOR TESTING
+  
   return (
     <div className="button-container">
       {" "}
       {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin}{" "}
-      {buttonOneUp} {buttonBrosToggle} {buttonQuestion} {/* {tryAgain} {newGame} */}{" "}
+      {buttonOneUp} {buttonBrosToggle} {buttonQuestion}
+      {" "}
     </div>
   );
 }

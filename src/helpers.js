@@ -5,3 +5,11 @@ export function AddLeadingZeroes(number, places) {
 export function CapitalizeMe(string) {
   return string.toUpperCase();
 }
+
+export function NoiseMaker(requestedSound) {
+  let noise = requestedSound || "silent";
+  if (noise !== "silent") {
+    console.log(`NoiseMaker() ran: "${noise}.mp3"`)
+    new Audio(`/${noise}.mp3`).play();
+  }
+}

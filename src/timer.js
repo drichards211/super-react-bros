@@ -1,3 +1,4 @@
+import { NoiseMaker } from "./helpers";
 import store from "./store";
 
 // Variables declared early so clearInterval() can actually stop the timers:
@@ -8,11 +9,15 @@ export function StartTimer() {
   console.log("StartTimer() ran");
   countDown = setInterval(function () {
     const marioState = store.getState(); // obtain fresh copy of redux state on each iteration:
+    if (marioState.timer === 101) {
+      NoiseMaker("time-warning");
+    }
     if (marioState.timer === 1) {
       StopTimer();
       StopStarManTimer(); // Stop StarMan countdown if Mario/Luigi is invincible when timer runs out
       store.dispatch({ type: "DECREMENT_TIMER" }); // Final decrement to zero
       store.dispatch({ type: "LOSE_LIFE" }); // Kill Mario/Luigi if timer runs out
+      NoiseMaker("death");
       ManageDeathScreen();
     } else {
       store.dispatch({ type: "DECREMENT_TIMER" });
@@ -55,6 +60,9 @@ export function ManageDeathScreen() {
   const marioState = store.getState();
   setTimeout(function () {
     store.dispatch({ type: "SHOW_DEATH_SCREEN" });
+    if (marioState.lives === 0) {
+      NoiseMaker("game-over");
+    }
     if (marioState.lives > 0) {
       // Mario-Luigi has extra lives remaining. Hold death screen for 3 seconds, then resume game.
       /* if (marioState.timer) */
