@@ -132,9 +132,9 @@ export default function Buttons() {
     </button>
   );
 
-  const buttonEndStar = (
+  const buttonEndStar = ( 
     <button onClick={() => handleButtonEndStar()}> Cancel Starman </button>
-  );
+  ); // USED FOR TESTING
 
   const buttonEnemy = (
     <button className="button-enemy walk-enemy" onClick={() => handleEnemy()}>
@@ -153,7 +153,9 @@ export default function Buttons() {
       className="button-coin glow-coin"
       onClick={() => {
         dispatch({ type: "ADD_COIN" });
-        NoiseMaker("coin");
+        if (marioState.coins < 99) {
+          NoiseMaker("coin");
+        }
       }}
     >
       <div className="align-me">_</div>
@@ -192,15 +194,16 @@ export default function Buttons() {
     </button>
   );
 
-  const tryAgain = <button onClick={() => newLifeLogic()}> Try Again </button>;
+  const tryAgain = <button onClick={() => newLifeLogic()}> Try Again </button>; // USED FOR TESTING
 
-  const newGame = <button onClick={() => handleNewGame()}> New Game </button>;
-
+  const newGame = <button onClick={() => handleNewGame()}> New Game </button>; // USED FOR TESTING
+  
   return (
     <div className="button-container">
       {" "}
       {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin}{" "}
-      {buttonOneUp} {buttonBrosToggle} {buttonQuestion} {/* {tryAgain} {newGame} */}{" "}
+      {buttonOneUp} {buttonBrosToggle} {buttonQuestion}
+      {" "}
     </div>
   );
 }

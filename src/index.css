@@ -347,7 +347,7 @@ Solution: add a bit of invisible text to all buttons. */
 .show-button {
   display: block;
   animation: blink-me 1.66s steps(20, start) infinite;
-  animation-delay: 0.66s;
+  animation-delay: 2.8s;
 }
 @keyframes blink-me {
   0% {

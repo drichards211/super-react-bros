@@ -9,11 +9,15 @@ export function StartTimer() {
   console.log("StartTimer() ran");
   countDown = setInterval(function () {
     const marioState = store.getState(); // obtain fresh copy of redux state on each iteration:
+    if (marioState.timer === 101) {
+      NoiseMaker("time-warning");
+    }
     if (marioState.timer === 1) {
       StopTimer();
       StopStarManTimer(); // Stop StarMan countdown if Mario/Luigi is invincible when timer runs out
       store.dispatch({ type: "DECREMENT_TIMER" }); // Final decrement to zero
       store.dispatch({ type: "LOSE_LIFE" }); // Kill Mario/Luigi if timer runs out
+      NoiseMaker("death");
       ManageDeathScreen();
     } else {
       store.dispatch({ type: "DECREMENT_TIMER" });
