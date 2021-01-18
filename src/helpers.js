@@ -11,6 +11,5 @@ export function NoiseMaker(requestedSound) {
   if (noise !== "silent") {
     console.log(`NoiseMaker() ran: "${noise}.mp3"`)
     new Audio(`/${noise}.mp3`).play();
-}
-
+  }
 }

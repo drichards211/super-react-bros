@@ -108,10 +108,6 @@ export default function Buttons() {
     }
   };
 
-  const handleOneUp = () => {
-    NoiseMaker("1up");
-  }
-
   // BUTTONS:
   const buttonMushroom = (
     <button

@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NoiseMaker } from "./helpers";
 
 export default function MarioContainer() {
   const dispatch = useDispatch();
