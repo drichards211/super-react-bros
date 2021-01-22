@@ -8,6 +8,7 @@ import ScoreBoard from "./scoreboard";
 import MarioContainer from "./mariocontainer";
 import DeathScreen from "./deathscreen";
 import Buttons from "./buttons";
+import ActionButtons from "./action-buttons";
 import * as serviceWorker from "./serviceWorker";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <Provider store={store}>
       <ScoreBoard />
       <MarioContainer />
+      <ActionButtons />
       <DeathScreen />
       <Buttons />
     </Provider>
