@@ -368,16 +368,17 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .controller {
-  background-image: url("/nes-controller-clean-dr.png");
+  background-image: url("/super-clean-controller-pixel-perfect-a1.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  height: 4rem;
-  width: 9.4rem;
+  height: 2.7rem;
+  width: 7.8rem;
+  margin: 0.3rem;
 }
 .action-button-container {
   /* display: inline-block; */
-  width: 9.4rem;
-  height: 4rem;
+  width: 8.4rem;
+  height: 3.3rem;
   float: left;
   margin-top: 4rem;
   margin-left: 3rem;
