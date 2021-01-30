@@ -9,13 +9,15 @@ body {
   font-size: 46px;
   color: white;
   font-family: PressStart;
-  background: rgb(76 132 255);
-  /* background: #c8c8c8;   */
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   box-sizing: border-box;
   image-rendering: pixelated; /* Forces nearest-neighbor algorithm for image scaling */
   image-rendering: -moz-crisp-edges; /* Firefox isn't compatible with "pixelated" yet; 
     still interprets "crisp-edges" as nearest-neighbor, (November 2020) */
+}
+html, body ::after {
+  height: 100%;
+  background-image: linear-gradient(rgb(93, 177, 255), rgb(0, 70, 223));
 }
 
 .mario-container {
@@ -178,10 +180,8 @@ button {
   display: inline-block;
   border: none;
   border-radius: 0.4rem;
-  background: #4c84ff;
+  background: transparent;
   box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
-  /* box-shadow:  10px 10px 20px #4170d9, 
-    -10px -10px 20px #5798ff; */
   height: 2.75rem;
   width: 2.75rem;
   padding: 0.376rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
@@ -337,8 +337,6 @@ Solution: add a bit of invisible text to all buttons. */
   color: white;
   background: #4c84ff;
   box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
-  /* box-shadow:  10px 10px 20px #4170d9, 
-    -10px -10px 20px #5798ff; */
   height: auto;
   width: auto;
   margin-top: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
@@ -384,7 +382,7 @@ Solution: add a bit of invisible text to all buttons. */
   margin-left: 3rem;
   border: none;
   border-radius: 0.4rem;
-  background: #4c84ff;
+  background: transparent;
   box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
 }
 .button-action {
