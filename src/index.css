@@ -374,22 +374,50 @@ Solution: add a bit of invisible text to all buttons. */
   margin: 0.3rem;
 }
 .action-button-container {
-  /* display: inline-block; */
-  width: 8.4rem;
-  height: 3.3rem;
+  display: flex;
+  flex-flow: row wrap;
+  width: 60%;
   float: left;
   margin-top: 4rem;
   margin-left: 3rem;
   border: none;
   border-radius: 0.4rem;
-  background: transparent;
-  box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
 }
 .button-action {
-  height: auto;
-  width: auto;
+  height: 1.9rem;
+  width: 1.9rem;
+  margin-right: 1rem;
+  color: rgb(0, 0, 0);
+}
+.button-action.a {
+  border-radius: 1rem;
   color: white;
+  background-color: #c10000;
   text-shadow: 0.125rem 0.125rem black;
+  padding: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-left: .25rem;
+}
+.button-action.b {
+  border-radius: 1rem;
+  color: white;
+  background-color: #c10000;
+  text-shadow: 0.125rem 0.125rem black;
+  padding: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+.action-stop {
+  transform: rotate(90deg);
+  color: white;
+  text-shadow: 0.125rem -0.125rem black;
+}
+.action-fire {
+  background-size: 5045%;
+  background-image: url("/items-grid-a1.png");
+  background-position: 78.9% 50%;
+  transform: scaleX(-1)
 }
 
 /* SCOREBOARD ELEMENTS */

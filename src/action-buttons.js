@@ -20,22 +20,32 @@ export default function ActionButtons() {
   
   const buttonStop = (
     <button 
-      className="button-action"
+      className="button-action action-stop"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
       }}
-    >STOP</button>
+    >♦</button>
   );
 
-  const buttonWalk = (
+  const buttonWalkLeft = (
     <button 
       className="button-action"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
       }}
-    >WALK</button>
+    >◀</button>
+  );
+
+  const buttonWalkRight = (
+    <button 
+      className="button-action"
+      onClick={() => {
+        dispatch({ type: "SHOW_HELP" });
+        NoiseMaker("pause");
+      }}
+    >▶</button>
   );
 
   const buttonRun = (
@@ -50,12 +60,12 @@ export default function ActionButtons() {
 
   const buttonJump = (
     <button 
-      className="button-action"
+      className="button-action a"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
       }}
-    >JUMP</button>
+    >A</button>
   );
 
   const buttonClimb = (
@@ -65,7 +75,7 @@ export default function ActionButtons() {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
       }}
-    >CLIMB</button>
+    >↑</button>
   );
 
   const buttonDuck = (
@@ -75,7 +85,7 @@ export default function ActionButtons() {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
       }}
-    >DUCK</button>
+    >↓</button>
   );
 
   const buttonSwim = (
@@ -90,18 +100,17 @@ export default function ActionButtons() {
 
   const buttonFire = (
     <button 
-      className="button-action"
+      className="button-action b" /* action-fire */
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
       }}
-    >FIRE</button>
+    >B</button>
   );
 
   return (
     <div className="action-button-container">
-      {/* {buttonStop} {buttonWalk} {buttonRun} {buttonJump} {buttonDuck} {buttonFire}  */}
-      {nesController}
+      {buttonWalkLeft} {buttonStop} {buttonWalkRight} {buttonJump} {buttonFire}  
     </div>
   );
 
