@@ -423,16 +423,17 @@ Solution: add a bit of invisible text to all buttons. */
 /* SCOREBOARD ELEMENTS */
 .scoreboard {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   margin-top: 0.25rem;
   margin-bottom: 2rem;
 }
-.sb-col-01 {
+.sb-col-01, .sb-col-03 {
   margin-left: 3rem;
+  margin-right: 3rem;
 }
 .sb-col-03 {
   text-align: right;
-  margin-right: 3rem;
 }
 .mini-coin-sprite {
   display: inline-block;
@@ -465,4 +466,22 @@ Solution: add a bit of invisible text to all buttons. */
   position: relative;
   width: 100%;
   z-index: +2;
+}
+
+/* RESPONSIVE VIEWPORT ADJUSTMENTS */
+@media (max-width: 1400px) {
+  .sb-col-01, .sb-col-03 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+@media (max-width: 900px) {
+  .sb-col-01, .sb-col-02, .sb-col-03 {
+    flex: 100%;
+    margin-left: 0.5rem
+  }
+  .sb-col-03 {
+    text-align: left;
+    margin-top: 1rem;
+  }
 }
