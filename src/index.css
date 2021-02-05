@@ -17,7 +17,7 @@ body {
 }
 html, body ::after {
   height: 100%;
-  background-image: linear-gradient(rgb(93, 177, 255), rgb(0, 70, 223));
+  background-image: linear-gradient(rgb(93, 177, 255), rgb(14, 90, 255));
 }
 
 .mario-container {
