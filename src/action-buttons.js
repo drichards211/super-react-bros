@@ -23,7 +23,6 @@ export default function ActionButtons() {
       className="button-action action-stop"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
       }}
     >♦</button>
   );
@@ -33,7 +32,6 @@ export default function ActionButtons() {
       className="button-action"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
       }}
     >◀</button>
   );
@@ -43,7 +41,6 @@ export default function ActionButtons() {
       className="button-action"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
       }}
     >▶</button>
   );
@@ -63,9 +60,9 @@ export default function ActionButtons() {
       className="button-action a"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
+        NoiseMaker("jump");
       }}
-    >A</button>
+    >↑</button>
   );
 
   const buttonClimb = (
@@ -100,17 +97,17 @@ export default function ActionButtons() {
 
   const buttonFire = (
     <button 
-      className="button-action b" /* action-fire */
+      className="button-action b action-fire"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
+        NoiseMaker("fireball");
       }}
-    >B</button>
+    ></button>
   );
 
   return (
     <div className="action-button-container">
-      {buttonWalkLeft} {buttonStop} {buttonWalkRight} {buttonJump} {buttonFire}  
+      {buttonWalkLeft} {buttonStop} {buttonWalkRight} {buttonJump} {buttonFire} 
     </div>
   );
 

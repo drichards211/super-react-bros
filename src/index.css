@@ -15,7 +15,8 @@ body {
   image-rendering: -moz-crisp-edges; /* Firefox isn't compatible with "pixelated" yet; 
     still interprets "crisp-edges" as nearest-neighbor, (November 2020) */
 }
-html, body ::after {
+html,
+body ::after {
   height: 100%;
   background-image: linear-gradient(rgb(93, 177, 255), rgb(14, 90, 255));
 }
@@ -392,21 +393,15 @@ Solution: add a bit of invisible text to all buttons. */
 .button-action.a {
   border-radius: 1rem;
   color: white;
-  background-color: #c10000;
-  text-shadow: 0.125rem 0.125rem black;
+  background-color: #9c2520;
   padding: 0;
-  width: 1.8rem;
-  height: 1.8rem;
-  margin-left: .25rem;
+  margin-left: 0.25rem;
 }
 .button-action.b {
   border-radius: 1rem;
-  color: white;
-  background-color: #c10000;
-  text-shadow: 0.125rem 0.125rem black;
-  padding: 0;
-  width: 1.8rem;
-  height: 1.8rem;
+  background-color: #e79b22;
+  box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff,
+    inset 0 0 0 0.38rem #e79b22;
 }
 .action-stop {
   transform: rotate(90deg);
@@ -417,7 +412,7 @@ Solution: add a bit of invisible text to all buttons. */
   background-size: 5045%;
   background-image: url("/items-grid-a1.png");
   background-position: 78.9% 50%;
-  transform: scaleX(-1)
+  transform: scaleX(-1);
 }
 
 /* SCOREBOARD ELEMENTS */
@@ -428,7 +423,8 @@ Solution: add a bit of invisible text to all buttons. */
   margin-top: 0.25rem;
   margin-bottom: 2rem;
 }
-.sb-col-01, .sb-col-03 {
+.sb-col-01,
+.sb-col-03 {
   margin-left: 3rem;
   margin-right: 3rem;
 }
@@ -470,15 +466,18 @@ Solution: add a bit of invisible text to all buttons. */
 
 /* RESPONSIVE VIEWPORT ADJUSTMENTS */
 @media (max-width: 1400px) {
-  .sb-col-01, .sb-col-03 {
+  .sb-col-01,
+  .sb-col-03 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
 }
 @media (max-width: 900px) {
-  .sb-col-01, .sb-col-02, .sb-col-03 {
+  .sb-col-01,
+  .sb-col-02,
+  .sb-col-03 {
     flex: 100%;
-    margin-left: 0.5rem
+    margin-left: 0.5rem;
   }
   .sb-col-03 {
     text-align: left;
