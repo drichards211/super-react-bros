@@ -15,10 +15,16 @@ function App() {
   return (
     <Provider store={store}>
       <ScoreBoard />
-      <MarioContainer />
-      <ActionButtons />
-      <DeathScreen />
-      <Buttons />
+      <div className="game-container">
+        <div className="mario-column">
+          <MarioContainer />
+          <ActionButtons />
+        </div>
+        <div className="items-column">
+          <Buttons />
+        </div>
+        <DeathScreen />
+      </div>
     </Provider>
   );
 }

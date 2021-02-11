@@ -52,7 +52,6 @@ export default function ScoreBoard() {
         <PointsCounter/>
       </div> 
       <div className="sb-col-02">
-        <br /> 
         <CoinCounter/> 
       </div>
       <div className="sb-col-03"> 

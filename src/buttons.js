@@ -21,7 +21,7 @@ export default function Buttons() {
   // Manage buttonStar appearance:
   switch (true) {
     case marioState.invincible: // Mario-Luigi is INVINCIBLE:
-      buttonStarClass += "show-star-countdown";
+      buttonStarClass += "show-star-countdown flicker-star";
       break;
     default:
       // Mario-Luigi is NOT invincible:

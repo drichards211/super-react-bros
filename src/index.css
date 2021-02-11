@@ -21,14 +21,25 @@ body ::after {
   background-image: linear-gradient(rgb(93, 177, 255), rgb(14, 90, 255));
 }
 
+.game-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mario-column {
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
 .mario-container {
-  /* display: inline-block; */
-  width: 16rem;
+  margin-top: 1rem;
+  margin-left: 6rem;
+  flex-basis: 100%;
 }
 
 .Render-brother {
   width: 2rem;
-  margin-left: 3rem;
   background-image: url("/mario-grid-a2.png");
   background-repeat: no-repeat;
   background-size: 2100%;
@@ -168,14 +179,13 @@ body ::after {
 }
 
 /* BUTTON STYLING */
+.items-column {
+
+}
+
 .button-container {
-  /* display: block; */
-  position: absolute;
-  top: 4rem;
-  right: 0rem;
-  float: right;
   width: 7rem;
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 button {
   display: inline-block;
@@ -226,7 +236,7 @@ button {
 
 .show-star-countdown {
   color: inherit;
-  text-shadow: 0.125rem 0.125rem black;
+  text-shadow: 0.125rem 0.125rem #b53121;
 }
 
 .align-me {
@@ -377,36 +387,35 @@ Solution: add a bit of invisible text to all buttons. */
 .action-button-container {
   display: flex;
   flex-flow: row wrap;
-  width: 60%;
-  float: left;
-  margin-top: 4rem;
+  flex-basis: 100%;
   margin-left: 3rem;
+  margin-right: 0.45rem;
   border: none;
   border-radius: 0.4rem;
 }
 .button-action {
   height: 1.9rem;
-  width: 1.9rem;
+  width: 2rem;
   margin-right: 1rem;
   color: rgb(0, 0, 0);
 }
 .button-action.a {
   border-radius: 1rem;
+  width: 1.9rem;
   color: white;
   background-color: #9c2520;
   padding: 0;
-  margin-left: 0.25rem;
 }
 .button-action.b {
   border-radius: 1rem;
+  width: 1.9rem;
   background-color: #e79b22;
   box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff,
     inset 0 0 0 0.38rem #e79b22;
 }
 .action-stop {
-  transform: rotate(90deg);
   color: white;
-  text-shadow: 0.125rem -0.125rem black;
+  text-shadow: 0.125rem 0.125rem black;
 }
 .action-fire {
   background-size: 5045%;
@@ -427,6 +436,9 @@ Solution: add a bit of invisible text to all buttons. */
 .sb-col-03 {
   margin-left: 3rem;
   margin-right: 3rem;
+}
+.sb-col-02 {
+  margin-top: 1.15rem;
 }
 .sb-col-03 {
   text-align: right;
@@ -466,21 +478,73 @@ Solution: add a bit of invisible text to all buttons. */
 
 /* RESPONSIVE VIEWPORT ADJUSTMENTS */
 @media (max-width: 1400px) {
+  .mario-container {
+    margin-left: 3rem;
+  }
+  .action-button-container {
+    margin-left: 0.5rem;
+  }
+  .button-container {
+    margin-right: 0.5rem;
+  }
   .sb-col-01,
   .sb-col-03 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
 }
+@media (max-width: 1024px) {
+  html, body {
+    font-size: 36px;
+  }
+}
 @media (max-width: 900px) {
+  .scoreboard {
+    margin-bottom: 1rem;
+  }
+  .sb-col-02 {
+    flex-basis: 100%;
+    order: 3;
+    margin-top: 0.76rem;
+  }
   .sb-col-01,
   .sb-col-02,
   .sb-col-03 {
-    flex: 100%;
     margin-left: 0.5rem;
   }
-  .sb-col-03 {
-    text-align: left;
-    margin-top: 1rem;
+}
+@media (max-width: 620px) {
+  html, body {
+    font-size: 34px;
+  }
+}
+@media (max-width: 600px) {
+  html, body {
+    font-size: 30px;
+  }
+}
+@media (max-width: 520px) {
+  html, body {
+    font-size: 26px;
+  }
+}
+@media (max-width: 460px) {
+  html, body {
+    font-size: 24px;
+  }
+}
+@media (max-width: 420px) {
+  html, body {
+    font-size: 22px;
+  }
+}
+@media (max-width: 370px) {
+  html, body {
+    font-size: 20px;
+  }
+}
+@media (max-width: 350px) {
+  html, body {
+    font-size: 18px;
   }
 }
