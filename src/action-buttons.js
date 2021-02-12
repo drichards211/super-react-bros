@@ -29,7 +29,7 @@ export default function ActionButtons() {
 
   const buttonWalkLeft = (
     <button 
-      className="button-action"
+      className="button-action action-left"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
       }}
@@ -38,7 +38,7 @@ export default function ActionButtons() {
 
   const buttonWalkRight = (
     <button 
-      className="button-action"
+      className="button-action action-right"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
       }}
@@ -67,7 +67,7 @@ export default function ActionButtons() {
 
   const buttonClimb = (
     <button 
-      className="button-action"
+      className="button-action action-climb"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
       }}
@@ -76,7 +76,7 @@ export default function ActionButtons() {
 
   const buttonDuck = (
     <button 
-      className="button-action"
+      className="button-action action-duck"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
       }}
