@@ -15,8 +15,8 @@ export default function Buttons() {
   const marioState = useSelector((state) => state);
 
   // Holds update-able CSS class names for buttons:
-  let buttonStarClass = "button-starman ";
-  let buttonBrosToggleClass = "button-bros-toggle ";
+  let buttonStarClass = "item-button button-starman ";
+  let buttonBrosToggleClass = "item-button button-bros-toggle ";
 
   // Manage buttonStar appearance:
   switch (true) {
@@ -111,7 +111,7 @@ export default function Buttons() {
   // BUTTONS:
   const buttonMushroom = (
     <button
-      className="button-mushroom"
+      className="item-button button-mushroom"
       onClick={() => {
         dispatch({ type: "MAKE_SUPER" })
         NoiseMaker("power-up");
@@ -133,20 +133,20 @@ export default function Buttons() {
   ); // USED FOR TESTING
 
   const buttonEnemy = (
-    <button className="button-enemy walk-enemy" onClick={() => handleEnemy()}>
+    <button className="item-button button-enemy walk-enemy" onClick={() => handleEnemy()}>
       <div className="align-me">_</div>
     </button>
   );
 
   const buttonFire = (
-    <button className="button-fire" onClick={() => handleFireLogic()}>
+    <button className="item-button button-fire" onClick={() => handleFireLogic()}>
       <div className="align-me">_</div>
     </button>
   );
 
   const buttonCoin = (
     <button
-      className="button-coin glow-coin"
+      className="item-button button-coin glow-coin"
       onClick={() => {
         dispatch({ type: "ADD_COIN" });
         if (marioState.coins < 99) {
@@ -160,7 +160,7 @@ export default function Buttons() {
 
   const buttonOneUp = (
     <button
-      className="button-oneup"
+      className="item-button button-oneup"
       onClick={() => {
         dispatch({ type: "INCREMENT_LIVES" });
         NoiseMaker("1up");
@@ -180,7 +180,7 @@ export default function Buttons() {
 
   const buttonQuestion = (
     <button
-      className="button-question"
+      className="item-button button-question"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
@@ -195,7 +195,7 @@ export default function Buttons() {
   const newGame = <button onClick={() => handleNewGame()}> New Game </button>; // USED FOR TESTING
   
   return (
-    <div className="button-container">
+    <div className="item-button-container">
       {" "}
       {buttonMushroom} {buttonFire} {buttonStar} {buttonEnemy} {buttonCoin}{" "}
       {buttonOneUp} {buttonBrosToggle} {buttonQuestion}

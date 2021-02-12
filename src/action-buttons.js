@@ -70,9 +70,8 @@ export default function ActionButtons() {
       className="button-action"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
       }}
-    >↑</button>
+    >▲</button>
   );
 
   const buttonDuck = (
@@ -80,9 +79,8 @@ export default function ActionButtons() {
       className="button-action"
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        NoiseMaker("pause");
       }}
-    >↓</button>
+    >▼</button>
   );
 
   const buttonSwim = (
@@ -107,7 +105,14 @@ export default function ActionButtons() {
 
   return (
     <div className="action-button-container">
-      {buttonWalkLeft} {buttonStop} {buttonWalkRight} {buttonJump} {buttonFire} 
+      <div className="square-buttons">
+        {buttonClimb}
+        <div className="break"></div> 
+        {buttonWalkLeft} {buttonStop} {buttonWalkRight}
+        <div className="break"></div>
+        {buttonDuck}
+      </div>
+      <div className="round-buttons"> {buttonFire} {buttonJump} </div> 
     </div>
   );
 
