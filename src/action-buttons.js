@@ -105,12 +105,14 @@ export default function ActionButtons() {
 
   return (
     <div className="action-button-container">
-      <div className="square-buttons">
-        {buttonClimb}
-        <div className="break"></div> 
-        {buttonWalkLeft} {buttonStop} {buttonWalkRight}
-        <div className="break"></div>
-        {buttonDuck}
+      <div className="square-buttons-wrap">
+        <div className="square-buttons">
+          {buttonClimb}
+          <div className="break"></div> 
+          {buttonWalkLeft} {buttonStop} {buttonWalkRight}
+          <div className="break"></div>
+          {buttonDuck}
+        </div>
       </div>
       <div className="round-buttons"> {buttonFire} {buttonJump} </div> 
     </div>
