@@ -182,7 +182,7 @@ body ::after {
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: +1;
+  z-index: +9;
   background-color: rgb(0 0 0);
 }
 
@@ -197,15 +197,23 @@ body ::after {
 }
 .item-button {
   display: inline-block;
+  position: relative; /* Required: item-button spans are absolutely positioned */
   border: none;
   border-radius: 0.4rem;
-  background: #4b9eff;
-  box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff, inset 0 0 0 0.38rem #4b9eff;
+  background: linear-gradient(145deg, #50a9ff, #448ee6);
+  box-shadow:  13px 13px 25px #4086d9, -13px -13px 25px #56b6ff;
   height: 2.75rem;
   width: 2.75rem;
-  padding: 0.376rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  padding: 0;
   margin-top: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
   margin-bottom: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
+}
+.item-button span {
+  position: absolute;
+  top: 0.376rem;
+  left: 0.376rem;
+  height: 1.998rem;
+  width: 1.998rem;
   background-origin: content-box;
   background-clip: content-box;
   background-repeat: no-repeat;
@@ -214,16 +222,20 @@ body ::after {
   outline: none;
 }
 
-.button-mushroom {
+.button-mushroom span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 0% 0%;
 }
 
 .button-starman {
+  z-index: +2;
+}
+.button-starman span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 20.6897% 0%;
+  z-index: -1;
 }
 
 .flicker-star {
@@ -253,7 +265,7 @@ Solution: add a bit of invisible text to all buttons. */
   opacity: 0%;
 }
 
-.button-enemy {
+.button-enemy span {
   background-size: 200%;
   background-image: url("/enemies-grid-a1.png");
   background-position: 0% 0%;
@@ -282,7 +294,7 @@ Solution: add a bit of invisible text to all buttons. */
   transform: scaleY(-1);
 }
 
-.button-fire {
+.button-fire span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 6.8978% 0%;
@@ -296,13 +308,13 @@ Solution: add a bit of invisible text to all buttons. */
     background-position: 20.6897% 0%;
   }
 }
-.button-oneup {
+.button-oneup span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 3.4482% 0%;
 }
 
-.button-coin {
+.button-coin span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 48.2759% 0%;
@@ -324,7 +336,7 @@ Solution: add a bit of invisible text to all buttons. */
 .spin-coin {
 }
 
-.button-bros-toggle {
+.button-bros-toggle span {
   background-size: 2100%;
   background-image: url("/mario-grid-a2.png");
 }
@@ -335,7 +347,7 @@ Solution: add a bit of invisible text to all buttons. */
   background-position: 0% 25%;
 }
 
-.button-question {
+.button-question span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 34.4828% 0%;
@@ -403,8 +415,7 @@ Solution: add a bit of invisible text to all buttons. */
   border-radius: 0.4rem;
 }
 .square-buttons-wrap {
-  filter: drop-shadow(0.25rem 0.25rem 0.5rem #4170d9)
-    drop-shadow(-0.25rem -0.25rem 0.5rem #5798ff);  
+  filter: drop-shadow(8px 8px 11px #4086d9) drop-shadow(-8px -8px 7px #56b6ff);
 }
 .square-buttons {
   display: flex;
@@ -430,7 +441,7 @@ Solution: add a bit of invisible text to all buttons. */
   border-radius: 0.4rem;
   letter-spacing: -0.1rem;
   line-height: 0.6rem;
-  color: rgb(0, 54, 129);
+  color: rgb(0, 70, 168);
   background-color: #4b9eff;
 }
 .button-action.a {
@@ -442,7 +453,8 @@ Solution: add a bit of invisible text to all buttons. */
   margin: 0rem 0.5rem 0rem 0.5rem;
   padding: 0;
   letter-spacing: -0.1rem;
-  box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
+  background: linear-gradient(145deg, #50a9ff, #448ee6);
+  box-shadow: 9px 9px 17px #4086d9, -9px -9px 17px #56b6ff;
 }
 .button-action.b {
   border-radius: 1rem;
@@ -450,8 +462,7 @@ Solution: add a bit of invisible text to all buttons. */
   height: 1.75rem;
   margin: 0rem 0.5rem 0rem 0.5rem;
   padding: 0;
-  box-shadow: -0.25rem 0.25rem 0.5rem #4170d9, 
-    0.25rem -0.25rem 0.5rem #5798ff;
+  box-shadow: 9px 9px 17px #4086d9, -9px -9px 17px #56b6ff;
 }
 .action-climb {
   border-radius: 0.4rem 0.4rem 0rem 0rem;
@@ -475,6 +486,14 @@ Solution: add a bit of invisible text to all buttons. */
   padding: 0.1rem 0rem 0rem 0rem;
 }
 .action-fire {
+  position: relative;
+}
+.action-fire span {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1.75rem;
+  height: 1.75rem;
   background-size: 3900%;
   background-image: url(/items-grid-a1.png);
   background-position: 79.1% 50%;
@@ -532,7 +551,7 @@ Solution: add a bit of invisible text to all buttons. */
 .row {
   position: relative;
   width: 100%;
-  z-index: +2;
+  z-index: +10;
 }
 
 /* RESPONSIVE VIEWPORT ADJUSTMENTS */

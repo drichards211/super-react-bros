@@ -100,7 +100,7 @@ export default function ActionButtons() {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("fireball");
       }}
-    ></button>
+    ><span></span></button>
   );
 
   return (

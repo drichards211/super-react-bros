@@ -16,12 +16,14 @@ export default function Buttons() {
 
   // Holds update-able CSS class names for buttons:
   let buttonStarClass = "item-button button-starman ";
-  let buttonBrosToggleClass = "item-button button-bros-toggle ";
+  let buttonStarSpanClass = "";
+  let buttonBrosToggleClass = "";
 
   // Manage buttonStar appearance:
   switch (true) {
     case marioState.invincible: // Mario-Luigi is INVINCIBLE:
-      buttonStarClass += "show-star-countdown flicker-star";
+      buttonStarClass += "show-star-countdown";
+      buttonStarSpanClass += "flicker-star";
       break;
     default:
       // Mario-Luigi is NOT invincible:
@@ -118,6 +120,7 @@ export default function Buttons() {
       }}
     >
       <div className="align-me">_</div>
+      <span></span>
     </button>
   );
 
@@ -125,6 +128,7 @@ export default function Buttons() {
     <button className={buttonStarClass} onClick={() => handleButtonStar()}>
       {" "}
       {marioState.starManTimer}{" "}
+      <span className={buttonStarSpanClass}></span>
     </button>
   );
 
@@ -133,20 +137,22 @@ export default function Buttons() {
   ); // USED FOR TESTING
 
   const buttonEnemy = (
-    <button className="item-button button-enemy walk-enemy" onClick={() => handleEnemy()}>
+    <button className="item-button button-enemy" onClick={() => handleEnemy()}>
       <div className="align-me">_</div>
+      <span className="walk-enemy"></span>
     </button>
   );
 
   const buttonFire = (
     <button className="item-button button-fire" onClick={() => handleFireLogic()}>
       <div className="align-me">_</div>
+      <span></span>
     </button>
   );
 
   const buttonCoin = (
     <button
-      className="item-button button-coin glow-coin"
+      className="item-button button-coin"
       onClick={() => {
         dispatch({ type: "ADD_COIN" });
         if (marioState.coins < 99) {
@@ -155,6 +161,7 @@ export default function Buttons() {
       }}
     >
       <div className="align-me">_</div>
+      <span className="glow-coin"></span>
     </button>
   );
 
@@ -166,15 +173,17 @@ export default function Buttons() {
         NoiseMaker("1up");
       }}>
       <div className="align-me">_</div>
+      <span></span>
     </button>
   );
 
   const buttonBrosToggle = (
     <button
-      className={buttonBrosToggleClass}
+      className="item-button button-bros-toggle"
       onClick={() => handlePlayerToggle()}
     >
       <div className="align-me">_</div>
+      <span className={buttonBrosToggleClass}></span>
     </button>
   );
 
@@ -187,6 +196,7 @@ export default function Buttons() {
       }}
     >
       <div className="align-me">_</div>
+      <span></span>
     </button>
   );
 
