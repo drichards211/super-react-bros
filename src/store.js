@@ -15,6 +15,11 @@ const initialState = {
   lives: 3,
   coins: 0,
   timer: 400,
+  buttonDepressed: {
+    buttonMushroom: false,
+    buttonAnything: false,
+    buttonPotatoTest: false,
+  }
 };
 
 function reducer(state = initialState, action) {
@@ -151,6 +156,24 @@ function reducer(state = initialState, action) {
         ...state,
         helpVisible: true,
       };
+    case "DEPRESS_BUTTON":
+      console.log(`${action.payload} depressed`)
+      return {
+          ...state,
+          buttonDepressed: {
+            ...state.buttonDepressed,
+            [action.payload]: true,
+          }
+        }
+    case "UNPRESS_BUTTON":
+      console.log(`${action.payload} unpressed`)
+        return {
+          ...state,
+          buttonDepressed: {
+            ...state.buttonDepressed,
+            [action.payload]: false,
+          }
+        }
     default:
       console.log(`${action.type} is an invalid reducer action.`);
       return state; // Return the unchanged state if action is unclear

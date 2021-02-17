@@ -21,7 +21,7 @@ html,
 body ::after {
   /* Sky-blue gradient background */
   height: 100%;
-  background-image: linear-gradient(rgb(93, 177, 255), rgb(14, 90, 255));
+  background-image: linear-gradient(rgb(93, 177, 255), rgb(53, 117, 255));
   background-repeat: no-repeat;
   background-attachment: fixed;
 }   
@@ -207,6 +207,7 @@ body ::after {
   padding: 0;
   margin-top: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
   margin-bottom: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  transition:0s 180s;
 }
 .item-button span {
   position: absolute;
@@ -217,6 +218,16 @@ body ::after {
   background-origin: content-box;
   background-clip: content-box;
   background-repeat: no-repeat;
+}
+.depressed.item-button {
+  display: inline-block;
+  background: linear-gradient(145deg, #448ee6, #50a9ff);
+  border-radius: 0.4rem;
+  height: 2.75rem;
+  width: 2.75rem;
+  top: 0;
+  left: 0;
+  padding: 0;
 }
 :focus {
   outline: none;

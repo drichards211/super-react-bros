@@ -18,6 +18,16 @@ export default function Buttons() {
   let buttonStarClass = "item-button button-starman ";
   let buttonStarSpanClass = "";
   let buttonBrosToggleClass = "";
+  let buttonClass = {
+    buttonMushroom: "item-button button-mushroom ",
+    buttonFire: "",
+    buttonStar: "",
+    buttonEnemy: "",
+    buttonCoin: "",
+    buttonOneUp: "",
+    buttonBrosToggle: "",
+    buttonQuestion: "",
+  }
 
   // Manage buttonStar appearance:
   switch (true) {
@@ -38,6 +48,14 @@ export default function Buttons() {
     default:
       // Active bros is Mario:
       buttonBrosToggleClass += "toggle-luigi"; // Display Luigi toggle
+  }
+
+  // Manage button Depressed states:
+  switch (true) {
+    case marioState.buttonDepressed.buttonMushroom === true:
+      buttonClass.buttonMushroom  += "depressed";
+      break;
+    default: buttonClass.buttonMushroom = "item-button button-mushroom ";
   }
 
   // Button-specific helper functions:
@@ -110,13 +128,22 @@ export default function Buttons() {
     }
   };
 
+  const animateButtonPress = (buttonName) => {
+    console.log(`animateButtonPress ran: depressed ${buttonName}`);
+    dispatch({ type: `DEPRESS_BUTTON`, payload: `${buttonName}` })
+    setTimeout(function () {
+      dispatch({ type: `UNPRESS_BUTTON`, payload: `${buttonName}` });  
+    }, 350);
+  }
+
   // BUTTONS:
   const buttonMushroom = (
     <button
-      className="item-button button-mushroom"
+      className={buttonClass.buttonMushroom}
       onClick={() => {
         dispatch({ type: "MAKE_SUPER" })
         NoiseMaker("power-up");
+        animateButtonPress(`buttonMushroom`);
       }}
     >
       <div className="align-me">_</div>
