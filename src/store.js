@@ -17,8 +17,8 @@ const initialState = {
   timer: 400,
   buttonDepressed: {
     buttonMushroom: false,
-    buttonAnything: false,
-    buttonPotatoTest: false,
+    buttonFire: false,
+    buttonCoin: false,
   }
 };
 
@@ -157,7 +157,6 @@ function reducer(state = initialState, action) {
         helpVisible: true,
       };
     case "DEPRESS_BUTTON":
-      console.log(`${action.payload} depressed`)
       return {
           ...state,
           buttonDepressed: {
@@ -166,8 +165,7 @@ function reducer(state = initialState, action) {
           }
         }
     case "UNPRESS_BUTTON":
-      console.log(`${action.payload} unpressed`)
-        return {
+      return {
           ...state,
           buttonDepressed: {
             ...state.buttonDepressed,

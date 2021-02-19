@@ -20,11 +20,11 @@ export default function Buttons() {
   let buttonBrosToggleClass = "";
   let buttonClass = {
     buttonMushroom: "item-button button-mushroom ",
-    buttonFire: "",
+    buttonFire: "item-button button-fire ",
     buttonStar: "",
     buttonEnemy: "",
-    buttonCoin: "",
-    buttonOneUp: "",
+    buttonCoin: "item-button button-coin ",
+    buttonOneUp: "item-button button-oneup ",
     buttonBrosToggle: "",
     buttonQuestion: "",
   }
@@ -51,13 +51,16 @@ export default function Buttons() {
   }
 
   // Manage button Depressed states:
-  switch (true) {
-    case marioState.buttonDepressed.buttonMushroom === true:
-      buttonClass.buttonMushroom  += "depressed";
-      break;
-    default: buttonClass.buttonMushroom = "item-button button-mushroom ";
-  }
-
+  Object.keys(marioState.buttonDepressed).forEach(function (key) {
+    switch (true) {
+      case marioState.buttonDepressed[key]:
+        buttonClass[key]  += "depressed";
+        break;
+      default:
+        buttonClass[key] = buttonClass[key].replace("depressed","");
+    }
+  });
+  
   // Button-specific helper functions:
   const handleEnemy = () => {
     switch (true) {
@@ -98,7 +101,6 @@ export default function Buttons() {
   };
 
   const handleFireLogic = () => {
-    NoiseMaker("power-up");
     switch (marioState.super) {
       case true:
         dispatch({ type: "MAKE_FIRE" });
@@ -129,11 +131,10 @@ export default function Buttons() {
   };
 
   const animateButtonPress = (buttonName) => {
-    console.log(`animateButtonPress ran: depressed ${buttonName}`);
-    dispatch({ type: `DEPRESS_BUTTON`, payload: `${buttonName}` })
+    dispatch({ type: `DEPRESS_BUTTON`, payload: `${buttonName}` });
     setTimeout(function () {
       dispatch({ type: `UNPRESS_BUTTON`, payload: `${buttonName}` });  
-    }, 350);
+    }, 400);
   }
 
   // BUTTONS:
@@ -141,7 +142,7 @@ export default function Buttons() {
     <button
       className={buttonClass.buttonMushroom}
       onClick={() => {
-        dispatch({ type: "MAKE_SUPER" })
+        dispatch({ type: "MAKE_SUPER" });
         NoiseMaker("power-up");
         animateButtonPress(`buttonMushroom`);
       }}
@@ -171,7 +172,14 @@ export default function Buttons() {
   );
 
   const buttonFire = (
-    <button className="item-button button-fire" onClick={() => handleFireLogic()}>
+    <button 
+      className={buttonClass.buttonFire} 
+      onClick={() => {
+        handleFireLogic();
+        NoiseMaker("power-up");
+        animateButtonPress("buttonFire");
+      }}
+    >
       <div className="align-me">_</div>
       <span></span>
     </button>
@@ -179,12 +187,13 @@ export default function Buttons() {
 
   const buttonCoin = (
     <button
-      className="item-button button-coin"
+      className={buttonClass.buttonCoin}
       onClick={() => {
         dispatch({ type: "ADD_COIN" });
         if (marioState.coins < 99) {
           NoiseMaker("coin");
         }
+        animateButtonPress("buttonCoin");
       }}
     >
       <div className="align-me">_</div>
@@ -194,10 +203,11 @@ export default function Buttons() {
 
   const buttonOneUp = (
     <button
-      className="item-button button-oneup"
+      className={buttonClass.buttonOneUp}
       onClick={() => {
         dispatch({ type: "INCREMENT_LIVES" });
         NoiseMaker("1up");
+        animateButtonPress("buttonOneUp");
       }}>
       <div className="align-me">_</div>
       <span></span>
