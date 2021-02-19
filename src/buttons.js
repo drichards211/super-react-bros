@@ -15,49 +15,52 @@ export default function Buttons() {
   const marioState = useSelector((state) => state);
 
   // Holds update-able CSS class names for buttons:
-  let buttonStarClass = "item-button button-starman ";
-  let buttonStarSpanClass = "";
+  /* let buttonStarClass = "item-button button-starman "; */
+  /* let buttonStarSpanClass = ""; */
   let buttonBrosToggleClass = "";
   let buttonClass = {
     buttonMushroom: "item-button button-mushroom ",
     buttonFire: "item-button button-fire ",
-    buttonStar: "",
-    buttonEnemy: "",
+    buttonStar: "item-button button-starman ",
+    buttonStarSpan: "",
+    buttonEnemy: "item-button button-enemy ",
     buttonCoin: "item-button button-coin ",
     buttonOneUp: "item-button button-oneup ",
-    buttonBrosToggle: "",
-    buttonQuestion: "",
+    buttonBrosToggle: "item-button button-bros-toggle ",
+    buttonBrosSpan: "",
+    buttonQuestion: "item-button button-question ",
   }
 
   // Manage buttonStar appearance:
   switch (true) {
     case marioState.invincible: // Mario-Luigi is INVINCIBLE:
-      buttonStarClass += "show-star-countdown";
-      buttonStarSpanClass += "flicker-star";
+      buttonClass.buttonStar += "show-star-countdown ";
+      buttonClass.buttonStarSpan += "flicker-star ";
       break;
     default:
       // Mario-Luigi is NOT invincible:
-      buttonStarClass += "hide-star-countdown";
+      buttonClass.buttonStar += "hide-star-countdown ";
   }
 
   // Manage buttonToggleBros appearance:
   switch (true) {
     case marioState.brother === "luigi": // Active bros is Luigi:
-      buttonBrosToggleClass += "toggle-mario"; // Display Mario toggle
+      buttonClass.buttonBrosSpan += "toggle-mario"; // Display Mario toggle
       break;
     default:
       // Active bros is Mario:
-      buttonBrosToggleClass += "toggle-luigi"; // Display Luigi toggle
+      buttonClass.buttonBrosSpan += "toggle-luigi"; // Display Luigi toggle
   }
 
   // Manage button Depressed states:
   Object.keys(marioState.buttonDepressed).forEach(function (key) {
     switch (true) {
-      case marioState.buttonDepressed[key]:
-        buttonClass[key]  += "depressed";
+      case marioState.buttonDepressed[key]: // Button has been pressed:
+        buttonClass[key]  += "depressed "; // Add "depressed" class to button
         break;
       default:
-        buttonClass[key] = buttonClass[key].replace("depressed","");
+        // Restore normal button appearance
+        buttonClass[key] = buttonClass[key].replace("depressed ","");
     }
   });
   
@@ -112,7 +115,6 @@ export default function Buttons() {
 
   const handleButtonStar = () => {
     dispatch({ type: "MAKE_INVINCIBLE" });
-    NoiseMaker("power-up");
     StopStarManTimer(); // End any ongoing timer before starting another countdown
     StartStarManTimer();
   };
@@ -153,10 +155,17 @@ export default function Buttons() {
   );
 
   const buttonStar = (
-    <button className={buttonStarClass} onClick={() => handleButtonStar()}>
+    <button 
+      className={buttonClass.buttonStar} 
+      onClick={() => {
+        handleButtonStar()
+        NoiseMaker("power-up");
+        animateButtonPress("buttonStar");
+      }}
+    >
       {" "}
       {marioState.starManTimer}{" "}
-      <span className={buttonStarSpanClass}></span>
+      <span className={buttonClass.buttonStarSpan}></span>
     </button>
   );
 
@@ -165,7 +174,13 @@ export default function Buttons() {
   ); // USED FOR TESTING
 
   const buttonEnemy = (
-    <button className="item-button button-enemy" onClick={() => handleEnemy()}>
+    <button 
+      className={buttonClass.buttonEnemy} 
+      onClick={() => {
+        handleEnemy();
+        animateButtonPress("buttonEnemy");
+      }}
+    >
       <div className="align-me">_</div>
       <span className="walk-enemy"></span>
     </button>
@@ -208,7 +223,8 @@ export default function Buttons() {
         dispatch({ type: "INCREMENT_LIVES" });
         NoiseMaker("1up");
         animateButtonPress("buttonOneUp");
-      }}>
+      }}
+    >
       <div className="align-me">_</div>
       <span></span>
     </button>
@@ -216,20 +232,24 @@ export default function Buttons() {
 
   const buttonBrosToggle = (
     <button
-      className="item-button button-bros-toggle"
-      onClick={() => handlePlayerToggle()}
+      className={buttonClass.buttonBrosToggle}
+      onClick={() => {
+        handlePlayerToggle();
+        animateButtonPress("buttonBrosToggle");
+      }}
     >
       <div className="align-me">_</div>
-      <span className={buttonBrosToggleClass}></span>
+      <span className={buttonClass.buttonBrosSpan}></span>
     </button>
   );
 
   const buttonQuestion = (
     <button
-      className="item-button button-question"
+      className={buttonClass.buttonQuestion}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("pause");
+        animateButtonPress("buttonQuestion");
       }}
     >
       <div className="align-me">_</div>

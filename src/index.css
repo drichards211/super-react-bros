@@ -240,6 +240,7 @@ body ::after {
 
 .button-starman {
   z-index: +2;
+  color: inherit;
 }
 .button-starman span {
   background-size: 3000%;

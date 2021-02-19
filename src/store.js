@@ -19,6 +19,11 @@ const initialState = {
     buttonMushroom: false,
     buttonFire: false,
     buttonCoin: false,
+    buttonStar: false,
+    buttonEnemy: false,
+    buttonOneUp: false,
+    buttonBrosToggle: false,
+    buttonQuestion: false,
   }
 };
 
