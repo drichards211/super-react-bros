@@ -24,6 +24,10 @@ const initialState = {
     buttonOneUp: false,
     buttonBrosToggle: false,
     buttonQuestion: false,
+  },
+  actionButtonDepressed: {
+    buttonJump: false,
+    buttonFire: false,
   }
 };
 
@@ -168,7 +172,7 @@ function reducer(state = initialState, action) {
             ...state.buttonDepressed,
             [action.payload]: true,
           }
-        }
+        };
     case "UNPRESS_BUTTON":
       return {
           ...state,
@@ -176,7 +180,23 @@ function reducer(state = initialState, action) {
             ...state.buttonDepressed,
             [action.payload]: false,
           }
-        }
+        };
+    case "DEPRESS_ACTION_BUTTON":
+      return {
+          ...state,
+          actionButtonDepressed: {
+            ...state.actionButtonDepressed,
+            [action.payload]: true,
+          }
+        };
+    case "UNPRESS_ACTION_BUTTON":
+      return {
+          ...state,
+          actionButtonDepressed: {
+            ...state.actionButtonDepressed,
+            [action.payload]: false,
+          }
+        };
     default:
       console.log(`${action.type} is an invalid reducer action.`);
       return state; // Return the unchanged state if action is unclear

@@ -7,6 +7,32 @@ export default function ActionButtons() {
   const dispatch = useDispatch();
   const marioState = useSelector((state) => state);
 
+  // Holds update-able CSS class names for buttons:
+  let buttonClass = {
+    buttonJump: "button-action a ",
+    buttonFire: "button-action b action-fire ",
+  }
+  
+  // Manage action button Depressed states:
+  Object.keys(marioState.actionButtonDepressed).forEach(function (key) {
+    switch (true) {
+      case marioState.actionButtonDepressed[key]: // Button has been pressed:
+        buttonClass[key]  += "depressed "; // Add "depressed" class to button
+        break;
+      default:
+        // Restore normal button appearance
+        buttonClass[key] = buttonClass[key].replace("depressed ","");
+    }
+  });
+
+  // Button-specific helper functions:
+  const animateButtonPress = (buttonName) => {
+    dispatch({ type: `DEPRESS_ACTION_BUTTON`, payload: `${buttonName}` });
+    setTimeout(function () {
+      dispatch({ type: `UNPRESS_ACTION_BUTTON`, payload: `${buttonName}` });  
+    }, 400);
+  }
+
   // ACTION BUTTONS:
   const nesController = (
     <div 
@@ -57,10 +83,11 @@ export default function ActionButtons() {
 
   const buttonJump = (
     <button 
-      className="button-action a"
+      className={buttonClass.buttonJump}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("jump");
+        animateButtonPress("buttonJump");
       }}
     >↑</button>
   );
@@ -95,10 +122,11 @@ export default function ActionButtons() {
 
   const buttonFire = (
     <button 
-      className="button-action b action-fire"
+      className={buttonClass.buttonFire}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("fireball");
+        animateButtonPress("buttonFire");
       }}
     ><span></span></button>
   );

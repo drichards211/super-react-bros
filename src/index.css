@@ -14,8 +14,7 @@ body {
   box-sizing: border-box;
   image-rendering: pixelated; /* Forces nearest-neighbor algorithm for image scaling */
   image-rendering: -moz-crisp-edges; /* Firefox isn't compatible with "pixelated" yet; 
-    still interprets "crisp-edges" as nearest-neighbor, (November 2020) */
-  
+    still interprets "crisp-edges" as nearest-neighbor, (November 2020) */  
 }
 html,
 body ::after {
@@ -187,10 +186,12 @@ body ::after {
 }
 
 /* BUTTON STYLING */
+button:hover {
+  cursor: pointer;
+}
 .items-column {
 
 }
-
 .item-button-container {
   width: 7rem;
   margin-right: 3rem;
@@ -463,6 +464,16 @@ Solution: add a bit of invisible text to all buttons. */
   padding: 0;
   letter-spacing: -0.1rem;
   background: linear-gradient(145deg, #50a9ff, #448ee6);
+  box-shadow: 5px 5px 10px #4086d9, -5px -5px 10px #56b6ff;
+}
+.depressed.button-action.a, .depressed.button-action.b {
+  border-radius: 1rem;
+  color: white;
+  text-shadow: 0.125rem 0.125rem black;
+  margin: 0rem 0.5rem 0rem 0.5rem;
+  padding: 0;
+  letter-spacing: -0.1rem;
+  background: linear-gradient(145deg, #448ee6, #50a9ff);
   box-shadow: 5px 5px 10px #4086d9, -5px -5px 10px #56b6ff;
 }
 .action-climb {
