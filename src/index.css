@@ -202,7 +202,7 @@ button:hover {
   border: none;
   border-radius: 0.4rem;
   background: linear-gradient(145deg, #50a9ff, #448ee6);
-  box-shadow:  5px 5px 10px #4086d9, -5px -5px 10px #56b6ff;
+  box-shadow:  0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
   height: 2.75rem;
   width: 2.75rem;
   padding: 0;
@@ -427,7 +427,7 @@ Solution: add a bit of invisible text to all buttons. */
   border-radius: 0.4rem;
 }
 .square-buttons-wrap {
-  filter: drop-shadow(5px 5px 5px #4086d9) drop-shadow(-5px -5px 4px #56b6ff);
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem #4086d9) drop-shadow(-0.1rem -0.1rem 0.08rem #56b6ff);
 }
 .square-buttons {
   display: flex;
@@ -464,7 +464,7 @@ Solution: add a bit of invisible text to all buttons. */
   padding: 0;
   letter-spacing: -0.1rem;
   background: linear-gradient(145deg, #50a9ff, #448ee6);
-  box-shadow: 5px 5px 10px #4086d9, -5px -5px 10px #56b6ff;
+  box-shadow: 0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
 }
 .depressed.button-action.a, .depressed.button-action.b {
   border-radius: 1rem;
@@ -474,7 +474,7 @@ Solution: add a bit of invisible text to all buttons. */
   padding: 0;
   letter-spacing: -0.1rem;
   background: linear-gradient(145deg, #448ee6, #50a9ff);
-  box-shadow: 5px 5px 10px #4086d9, -5px -5px 10px #56b6ff;
+  box-shadow: 0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
 }
 .action-climb {
   border-radius: 0.35rem 0.35rem 0rem 0rem;
