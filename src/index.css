@@ -429,8 +429,21 @@ Solution: add a bit of invisible text to all buttons. */
   border-radius: 0.4rem;
 }
 .square-buttons-wrap {
-  filter: drop-shadow(0.1rem 0.1rem 0.1rem #4086d9) drop-shadow(-0.1rem -0.1rem 0.08rem #56b6ff);
+  filter: drop-shadow(0.1rem 0rem 0.08rem #56b6ff) drop-shadow(-0.1rem -0.0rem 0.08rem #4086d9);
 }
+.square-buttons-wrap.up {
+  filter: drop-shadow(-0.0rem -0.1rem 0.08rem #56b6ff) drop-shadow(0.0rem 0.1rem 0.08rem #4086d9);
+}
+.square-buttons-wrap.right {
+  filter: drop-shadow(0.1rem 0rem 0.08rem #56b6ff) drop-shadow(-0.1rem -0.0rem 0.08rem #4086d9);
+}
+.square-buttons-wrap.down {
+  filter: drop-shadow(0.0rem 0.1rem 0.08rem #56b6ff) drop-shadow(-0.0rem -0.1rem 0.08rem #4086d9);
+}
+.square-buttons-wrap.left {
+  filter: drop-shadow(-0.1rem -0rem 0.08rem #56b6ff) drop-shadow(0.1rem 0.0rem 0.08rem #4086d9);
+}
+
 .square-buttons {
   display: flex;
   flex-flow: row wrap;
@@ -480,25 +493,39 @@ Solution: add a bit of invisible text to all buttons. */
   border-radius: 0.35rem 0.35rem 0rem 0rem;
   padding: 0rem 0rem 0rem 0rem;
 }
+.action-climb.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
 .action-duck {
   border-radius: 0rem 0rem 0.35rem 0.35rem;
   padding: 0.15rem 0rem 0rem 0rem;
 }
+.action-duck.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
 .action-left {
   border-radius: 0.35rem 0rem 0rem 0.35rem;
   padding: 0.1rem 0.15rem 0rem 0rem;
-  background: linear-gradient(90deg, #50a9ff, #4f9efb);
+}
+.action-left.d-right {
+  background: linear-gradient(90deg, #55aefd, #50a9ff);
 }
 .action-right {
   border-radius: 0rem 0.35rem 0.35rem 0rem;
   padding: .1rem 0rem 0rem 0.15rem;
-  background: linear-gradient(90deg, #4f9efb, #448ee6);
+}
+.action-right.d-right {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(90deg, #4e99f2, #4490e7);
 }
 .action-stop {
   border-radius: 0;
   padding: 0.1rem 0rem 0rem 0rem;
   background: #4f9efb;
-  /* background: linear-gradient(90deg, #4f9efb, #50a9ff); */
+}
+.action-stop.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-fire {
   position: relative;

@@ -9,9 +9,14 @@ export default function ActionButtons() {
 
   // Holds update-able CSS class names for buttons:
   let buttonClass = {
+    buttonStop: "button-action action-stop d-right",
+    buttonWalkLeft: "button-action action-left d-right",
+    buttonWalkRight: "button-action action-right d-right",
+    buttonClimb: "button-action action-climb d-right",
+    buttonDuck: "button-action action-duck d-right",
     buttonJump: "button-action a ",
     buttonFire: "button-action b action-fire ",
-  }
+  };
   
   // Manage action button Depressed states:
   Object.keys(marioState.actionButtonDepressed).forEach(function (key) {
@@ -25,12 +30,24 @@ export default function ActionButtons() {
     }
   });
 
+  // Manage D-Pad appearance:
+  Object.keys(buttonClass).forEach(key => { 
+    buttonClass[key] = buttonClass[key].replace("d-right","d-" +marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-left","d-" +marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-stop","d-" +marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-up","d-" +marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-down","d-" +marioState.dPad);
+  });
+
   // Button-specific helper functions:
   const animateButtonPress = (buttonName) => {
-    dispatch({ type: `DEPRESS_ACTION_BUTTON`, payload: `${buttonName}` });
+    dispatch({ type: `DEPRESS_ACTION_BUTTON`, payload: buttonName });
     setTimeout(function () {
-      dispatch({ type: `UNPRESS_ACTION_BUTTON`, payload: `${buttonName}` });  
+      dispatch({ type: `UNPRESS_ACTION_BUTTON`, payload: buttonName });
     }, 400);
+  }
+  const animateDpad = (direction) => {
+    dispatch({ type: `UPDATE_DPAD`, payload: direction });
   }
 
   // ACTION BUTTONS:
@@ -46,27 +63,30 @@ export default function ActionButtons() {
   
   const buttonStop = (
     <button 
-      className="button-action action-stop"
+      className={buttonClass.buttonStop}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
+        animateDpad("stop");
       }}
     >♦</button>
   );
 
   const buttonWalkLeft = (
     <button 
-      className="button-action action-left"
+      className={buttonClass.buttonWalkLeft}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
+        animateDpad("left");
       }}
     >◀</button>
   );
 
   const buttonWalkRight = (
     <button 
-      className="button-action action-right"
+      className={buttonClass.buttonWalkRight}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
+        animateDpad("right");
       }}
     >▶</button>
   );
@@ -94,18 +114,20 @@ export default function ActionButtons() {
 
   const buttonClimb = (
     <button 
-      className="button-action action-climb"
+      className={buttonClass.buttonClimb}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
+        animateDpad("up");
       }}
     >▲</button>
   );
 
   const buttonDuck = (
     <button 
-      className="button-action action-duck"
+      className={buttonClass.buttonDuck}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
+        animateDpad("down");
       }}
     >▼</button>
   );

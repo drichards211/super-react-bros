@@ -28,7 +28,8 @@ const initialState = {
   actionButtonDepressed: {
     buttonJump: false,
     buttonFire: false,
-  }
+  },
+  dPad: "right",
 };
 
 function reducer(state = initialState, action) {
@@ -172,7 +173,7 @@ function reducer(state = initialState, action) {
             ...state.buttonDepressed,
             [action.payload]: true,
           }
-        };
+      };
     case "UNPRESS_BUTTON":
       return {
           ...state,
@@ -180,7 +181,7 @@ function reducer(state = initialState, action) {
             ...state.buttonDepressed,
             [action.payload]: false,
           }
-        };
+      };
     case "DEPRESS_ACTION_BUTTON":
       return {
           ...state,
@@ -188,7 +189,7 @@ function reducer(state = initialState, action) {
             ...state.actionButtonDepressed,
             [action.payload]: true,
           }
-        };
+      };
     case "UNPRESS_ACTION_BUTTON":
       return {
           ...state,
@@ -196,7 +197,12 @@ function reducer(state = initialState, action) {
             ...state.actionButtonDepressed,
             [action.payload]: false,
           }
-        };
+      };
+    case "UPDATE_DPAD":
+      return {
+        ...state,
+        dPad: action.payload,
+      };
     default:
       console.log(`${action.type} is an invalid reducer action.`);
       return state; // Return the unchanged state if action is unclear
