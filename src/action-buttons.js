@@ -8,18 +8,13 @@ export default function ActionButtons() {
   const marioState = useSelector((state) => state);
 
   // Holds update-able CSS class names for buttons:
-  let buttonClass = {
-    buttonStop: "button-action action-stop d-right",
-    buttonWalkLeft: "button-action action-left d-right",
-    buttonWalkRight: "button-action action-right d-right",
-    buttonClimb: "button-action action-climb d-right",
-    buttonDuck: "button-action action-duck d-right",
+  /* let buttonClass = {
     buttonJump: "button-action a ",
     buttonFire: "button-action b action-fire ",
-  };
+  }; */
   
   // Manage action button Depressed states:
-  Object.keys(marioState.actionButtonDepressed).forEach(function (key) {
+  /* Object.keys(marioState.actionButtonDepressed).forEach(function (key) {
     switch (true) {
       case marioState.actionButtonDepressed[key]: // Button has been pressed:
         buttonClass[key]  += "depressed "; // Add "depressed" class to button
@@ -28,16 +23,17 @@ export default function ActionButtons() {
         // Restore normal button appearance
         buttonClass[key] = buttonClass[key].replace("depressed ","");
     }
-  });
+  }); */
 
   // Manage D-Pad appearance:
-  Object.keys(buttonClass).forEach(key => { 
-    buttonClass[key] = buttonClass[key].replace("d-right","d-" +marioState.dPad);
-    buttonClass[key] = buttonClass[key].replace("d-left","d-" +marioState.dPad);
-    buttonClass[key] = buttonClass[key].replace("d-stop","d-" +marioState.dPad);
-    buttonClass[key] = buttonClass[key].replace("d-up","d-" +marioState.dPad);
-    buttonClass[key] = buttonClass[key].replace("d-down","d-" +marioState.dPad);
-  });
+  /* Object.keys(buttonClass).forEach(key => { 
+    buttonClass[key] = buttonClass[key].replace("d-right",marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-left",marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-stop",marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-up",marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-down",marioState.dPad);
+    buttonClass[key] = buttonClass[key].replace("d-down",marioState.dPad);
+  }); */
 
   // Button-specific helper functions:
   const animateButtonPress = (buttonName) => {
@@ -63,30 +59,30 @@ export default function ActionButtons() {
   
   const buttonStop = (
     <button 
-      className={buttonClass.buttonStop}
+      className={"button-action action-stop "+marioState.dPad}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        animateDpad("stop");
+        animateDpad("d-stop");
       }}
     >♦</button>
   );
 
   const buttonWalkLeft = (
     <button 
-      className={buttonClass.buttonWalkLeft}
+      className={"button-action action-left "+marioState.dPad}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        animateDpad("left");
+        animateDpad("d-left");
       }}
     >◀</button>
   );
 
   const buttonWalkRight = (
     <button 
-      className={buttonClass.buttonWalkRight}
+      className={"button-action action-right "+marioState.dPad}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        animateDpad("right");
+        animateDpad("d-right");
       }}
     >▶</button>
   );
@@ -103,7 +99,7 @@ export default function ActionButtons() {
 
   const buttonJump = (
     <button 
-      className={buttonClass.buttonJump}
+      className={`button-action a ${marioState.actionButtonDepressed.buttonJump ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("jump");
@@ -114,20 +110,20 @@ export default function ActionButtons() {
 
   const buttonClimb = (
     <button 
-      className={buttonClass.buttonClimb}
+      className={"button-action action-climb "+marioState.dPad}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        animateDpad("up");
+        animateDpad("d-up");
       }}
     >▲</button>
   );
 
   const buttonDuck = (
     <button 
-      className={buttonClass.buttonDuck}
+      className={"button-action action-duck "+marioState.dPad}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
-        animateDpad("down");
+        animateDpad("d-down");
       }}
     >▼</button>
   );
@@ -144,7 +140,7 @@ export default function ActionButtons() {
 
   const buttonFire = (
     <button 
-      className={buttonClass.buttonFire}
+      className={`button-action b action-fire ${marioState.actionButtonDepressed.buttonFire ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         NoiseMaker("fireball");
@@ -155,7 +151,7 @@ export default function ActionButtons() {
 
   return (
     <div className="action-button-container">
-      <div className="square-buttons-wrap">
+      <div className={"square-buttons-wrap "+marioState.dPad}>
         <div className="square-buttons">
           {buttonClimb}
           <div className="break"></div> 

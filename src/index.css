@@ -429,19 +429,23 @@ Solution: add a bit of invisible text to all buttons. */
   border-radius: 0.4rem;
 }
 .square-buttons-wrap {
-  filter: drop-shadow(0.1rem 0rem 0.08rem #56b6ff) drop-shadow(-0.1rem -0.0rem 0.08rem #4086d9);
+  /* filter: drop-shadow(0.1rem 0rem 0.08rem #56b6ff) drop-shadow(-0.1rem -0.0rem 0.08rem #4086d9); */
+  filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9);
 }
 .square-buttons-wrap.up {
-  filter: drop-shadow(-0.0rem -0.1rem 0.08rem #56b6ff) drop-shadow(0.0rem 0.1rem 0.08rem #4086d9);
+  filter: drop-shadow(-0.0rem -0.15rem 0.19rem #56b6ff) drop-shadow(0.0rem 0.15rem 0.19rem #4086d9);
 }
 .square-buttons-wrap.right {
-  filter: drop-shadow(0.1rem 0rem 0.08rem #56b6ff) drop-shadow(-0.1rem -0.0rem 0.08rem #4086d9);
+  filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9);
 }
 .square-buttons-wrap.down {
-  filter: drop-shadow(0.0rem 0.1rem 0.08rem #56b6ff) drop-shadow(-0.0rem -0.1rem 0.08rem #4086d9);
+  filter: drop-shadow(0.0rem 0.15rem 0.19rem #56b6ff) drop-shadow(-0.0rem -0.15rem 0.19rem #4086d9);
 }
 .square-buttons-wrap.left {
-  filter: drop-shadow(-0.1rem -0rem 0.08rem #56b6ff) drop-shadow(0.1rem 0.0rem 0.08rem #4086d9);
+  filter: drop-shadow(-0.15rem -0rem 0.19rem #56b6ff) drop-shadow(0.15rem 0.0rem 0.19rem #4086d9);
+}
+.square-buttons-wrap.stop {
+  filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9);
 }
 
 .square-buttons {
@@ -496,6 +500,20 @@ Solution: add a bit of invisible text to all buttons. */
 .action-climb.d-right {
   background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
+.action-climb.d-left {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-climb.d-up {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-climb.d-down {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-climb.d-stop {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
 .action-duck {
   border-radius: 0rem 0rem 0.35rem 0.35rem;
   padding: 0.15rem 0rem 0rem 0rem;
@@ -503,11 +521,39 @@ Solution: add a bit of invisible text to all buttons. */
 .action-duck.d-right {
   background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
+.action-duck.d-left {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-duck.d-up {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-duck.d-down {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-duck.d-stop {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
 .action-left {
   border-radius: 0.35rem 0rem 0rem 0.35rem;
   padding: 0.1rem 0.15rem 0rem 0rem;
 }
 .action-left.d-right {
+  background: linear-gradient(90deg, #55aefd, #50a9ff);
+}
+.action-left.d-left {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(90deg, #55aefd, #50a9ff);
+}
+.action-left.d-up {
+  background: linear-gradient(90deg, #55aefd, #50a9ff);
+}
+.action-left.d-down {
+  background: linear-gradient(90deg, #55aefd, #50a9ff);
+}
+.action-left.d-stop {
   background: linear-gradient(90deg, #55aefd, #50a9ff);
 }
 .action-right {
@@ -519,12 +565,38 @@ Solution: add a bit of invisible text to all buttons. */
   font-size: 0.9rem;
   background: linear-gradient(90deg, #4e99f2, #4490e7);
 }
+.action-right.d-left {
+  background: linear-gradient(90deg, #4e99f2, #4490e7);
+}
+.action-right.d-up {
+  background: linear-gradient(90deg, #4e99f2, #4490e7);
+}
+.action-right.d-down {
+  background: linear-gradient(90deg, #4e99f2, #4490e7);
+}
+.action-right.d-stop {
+  background: linear-gradient(90deg, #4e99f2, #4490e7);
+}
 .action-stop {
   border-radius: 0;
   padding: 0.1rem 0rem 0rem 0rem;
   background: #4f9efb;
 }
 .action-stop.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-left {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-up {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-down {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-stop {
+  color: white;
+  font-size: 0.9rem;
   background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-fire {

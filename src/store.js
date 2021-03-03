@@ -29,7 +29,7 @@ const initialState = {
     buttonJump: false,
     buttonFire: false,
   },
-  dPad: "right",
+  dPad: "d-right",
 };
 
 function reducer(state = initialState, action) {
