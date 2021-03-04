@@ -432,20 +432,20 @@ Solution: add a bit of invisible text to all buttons. */
   /* filter: drop-shadow(0.1rem 0rem 0.08rem #56b6ff) drop-shadow(-0.1rem -0.0rem 0.08rem #4086d9); */
   filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9);
 }
-.square-buttons-wrap.up {
+.square-buttons-wrap.d-up {
   filter: drop-shadow(-0.0rem -0.15rem 0.19rem #56b6ff) drop-shadow(0.0rem 0.15rem 0.19rem #4086d9);
 }
-.square-buttons-wrap.right {
+.square-buttons-wrap.d-right {
   filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9);
 }
-.square-buttons-wrap.down {
+.square-buttons-wrap.d-down {
   filter: drop-shadow(0.0rem 0.15rem 0.19rem #56b6ff) drop-shadow(-0.0rem -0.15rem 0.19rem #4086d9);
 }
-.square-buttons-wrap.left {
+.square-buttons-wrap.d-left {
   filter: drop-shadow(-0.15rem -0rem 0.19rem #56b6ff) drop-shadow(0.15rem 0.0rem 0.19rem #4086d9);
 }
-.square-buttons-wrap.stop {
-  filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9);
+.square-buttons-wrap.d-stop {
+  filter: drop-shadow(0rem 0rem 0.19rem #56b6ff) drop-shadow(-0rem -0rem 0.19rem #4086d9);
 }
 
 .square-buttons {
