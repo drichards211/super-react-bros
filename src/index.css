@@ -32,14 +32,14 @@ body ::after {
 
 .mario-column {
   display: flex;
-  /* align-content: space-between; */
+  align-content: space-between;
   flex-wrap: wrap;
 }
 
 .mario-container {
   max-width: 13rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.25rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.5rem;
   margin-left: 3rem;
   display: flex;
   justify-content: center;
@@ -684,6 +684,14 @@ Solution: add a bit of invisible text to all buttons. */
   .sb-col-03 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
+  }
+}
+@media (max-height: 440px) {
+  .scoreboard {
+    margin-bottom: 0.6rem;
+  }
+  .item-button-container {
+    width: 11.5rem;
   }
 }
 @media (max-width: 440px) {
