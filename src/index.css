@@ -6,26 +6,48 @@
 
 html,
 body {
-  font-size: 46px;
+  font-size: clamp(22px, 5.2vmin, 50px);
   color: white;
+  /* background-color: #4293ff; */
   font-family: PressStart;
-  background: rgb(76 132 255);
-  /* background: #c8c8c8;   */
   min-width: 320px; /* prevents layout from breaking on tiny screens */
   box-sizing: border-box;
   image-rendering: pixelated; /* Forces nearest-neighbor algorithm for image scaling */
   image-rendering: -moz-crisp-edges; /* Firefox isn't compatible with "pixelated" yet; 
-    still interprets "crisp-edges" as nearest-neighbor, (November 2020) */
+    still interprets "crisp-edges" as nearest-neighbor, (November 2020) */  
+}
+html,
+body ::after {
+  /* Sky-blue gradient background */
+  height: 100%;
+  background-image: linear-gradient(rgb(93, 177, 255), rgb(53, 117, 255));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}   
+
+.game-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mario-column {
+  display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
 }
 
 .mario-container {
-  display: inline-block;
-  width: 16rem;
+  max-width: 13rem;
+  margin-top: 0.6rem;
+  margin-bottom: 0.5rem;
+  margin-left: 3rem;
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
 }
 
 .Render-brother {
   width: 2rem;
-  margin-left: 5rem;
   background-image: url("/mario-grid-a2.png");
   background-repeat: no-repeat;
   background-size: 2100%;
@@ -159,49 +181,75 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
+  min-width: 320px;
   height: 100%;
-  z-index: +1;
+  z-index: +9;
   background-color: rgb(0 0 0);
 }
 
 /* BUTTON STYLING */
-.button-container {
-  display: block;
-  float: right;
-  width: 7rem;
-  margin-right: 2rem;
+button:hover {
+  cursor: pointer;
 }
-button {
+.items-column {
+
+}
+.item-button-container {
+  width: 7rem;
+  margin-right: 3rem;
+}
+.item-button {
   display: inline-block;
+  position: relative; /* Required: item-button spans are absolutely positioned */
   border: none;
   border-radius: 0.4rem;
-  background: #4c84ff;
-  box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
-  /* box-shadow:  10px 10px 20px #4170d9, 
-    -10px -10px 20px #5798ff; */
+  background: linear-gradient(145deg, #50a9ff, #448ee6);
+  box-shadow:  0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
   height: 2.75rem;
   width: 2.75rem;
-  padding: 0.376rem; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  padding: 0;
   margin-top: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
   margin-bottom: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
+}
+.item-button span {
+  position: absolute;
+  top: 0.376rem;
+  left: 0.376rem;
+  height: 1.998rem;
+  width: 1.998rem;
   background-origin: content-box;
   background-clip: content-box;
   background-repeat: no-repeat;
+}
+.depressed.item-button {
+  display: inline-block;
+  background: linear-gradient(145deg, #448ee6, #50a9ff);
+  border-radius: 0.4rem;
+  height: 2.75rem;
+  width: 2.75rem;
+  top: 0;
+  left: 0;
+  padding: 0;
 }
 :focus {
   outline: none;
 }
 
-.button-mushroom {
+.button-mushroom span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 0% 0%;
 }
 
 .button-starman {
+  z-index: +2;
+  color: inherit;
+}
+.button-starman span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 20.6897% 0%;
+  z-index: -1;
 }
 
 .flicker-star {
@@ -222,7 +270,7 @@ button {
 
 .show-star-countdown {
   color: inherit;
-  text-shadow: 0.125rem 0.125rem black;
+  text-shadow: 0.125rem 0.125rem #b53121;
 }
 
 .align-me {
@@ -231,7 +279,7 @@ Solution: add a bit of invisible text to all buttons. */
   opacity: 0%;
 }
 
-.button-enemy {
+.button-enemy span {
   background-size: 200%;
   background-image: url("/enemies-grid-a1.png");
   background-position: 0% 0%;
@@ -260,7 +308,7 @@ Solution: add a bit of invisible text to all buttons. */
   transform: scaleY(-1);
 }
 
-.button-fire {
+.button-fire span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 6.8978% 0%;
@@ -274,13 +322,13 @@ Solution: add a bit of invisible text to all buttons. */
     background-position: 20.6897% 0%;
   }
 }
-.button-oneup {
+.button-oneup span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 3.4482% 0%;
 }
 
-.button-coin {
+.button-coin span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 48.2759% 0%;
@@ -302,7 +350,7 @@ Solution: add a bit of invisible text to all buttons. */
 .spin-coin {
 }
 
-.button-bros-toggle {
+.button-bros-toggle span {
   background-size: 2100%;
   background-image: url("/mario-grid-a2.png");
 }
@@ -313,7 +361,7 @@ Solution: add a bit of invisible text to all buttons. */
   background-position: 0% 25%;
 }
 
-.button-question {
+.button-question span {
   background-size: 3000%;
   background-image: url("/items-grid-a1.png");
   background-position: 34.4828% 0%;
@@ -334,12 +382,11 @@ Solution: add a bit of invisible text to all buttons. */
   color: white;
   background: #4c84ff;
   box-shadow: 0.25rem 0.25rem 0.5rem #4170d9, -0.25rem -0.25rem 0.5rem #5798ff;
-  /* box-shadow:  10px 10px 20px #4170d9, 
-    -10px -10px 20px #5798ff; */
   height: auto;
   width: auto;
   margin-top: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
   margin-bottom: 0.376rem !important; /* 0.001 larger to compensate for Chrome rendering imprecision */
+  padding: 0.25rem;
   display: none;
   opacity: 0;
 }
@@ -364,19 +411,231 @@ Solution: add a bit of invisible text to all buttons. */
   }
 }
 
+.controller {
+  background-image: url("/super-clean-controller-pixel-perfect-a1.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 2.7rem;
+  width: 7.8rem;
+  margin: 0.3rem;
+}
+.action-button-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-left: 3rem;
+  margin-right: 1rem;
+  border: none;
+  border-radius: 0.4rem;
+}
+.square-buttons-wrap {
+  filter: drop-shadow(-0.15rem -0.15rem 0.18rem #56b6ff) drop-shadow(0.15rem 0.15rem 0.18rem #4086d9);
+  /* filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9); */
+}
+.square-buttons-wrap.d-up {
+  /* filter: drop-shadow(-0.0rem -0.15rem 0.19rem #56b6ff) drop-shadow(0.0rem 0.15rem 0.19rem #4086d9); */
+}
+.square-buttons-wrap.d-right {
+  /* filter: drop-shadow(0.15rem 0rem 0.19rem #56b6ff) drop-shadow(-0.15rem -0.0rem 0.19rem #4086d9); */
+}
+.square-buttons-wrap.d-down {
+  /* filter: drop-shadow(0.0rem 0.15rem 0.19rem #56b6ff) drop-shadow(-0.0rem -0.15rem 0.19rem #4086d9); */
+}
+.square-buttons-wrap.d-left {
+  /* filter: drop-shadow(-0.15rem -0rem 0.19rem #56b6ff) drop-shadow(0.15rem 0.0rem 0.19rem #4086d9); */
+}
+.square-buttons-wrap.d-stop {
+  /* filter: drop-shadow(0rem 0rem 0.19rem #56b6ff) drop-shadow(-0rem -0rem 0.19rem #4086d9); */
+}
+
+.square-buttons {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: transparent;
+  width: 5.5rem;
+  margin: 0.5rem 1rem 0.5rem 1rem;
+}
+.round-buttons {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+.button-action {
+  height: 1.75rem;
+  width: 1.75rem;
+  border: none;
+  border-radius: 0.4rem;
+  letter-spacing: -0.1rem;
+  line-height: 0.6rem;
+  color: rgb(0, 70, 168);
+  background-color: #4b9eff;
+}
+.button-action.a, .button-action.b {
+  border-radius: 1rem;
+  color: white;
+  text-shadow: 0.125rem 0.125rem black;
+  margin: 0rem 0.5rem 0rem 0.5rem;
+  padding: 0;
+  letter-spacing: -0.1rem;
+  background: linear-gradient(145deg, #50a9ff, #448ee6);
+  box-shadow: 0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
+}
+.depressed.button-action.a, .depressed.button-action.b {
+  border-radius: 1rem;
+  color: white;
+  text-shadow: 0.125rem 0.125rem black;
+  margin: 0rem 0.5rem 0rem 0.5rem;
+  padding: 0;
+  letter-spacing: -0.1rem;
+  background: linear-gradient(145deg, #448ee6, #50a9ff);
+  box-shadow: 0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
+}
+.action-climb {
+  border-radius: 0.35rem 0.35rem 0rem 0rem;
+  padding: 0rem 0rem 0rem 0rem;
+}
+.action-climb.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-climb.d-left {
+  background: linear-gradient(270deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-climb.d-up {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(0deg, #4e99f2, #4490e7);
+}
+.action-climb.d-down {
+  background: linear-gradient(180deg, #6bb9ff, #50a9ff);
+}
+.action-climb.d-stop {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgb(83 159 248) 100%);
+}
+.action-duck {
+  border-radius: 0rem 0rem 0.35rem 0.35rem;
+  padding: 0.15rem 0rem 0rem 0rem;
+}
+.action-duck.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-duck.d-left {
+  background: linear-gradient(270deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-duck.d-up {
+  background: linear-gradient(0deg, #6bb9ff, #50a9ff);
+}
+.action-duck.d-down {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(180deg, #4e99f2, #4490e7);
+}
+.action-duck.d-stop {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgb(83 159 248) 100%);
+}
+.action-left {
+  border-radius: 0.35rem 0rem 0rem 0.35rem;
+  padding: 0.1rem 0.15rem 0rem 0rem;
+}
+.action-left.d-right {
+  background: linear-gradient(90deg, #6bb9ff, #50a9ff);
+}
+.action-left.d-left {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(270deg, #4e99f2, #4490e7);
+}
+.action-left.d-up {
+  background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-left.d-down {
+  background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-left.d-stop {
+  background: linear-gradient(90deg, #55aefd, #50a9ff);
+}
+.action-right {
+  border-radius: 0rem 0.35rem 0.35rem 0rem;
+  padding: .1rem 0rem 0rem 0.15rem;
+}
+.action-right.d-right {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(90deg, #4e99f2, #4490e7);
+}
+.action-right.d-left {
+  background: linear-gradient(270deg, #6bb9ff, #50a9ff);
+}
+.action-right.d-up {
+  background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-right.d-down {
+  background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-right.d-stop {
+  background: linear-gradient(90deg, rgba(83,159,248,1), #4e9df8);
+}
+.action-stop {
+  border-radius: 0;
+  padding: 0.1rem 0rem 0rem 0rem;
+  background: #4f9efb;
+}
+.action-stop.d-right {
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-left {
+  background: linear-gradient(270deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-up {
+  background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-down {
+  background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
+}
+.action-stop.d-stop {
+  color: white;
+  font-size: 0.9rem;
+  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(83,159,248,1) 100%);
+}
+.action-fire {
+  position: relative;
+}
+.action-fire span {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-size: 3900%;
+  background-image: url(/items-grid-a1.png);
+  background-position: 79.1% 50%;
+  transform: scaleX(-1);
+}
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
 /* SCOREBOARD ELEMENTS */
 .scoreboard {
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
   margin-top: 0.25rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
-.sb-col-01 {
+.sb-col-01,
+.sb-col-03 {
   margin-left: 3rem;
+  margin-right: 3rem;
+}
+.sb-col-02 {
+  margin-top: 1.15rem;
 }
 .sb-col-03 {
   text-align: right;
-  margin-right: 3rem;
 }
 .mini-coin-sprite {
   display: inline-block;
@@ -387,8 +646,7 @@ Solution: add a bit of invisible text to all buttons. */
   background-image: url("/scoreboard-grid-a1.png");
   background-repeat: no-repeat;
   background-position: 0% 0%;
-  animation: glow-mini-coin 1s steps(4) infinite; /* Animation duration isn't working properly. Values above 1s don't work at all.
-  CSS edge-case bug??? */
+  animation: glow-mini-coin 1s steps(4) infinite;
 }
 @keyframes glow-mini-coin {
   from {
@@ -396,8 +654,7 @@ Solution: add a bit of invisible text to all buttons. */
   }
   to {
     background-position: 133.25% 0%;
-  } /* This isn't working properly either. % location is VERY inaccurate.
-    Something is messed-up here. */
+  } 
 }
 .small-spacer {
   margin-left: 0.25rem;
@@ -408,5 +665,73 @@ Solution: add a bit of invisible text to all buttons. */
 .row {
   position: relative;
   width: 100%;
-  z-index: +2;
+  z-index: +10;
+}
+
+/* RESPONSIVE VIEWPORT ADJUSTMENTS */
+@media (max-width: 1400px) {
+  .mario-container {
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+  }
+  .action-button-container {
+    margin-left: 0.5rem;
+  }
+  .item-button-container {
+    margin-right: 0.5rem;
+  }
+  .sb-col-01,
+  .sb-col-03 {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+@media (max-height: 440px) {
+  .scoreboard {
+    margin-bottom: 0.6rem;
+  }
+  .item-button-container {
+    width: 10.5rem;
+  }
+  .item-button {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .mario-container {
+    margin-left: -0.5rem;
+  }
+  .action-button-container {
+    margin-left: -0.5rem;
+  }
+}
+@media (max-width: 440px) {
+  .scoreboard {
+    margin-bottom: 1rem;
+  }
+  .sb-col-02 {
+    flex-basis: 100%;
+    order: 3;
+    margin-top: 0.76rem;
+  }
+  .sb-col-01,
+  .sb-col-02,
+  .sb-col-03 {
+    margin-left: 0.5rem;
+  }
+}
+@media (max-width: 380px) {
+  .square-buttons {
+    margin: 0.5rem 0rem 0.5rem 0rem;
+  }
+}
+@media (max-width: 340px) {
+  .mario-container {
+    margin-left: 0rem;
+  }
+  .action-button-container {
+    margin-left: 0rem;
+  }
+  .item-button-container {
+    margin-right: 0rem;
+  }
 }

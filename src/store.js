@@ -15,6 +15,21 @@ const initialState = {
   lives: 3,
   coins: 0,
   timer: 400,
+  buttonDepressed: {
+    buttonMushroom: false,
+    buttonFire: false,
+    buttonCoin: false,
+    buttonStar: false,
+    buttonEnemy: false,
+    buttonOneUp: false,
+    buttonBrosToggle: false,
+    buttonQuestion: false,
+  },
+  actionButtonDepressed: {
+    buttonJump: false,
+    buttonFire: false,
+  },
+  dPad: "d-right",
 };
 
 function reducer(state = initialState, action) {
@@ -150,6 +165,43 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         helpVisible: true,
+      };
+    case "DEPRESS_BUTTON":
+      return {
+          ...state,
+          buttonDepressed: {
+            ...state.buttonDepressed,
+            [action.payload]: true,
+          }
+      };
+    case "UNPRESS_BUTTON":
+      return {
+          ...state,
+          buttonDepressed: {
+            ...state.buttonDepressed,
+            [action.payload]: false,
+          }
+      };
+    case "DEPRESS_ACTION_BUTTON":
+      return {
+          ...state,
+          actionButtonDepressed: {
+            ...state.actionButtonDepressed,
+            [action.payload]: true,
+          }
+      };
+    case "UNPRESS_ACTION_BUTTON":
+      return {
+          ...state,
+          actionButtonDepressed: {
+            ...state.actionButtonDepressed,
+            [action.payload]: false,
+          }
+      };
+    case "UPDATE_DPAD":
+      return {
+        ...state,
+        dPad: action.payload,
       };
     default:
       console.log(`${action.type} is an invalid reducer action.`);
