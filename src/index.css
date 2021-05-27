@@ -48,7 +48,7 @@ body ::after {
 
 .Render-brother {
   width: 2rem;
-  background-image: url("/mario-grid-a2.png");
+  background-image: url("/super-react-bros/mario-grid-a2.png");
   background-repeat: no-repeat;
   background-size: 2100%;
 }
@@ -237,7 +237,7 @@ button:hover {
 
 .button-mushroom span {
   background-size: 3000%;
-  background-image: url("/items-grid-a1.png");
+  background-image: url("/super-react-bros/items-grid-a1.png");
   background-position: 0% 0%;
 }
 
@@ -247,7 +247,7 @@ button:hover {
 }
 .button-starman span {
   background-size: 3000%;
-  background-image: url("/items-grid-a1.png");
+  background-image: url("/super-react-bros/items-grid-a1.png");
   background-position: 20.6897% 0%;
   z-index: -1;
 }
@@ -281,7 +281,7 @@ Solution: add a bit of invisible text to all buttons. */
 
 .button-enemy span {
   background-size: 200%;
-  background-image: url("/enemies-grid-a1.png");
+  background-image: url("/super-react-bros/enemies-grid-a1.png");
   background-position: 0% 0%;
 }
 
@@ -310,7 +310,7 @@ Solution: add a bit of invisible text to all buttons. */
 
 .button-fire span {
   background-size: 3000%;
-  background-image: url("/items-grid-a1.png");
+  background-image: url("/super-react-bros/items-grid-a1.png");
   background-position: 6.8978% 0%;
   animation: glow-fireflower 0.33s steps(4) infinite;
 }
@@ -324,13 +324,13 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .button-oneup span {
   background-size: 3000%;
-  background-image: url("/items-grid-a1.png");
+  background-image: url("/super-react-bros/items-grid-a1.png");
   background-position: 3.4482% 0%;
 }
 
 .button-coin span {
   background-size: 3000%;
-  background-image: url("/items-grid-a1.png");
+  background-image: url("/super-react-bros/items-grid-a1.png");
   background-position: 48.2759% 0%;
 }
 
@@ -352,7 +352,7 @@ Solution: add a bit of invisible text to all buttons. */
 
 .button-bros-toggle span {
   background-size: 2100%;
-  background-image: url("/mario-grid-a2.png");
+  background-image: url("/super-react-bros/mario-grid-a2.png");
 }
 .toggle-mario {
   background-position: 0% 10%;
@@ -363,7 +363,7 @@ Solution: add a bit of invisible text to all buttons. */
 
 .button-question span {
   background-size: 3000%;
-  background-image: url("/items-grid-a1.png");
+  background-image: url("/super-react-bros/items-grid-a1.png");
   background-position: 34.4828% 0%;
   /* animation: glow-question 0.8s steps(4) infinite; */
 }
@@ -412,7 +412,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 
 .controller {
-  background-image: url("/super-clean-controller-pixel-perfect-a1.png");
+  background-image: url("/super-react-bros/super-clean-controller-pixel-perfect-a1.png");
   background-repeat: no-repeat;
   background-size: 100%;
   height: 2.7rem;
@@ -643,7 +643,7 @@ Solution: add a bit of invisible text to all buttons. */
   height: 1rem;
   width: 0.625rem;
   background-size: 400%;
-  background-image: url("/scoreboard-grid-a1.png");
+  background-image: url("/super-react-bros/scoreboard-grid-a1.png");
   background-repeat: no-repeat;
   background-position: 0% 0%;
   animation: glow-mini-coin 1s steps(4) infinite;

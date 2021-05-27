@@ -10,6 +10,6 @@ export function NoiseMaker(requestedSound) {
   let noise = requestedSound || "silent";
   if (noise !== "silent") {
     console.log(`NoiseMaker() ran: "${noise}.mp3"`)
-    new Audio(`/${noise}.mp3`).play();
+    new Audio(`/super-react-bros/${noise}.mp3`).play();
   }
 }
