@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1c4408a587af6acfc75dca51d3dedeb0",
+    "revision": "4b296e9c34582757491637ca0916d739",
     "url": "/super-react-bros/index.html"
   },
   {
-    "revision": "0e79101679922c289d76",
-    "url": "/super-react-bros/static/css/main.915b6747.chunk.css"
+    "revision": "9408174b90b34eb63eb1",
+    "url": "/super-react-bros/static/css/main.17b9c0dd.chunk.css"
   },
   {
     "revision": "4225caa12a5c98cf66be",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/super-react-bros/static/js/2.3a7fbfb3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0e79101679922c289d76",
-    "url": "/super-react-bros/static/js/main.4aca585a.chunk.js"
+    "revision": "9408174b90b34eb63eb1",
+    "url": "/super-react-bros/static/js/main.2e16e59a.chunk.js"
   },
   {
     "revision": "33242981f46d3d8151b8",
