@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/super-react-bros/static/css/main.915b6747.chunk.css",
+    "main.js": "/super-react-bros/static/js/main.4aca585a.chunk.js",
+    "main.js.map": "/super-react-bros/static/js/main.4aca585a.chunk.js.map",
+    "runtime-main.js": "/super-react-bros/static/js/runtime-main.005ea6bc.js",
+    "runtime-main.js.map": "/super-react-bros/static/js/runtime-main.005ea6bc.js.map",
+    "static/js/2.3a7fbfb3.chunk.js": "/super-react-bros/static/js/2.3a7fbfb3.chunk.js",
+    "static/js/2.3a7fbfb3.chunk.js.map": "/super-react-bros/static/js/2.3a7fbfb3.chunk.js.map",
+    "index.html": "/super-react-bros/index.html",
+    "precache-manifest.fd346298d382f1febaf22e9725453ae8.js": "/super-react-bros/precache-manifest.fd346298d382f1febaf22e9725453ae8.js",
+    "service-worker.js": "/super-react-bros/service-worker.js",
+    "static/css/main.915b6747.chunk.css.map": "/super-react-bros/static/css/main.915b6747.chunk.css.map",
+    "static/js/2.3a7fbfb3.chunk.js.LICENSE.txt": "/super-react-bros/static/js/2.3a7fbfb3.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/super-react-bros/static/media/PressStart2P-vaV7.74496d90.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.005ea6bc.js",
+    "static/js/2.3a7fbfb3.chunk.js",
+    "static/css/main.915b6747.chunk.css",
+    "static/js/main.4aca585a.chunk.js"
+  ]
+}
