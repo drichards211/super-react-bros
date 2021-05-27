@@ -609,7 +609,7 @@ Solution: add a bit of invisible text to all buttons. */
   width: 1.75rem;
   height: 1.75rem;
   background-size: 3900%;
-  background-image: url(/items-grid-a1.png);
+  background-image: url(/super-react-bros/items-grid-a1.png);
   background-position: 79.1% 50%;
   transform: scaleX(-1);
 }
