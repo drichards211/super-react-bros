@@ -31,8 +31,6 @@ Housekeeping:
 Troubleshooting:
   * [ ] Browsers vary slightly when calculating sprite positions using %. Solution: add 1px padding to all sprite sheets. This will prevent the accidental display of neighboring sprites' edges when browsers disagree.
   
-xxxxxx
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
