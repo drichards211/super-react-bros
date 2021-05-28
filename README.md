@@ -4,7 +4,7 @@ Not a videogame: an interactive state demo starring everybody's favorite plumber
 
 Cutting-edge meets 80's retro: A responsive, neumorphic layout compliments classic videogame sprite animation.
 
-Redux store tracks the state of our plumber friend: # of coins collected, lives remaining, current physical action (walking, jumping, etc.), and current power-ups are all tracked.
+Redux store tracks the state of our plumber friend: # of coins collected, lives remaining, current physical action (walking, jumping, etc.), and power-ups are all tracked.
 React-Hooks monitors the Redux store and automatically updates the appearance of the Mario component in real-time.
 
 Over a dozen different buttons control items, enemies, and other physical actions. 
