@@ -224,6 +224,7 @@ button:hover {
 .depressed.item-button {
   display: inline-block;
   background: linear-gradient(145deg, #448ee6, #50a9ff);
+  background-size: 2500%;
   border-radius: 0.4rem;
   height: 2.75rem;
   width: 2.75rem;
@@ -476,9 +477,9 @@ Solution: add a bit of invisible text to all buttons. */
 .button-action.a, .button-action.b {
   border-radius: 1rem;
   color: white;
-  text-shadow: 0.125rem 0.125rem black;
+  text-shadow: 0rem 0.125rem black;
   margin: 0rem 0.5rem 0rem 0.5rem;
-  padding: 0;
+  padding: 0rem 0rem 0.125rem 0rem;
   letter-spacing: -0.1rem;
   background: linear-gradient(145deg, #50a9ff, #448ee6);
   box-shadow: 0.1rem 0.1rem 0.2rem #4086d9, -0.1rem -0.1rem 0.2rem #56b6ff;
@@ -486,7 +487,7 @@ Solution: add a bit of invisible text to all buttons. */
 .depressed.button-action.a, .depressed.button-action.b {
   border-radius: 1rem;
   color: white;
-  text-shadow: 0.125rem 0.125rem black;
+  text-shadow: 0rem 0rem black;
   margin: 0rem 0.5rem 0rem 0.5rem;
   padding: 0;
   letter-spacing: -0.1rem;
@@ -505,6 +506,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .action-climb.d-up {
   color: white;
+  text-shadow: 0rem 0.125rem black;
   font-size: 0.9rem;
   background: linear-gradient(0deg, #4e99f2, #4490e7);
 }
@@ -529,6 +531,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .action-duck.d-down {
   color: white;
+  text-shadow: 0rem 0.125rem black;
   font-size: 0.9rem;
   background: linear-gradient(180deg, #4e99f2, #4490e7);
 }
@@ -544,6 +547,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .action-left.d-left {
   color: white;
+  text-shadow: 0rem 0.125rem black;
   font-size: 0.9rem;
   background: linear-gradient(270deg, #4e99f2, #4490e7);
 }
@@ -562,6 +566,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .action-right.d-right {
   color: white;
+  text-shadow: 0rem 0.125rem black;
   font-size: 0.9rem;
   background: linear-gradient(90deg, #4e99f2, #4490e7);
 }
@@ -596,6 +601,7 @@ Solution: add a bit of invisible text to all buttons. */
 }
 .action-stop.d-stop {
   color: white;
+  text-shadow: 0rem 0.125rem black;
   font-size: 0.9rem;
   background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(83,159,248,1) 100%);
 }
