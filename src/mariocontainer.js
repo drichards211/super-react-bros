@@ -51,6 +51,23 @@ export default function MarioContainer() {
           marioClass += "mario-dead";
         }
   }
+  // MARIO SPRITE ACTION LOGIC:
+  switch (true) {
+    case marioState.dPad === "d-up":
+      marioClass += " move-up";
+      break;
+    case marioState.dPad === "d-right":
+      marioClass += " move-right";
+      break;
+    case marioState.dPad === "d-down":
+      marioClass += " move-down";
+      break;
+    case marioState.dPad === "d-stop":
+      marioClass += " move-stop";
+      break;  
+    default:
+      marioClass += " move-left";
+  }
 
   return (
     <div className="mario-container">

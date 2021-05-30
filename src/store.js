@@ -33,11 +33,9 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  if (
-    action.type !== "DECREMENT_TIMER" &&
-    action.type !== "DECREMENT_STARMANTIMER"
-  ) {
-    console.log(`reducer() ran ${action.type}`);
+  if ( action.type !== "DECREMENT_TIMER" 
+    && action.type !== "DECREMENT_STARMANTIMER" ) { 
+      console.log(`reducer() ran ${action.type}`);
   }
   switch (action.type) {
     case "INCREMENT_LIVES":
