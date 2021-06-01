@@ -59,30 +59,33 @@ export default function ActionButtons() {
   
   const buttonStop = (
     <button 
-      className={"button-action action-stop "+marioState.dPad}
+      className={`button-action action-stop ${marioState.dPad} ${+marioState.actionButtonDepressed.buttonStop ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         animateDpad("d-stop");
+        animateButtonPress("buttonStop");
       }}
     >♦</button>
   );
 
   const buttonWalkLeft = (
     <button 
-      className={"button-action action-left "+marioState.dPad}
+      className={`button-action action-left ${marioState.dPad} ${+marioState.actionButtonDepressed.buttonWalkLeft ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         animateDpad("d-left");
+        animateButtonPress("buttonWalkLeft");
       }}
     >◀</button>
   );
 
   const buttonWalkRight = (
     <button 
-      className={"button-action action-right "+marioState.dPad}
+      className={`button-action action-right ${marioState.dPad} ${+marioState.actionButtonDepressed.buttonWalkRight ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         animateDpad("d-right");
+        animateButtonPress("buttonWalkRight");
       }}
     >▶</button>
   );
@@ -110,20 +113,22 @@ export default function ActionButtons() {
 
   const buttonClimb = (
     <button 
-      className={"button-action action-climb "+marioState.dPad}
+      className={`button-action action-climb ${marioState.dPad} ${+marioState.actionButtonDepressed.buttonClimb ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         animateDpad("d-up");
+        animateButtonPress("buttonClimb");
       }}
     >▲</button>
   );
 
   const buttonDuck = (
     <button 
-      className={"button-action action-duck "+marioState.dPad}
+      className={`button-action action-duck ${marioState.dPad} ${+marioState.actionButtonDepressed.buttonDuck ? "depressed" : ""}`}
       onClick={() => {
         dispatch({ type: "SHOW_HELP" });
         animateDpad("d-down");
+        animateButtonPress("buttonDuck");
       }}
     >▼</button>
   );

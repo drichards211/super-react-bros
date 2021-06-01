@@ -26,6 +26,11 @@ const initialState = {
     buttonQuestion: false,
   },
   actionButtonDepressed: {
+    buttonStop: false,
+    buttonWalkLeft: false,
+    buttonWalkRight: false,
+    buttonClimb: false,
+    buttonDuck: false,
     buttonJump: false,
     buttonFire: false,
   },

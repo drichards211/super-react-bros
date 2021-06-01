@@ -647,6 +647,9 @@ Solution: add a bit of invisible text to all buttons. */
   font-size: 0.9rem;
   background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(83,159,248,1) 100%);
 }
+.action-climb.depressed, .action-duck.depressed, .action-left.depressed, .action-right.depressed, .action-stop.depressed {
+  text-shadow: 0rem 0rem black;
+}
 .action-fire {
   position: relative;
 }
