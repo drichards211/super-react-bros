@@ -53,6 +53,9 @@ export default function MarioContainer() {
   }
   // UPDATE MARIO DIRECTION WHEN D-PAD CHANGES:
     marioClass += " " + marioState.dPad;
+  // UPDATE MARIO CLASS WHEN SLIPPING:
+    marioClass += marioState.brotherSlipLeft ? " slip-left" : "";
+    marioClass += marioState.brotherSlipRight ? " slip-right" : "";
   
   return (
     <div className="mario-container">

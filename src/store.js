@@ -35,6 +35,8 @@ const initialState = {
     buttonFire: false,
   },
   dPad: "d-right",
+  brotherSlipLeft: false,
+  brotherSlipRight: false,
 };
 
 function reducer(state = initialState, action) {
@@ -62,6 +64,28 @@ function reducer(state = initialState, action) {
         super: false,
         fire: false,
         timer: 400,
+        buttonDepressed: {
+          buttonMushroom: false,
+          buttonFire: false,
+          buttonCoin: false,
+          buttonStar: false,
+          buttonEnemy: false,
+          buttonOneUp: false,
+          buttonBrosToggle: false,
+          buttonQuestion: false,
+        },
+        actionButtonDepressed: {
+          buttonStop: false,
+          buttonWalkLeft: false,
+          buttonWalkRight: false,
+          buttonClimb: false,
+          buttonDuck: false,
+          buttonJump: false,
+          buttonFire: false,
+        },
+        dPad: "d-right",
+        brotherSlipLeft: false,
+        brotherSlipRight: false,
       };
     case "MAKE_SUPER":
       return {
@@ -134,11 +158,6 @@ function reducer(state = initialState, action) {
         ...initialState,
         brother: state.brother,
       };
-    case "RESET_TIMER":
-      return {
-        ...initialState,
-        timer: 400,
-      };
     case "RESET_STARMANTIMER":
       return {
         ...state,
@@ -205,6 +224,22 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         dPad: action.payload,
+      };
+    case "SLIP_LEFT":
+      return {
+        ...state,
+        brotherSlipLeft: true,
+      };
+    case "SLIP_RIGHT":
+      return {
+        ...state,
+        brotherSlipRight: true,
+      };
+    case "CANCEL_SLIP":
+      return {
+        ...state,
+        brotherSlipLeft: false,
+        brotherSlipRight: false,
       };
     default:
       console.log(`${action.type} is an invalid reducer action.`);

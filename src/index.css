@@ -68,10 +68,10 @@ body ::after {
     background-position: 20% 10%;
   }
 }
-.mario.d-left {
+.mario.d-left, .mario.d-stop-left {
   transform:scaleX(-1);
 }
-.mario.d-stop {
+.mario.d-stop, .mario.d-stop-left {
   animation: none;
 }
 .luigi {
@@ -88,10 +88,10 @@ body ::after {
     background-position: 20% 25%;
   }
 }
-.luigi.d-left {
+.luigi.d-left, .luigi.d-stop-left {
   transform:scaleX(-1);
 }
-.luigi.d-stop {
+.luigi.d-stop, .luigi.d-stop-left {
   animation: none;
 }
 .mario-super {
@@ -107,10 +107,10 @@ body ::after {
     background-position: 20% 0%;
   }
 }
-.mario-super.d-left {
+.mario-super.d-left, .mario-super.d-stop-left {
   transform:scaleX(-1);
 }
-.mario-super.d-stop {
+.mario-super.d-stop, .mario-super.d-stop-left {
   animation: none;
 }
 .luigi-super {
@@ -126,10 +126,10 @@ body ::after {
     background-position: 20% 15.8%;
   }
 }
-.luigi-super.d-left {
+.luigi-super.d-left, .luigi-super.d-stop-left {
   transform:scaleX(-1);
 }
-.luigi-super.d-stop {
+.luigi-super.d-stop, .luigi-super.d-stop-left {
   animation: none;
 }
 .fire {
@@ -146,10 +146,10 @@ body ::after {
     background-position: 20% 31.6%;
   }
 }
-.fire.d-left {
+.fire.d-left, .fire.d-stop-left {
   transform:scaleX(-1);
 }
-.fire.d-stop {
+.fire.d-stop, .fire.d-stop-left {
   animation: none;
 }
 .invincible {
@@ -166,15 +166,23 @@ body ::after {
     background-position: 50% 100%;
   }
 }
-.invincible.d-left {
+.invincible.d-left, .invincible.d-stop-left {
   transform:scaleX(-1);
 }
-.invincible.d-stop {
-  animation: none;
+.invincible.d-stop, .invincible.d-stop-left {
+  animation: invincible-stopped .11s steps(3) infinite;
+}
+@keyframes invincible-stopped {
+  0% {
+    background-position: 0% 75%;
+  }
+  100% {
+    background-position: 0% 90%;
+  }
 }
 .invincible-super {
   height: 4rem;
-  background-position: 0% 47.4%;
+  background-position: 0% 47.35%;
   animation: invincible-super 0.33s steps(9) infinite;
 }
 @keyframes invincible-super {
@@ -185,11 +193,19 @@ body ::after {
     background-position: 50% 94.75%;
   }
 }
-.invincible-super.d-left {
+.invincible-super.d-left, .invincible-super.d-stop-left {
   transform:scaleX(-1);
 }
-.invincible-super.d-stop {
-  animation: none;
+.invincible-super.d-stop, .invincible-super.d-stop-left {
+  animation: invincible-super-stopped .11s steps(3) infinite;
+}
+@keyframes invincible-super-stopped {
+  0% {
+    background-position: 0% 47.35%;
+  }
+  100% {
+    background-position: 0% 78.93%;
+  }
 }
 .mario-dead {
   height: 2rem;
@@ -556,7 +572,8 @@ Solution: add a bit of invisible text to all buttons. */
   background: linear-gradient(180deg, #6bb9ff, #50a9ff);
 }
 .action-climb.d-stop {
-  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgb(83 159 248) 100%);
+  background: #4f9efb;
+  /* background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgb(83 159 248) 100%); */
 }
 .action-duck {
   border-radius: 0rem 0rem 0.35rem 0.35rem;
@@ -578,7 +595,8 @@ Solution: add a bit of invisible text to all buttons. */
   background: linear-gradient(180deg, #4e99f2, #4490e7);
 }
 .action-duck.d-stop {
-  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgb(83 159 248) 100%);
+  background: #4f9efb;
+  /* background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgb(83 159 248) 100%); */
 }
 .action-left {
   border-radius: 0.35rem 0rem 0rem 0.35rem;
@@ -600,7 +618,8 @@ Solution: add a bit of invisible text to all buttons. */
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-left.d-stop {
-  background: linear-gradient(90deg, #55aefd, #50a9ff);
+  background: #4f9efb;
+  /* background: linear-gradient(90deg, #55aefd, #50a9ff); */
 }
 .action-right {
   border-radius: 0rem 0.35rem 0.35rem 0rem;
@@ -621,8 +640,9 @@ Solution: add a bit of invisible text to all buttons. */
 .action-right.d-down {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-right.d-stop {
-  background: linear-gradient(90deg, rgba(83,159,248,1), #4e9df8);
+.action-right.d-stop, .action-right-d-stop-left {
+  background: #4f9efb;
+  /* background: linear-gradient(90deg, rgba(83,159,248,1), #4e9df8); */
 }
 .action-stop {
   border-radius: 0;
@@ -645,7 +665,12 @@ Solution: add a bit of invisible text to all buttons. */
   color: white;
   text-shadow: 0rem 0.125rem black;
   font-size: 0.9rem;
-  background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(83,159,248,1) 100%);
+  /* background: linear-gradient(90deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(83,159,248,1) 100%); */
+}
+.action-stop.d-stop-left {
+  color: white;
+  text-shadow: 0rem 0.125rem black;
+  font-size: 0.9rem;
 }
 .action-climb.depressed, .action-duck.depressed, .action-left.depressed, .action-right.depressed, .action-stop.depressed {
   text-shadow: 0rem 0rem black;
