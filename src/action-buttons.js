@@ -47,7 +47,7 @@ export default function ActionButtons() {
       dispatch({ type: `${marioState.dPad === "d-left" ? "SLIP_LEFT" : "SLIP_RIGHT"}` });
         setTimeout(function () {
           dispatch({ type: "CANCEL_SLIP"});
-        }, 400);
+        }, 433);
     }
   }
   
@@ -76,7 +76,9 @@ export default function ActionButtons() {
     <button 
       className={`button-action action-left ${marioState.dPad} ${marioState.actionButtonDepressed.buttonWalkLeft ? "depressed" : ""}`}
       onClick={() => {
-        handleMarioSlip();
+        if (marioState.dPad !== "d-left") {
+          handleMarioSlip();
+        }
         dispatch({ type: `UPDATE_DPAD`, payload: "d-left" });
         animateButtonPress("buttonWalkLeft");
       }}
@@ -87,7 +89,9 @@ export default function ActionButtons() {
     <button 
       className={`button-action action-right ${marioState.dPad} ${marioState.actionButtonDepressed.buttonWalkRight ? "depressed" : ""}`}
       onClick={() => {
-        handleMarioSlip();
+        if (marioState.dPad !== "d-right") {
+          handleMarioSlip();
+        }
         dispatch({ type: `UPDATE_DPAD`, payload: "d-right" });
         animateButtonPress("buttonWalkRight");
       }}
@@ -119,7 +123,6 @@ export default function ActionButtons() {
     <button 
       className={`button-action action-climb ${marioState.dPad} ${marioState.actionButtonDepressed.buttonClimb ? "depressed" : ""}`}
       onClick={() => {
-        handleMarioSlip();
         dispatch({ type: `UPDATE_DPAD`, payload: "d-up" });
         animateButtonPress("buttonClimb");
       }}

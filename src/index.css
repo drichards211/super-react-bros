@@ -74,6 +74,14 @@ body ::after {
 .mario.d-stop, .mario.d-stop-left {
   animation: none;
 }
+.mario.slip-left, .mario.slip-right {
+  background-position: 20% 10%;
+  animation: none;
+  transform: none;
+}
+.mario.slip-right {
+  transform: scaleX(-1);
+}
 .luigi {
   height: 2rem;
   margin-top: 2rem;
@@ -94,6 +102,14 @@ body ::after {
 .luigi.d-stop, .luigi.d-stop-left {
   animation: none;
 }
+.luigi.slip-left, .luigi.slip-right {
+  background-position: 20% 25%;
+  animation: none;
+  transform: none;
+}
+.luigi.slip-right {
+  transform: scaleX(-1);
+}
 .mario-super {
   height: 4rem;
   background-position: 0% 0%;
@@ -112,6 +128,14 @@ body ::after {
 }
 .mario-super.d-stop, .mario-super.d-stop-left {
   animation: none;
+}
+.mario-super.slip-left, .mario-super.slip-right {
+  background-position: 20% 0%;
+  animation: none;
+  transform: none;
+}
+.mario-super.slip-right {
+  transform: scaleX(-1);
 }
 .luigi-super {
   height: 4rem;
@@ -132,6 +156,14 @@ body ::after {
 .luigi-super.d-stop, .luigi-super.d-stop-left {
   animation: none;
 }
+.luigi-super.slip-left, .luigi-super.slip-right {
+  background-position: 20% 15.8%;
+  animation: none;
+  transform: none;
+}
+.luigi-super.slip-right {
+  transform: scaleX(-1);
+}
 .fire {
   /* Identical sprites used for Mario and Luigi in Fire form */
   height: 4rem;
@@ -151,6 +183,14 @@ body ::after {
 }
 .fire.d-stop, .fire.d-stop-left {
   animation: none;
+}
+.fire.slip-left, .fire.slip-right {
+  background-position: 20% 31.6%;
+  animation: none;
+  transform: none;
+}
+.fire.slip-right {
+  transform: scaleX(-1);
 }
 .invincible {
   height: 2rem;
@@ -180,6 +220,22 @@ body ::after {
     background-position: 0% 90%;
   }
 }
+.invincible.slip-left, .invincible.slip-right {
+  background-position: 20% 10%;
+  animation: invincible-slip-left .11s steps(3) infinite;
+  transform: none;
+}
+@keyframes invincible-slip-left {
+  0% {
+    background-position: 20% 75%;
+  }
+  100% {
+    background-position: 20% 90%;
+  }
+}
+.invincible.slip-right {
+  transform: scaleX(-1);
+}
 .invincible-super {
   height: 4rem;
   background-position: 0% 47.35%;
@@ -207,6 +263,23 @@ body ::after {
     background-position: 0% 78.93%;
   }
 }
+.invincible-super.slip-left, .invincible-super.slip-right {
+  background-position: 20% 10%;
+  animation: invincible-super-slip-left .11s steps(3) infinite;
+  transform: none;
+}
+@keyframes invincible-super-slip-left {
+  0% {
+    background-position: 20% 47.35%;
+  }
+  100% {
+    background-position: 20% 78.93%;
+  }
+}
+.invincible-super.slip-right {
+  transform: scaleX(-1);
+}
+
 .mario-dead {
   height: 2rem;
   margin-top: 2rem;
