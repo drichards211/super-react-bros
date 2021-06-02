@@ -68,7 +68,7 @@ body ::after {
     background-position: 20% 10%;
   }
 }
-.mario.d-left, .mario.d-stop-left {
+.mario.d-left, .mario.d-stop-left, .mario.slip-right, .mario.d-down-left {
   transform:scaleX(-1);
 }
 .mario.d-stop, .mario.d-stop-left {
@@ -77,16 +77,20 @@ body ::after {
 .mario.slip-left, .mario.slip-right {
   background-position: 20% 10%;
   animation: none;
-  transform: none;
-}
-.mario.slip-right {
-  transform: scaleX(-1);
 }
 .mario.d-down, .mario.d-down-left {
   animation: none;
 }
-.mario.d-down-left {
-  transform: scaleX(-1);
+.mario.d-up {
+  animation: climb-mario 0.33s steps(2) infinite;
+}
+@keyframes climb-mario {
+  from {
+    background-position: 35% 10%;
+  }
+  to {
+    background-position: 45% 10%;
+  }
 }
 .luigi {
   height: 2rem;
@@ -102,7 +106,7 @@ body ::after {
     background-position: 20% 25%;
   }
 }
-.luigi.d-left, .luigi.d-stop-left {
+.luigi.d-left, .luigi.d-stop-left, .luigi.slip-right, .luigi.d-down-left {
   transform:scaleX(-1);
 }
 .luigi.d-stop, .luigi.d-stop-left {
@@ -111,16 +115,20 @@ body ::after {
 .luigi.slip-left, .luigi.slip-right {
   background-position: 20% 25%;
   animation: none;
-  transform: none;
-}
-.luigi.slip-right {
-  transform: scaleX(-1);
 }
 .luigi.d-down, .luigi.d-down-left {
   animation: none;
 }
-.luigi.d-down-left {
-  transform: scaleX(-1);
+.luigi.d-up {
+  animation: climb-luigi 0.33s steps(2) infinite;
+}
+@keyframes climb-luigi {
+  from {
+    background-position: 35% 25%;
+  }
+  to {
+    background-position: 45% 25%;
+  }
 }
 .mario-super {
   height: 4rem;
@@ -156,6 +164,17 @@ body ::after {
 .mario-super.d-down-left {
   transform: scaleX(-1);
 }
+.mario-super.d-up {
+  animation: climb-mario-super 0.33s steps(2) infinite;
+}
+@keyframes climb-mario-super {
+  from {
+    background-position: 35% 0%;
+  }
+  to {
+    background-position: 45% 0%;
+  }
+}
 .luigi-super {
   height: 4rem;
   background-position: 0% 15.8%;
@@ -189,6 +208,17 @@ body ::after {
 }
 .luigi-super.d-down-left {
   transform: scaleX(-1);
+}
+.luigi-super.d-up {
+  animation: climb-luigi-super 0.33s steps(2) infinite;
+}
+@keyframes climb-luigi-super {
+  from {
+    background-position: 35% 15.8%;
+  }
+  to {
+    background-position: 45% 15.8%;
+  }
 }
 .fire {
   /* Identical sprites used for Mario and Luigi in Fire form */
@@ -224,6 +254,17 @@ body ::after {
 }
 .fire.d-down-left {
   transform: scaleX(-1);
+}
+.fire.d-up {
+  animation: climb-fire 0.33s steps(2) infinite;
+}
+@keyframes climb-fire {
+  from {
+    background-position: 35% 31.6%;
+  }
+  to {
+    background-position: 45% 31.6%;
+  }
 }
 .invincible {
   height: 2rem;
