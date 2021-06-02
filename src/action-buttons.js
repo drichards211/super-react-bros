@@ -42,10 +42,15 @@ export default function ActionButtons() {
       dispatch({ type: `UNPRESS_ACTION_BUTTON`, payload: buttonName });
     }, 400);
   }
-  const animateDpad = (direction) => {
-    dispatch({ type: `UPDATE_DPAD`, payload: direction });
+  const handleMarioSlip = () => {
+    if (marioState.dPad === "d-left" || marioState.dPad === "d-right") {
+      dispatch({ type: `${marioState.dPad === "d-left" ? "SLIP_LEFT" : "SLIP_RIGHT"}` });
+        setTimeout(function () {
+          dispatch({ type: "CANCEL_SLIP"});
+        }, 433);
+    }
   }
-
+  
   // ACTION BUTTONS:
   const nesController = (
     <div 
@@ -59,30 +64,36 @@ export default function ActionButtons() {
   
   const buttonStop = (
     <button 
-      className={"button-action action-stop "+marioState.dPad}
+      className={`button-action action-stop ${marioState.dPad} ${marioState.actionButtonDepressed.buttonStop ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
-        animateDpad("d-stop");
+        dispatch({ type: `UPDATE_DPAD`, payload: `${marioState.dPad === "d-left" ? "d-stop-left" : "d-stop"}` });
+        animateButtonPress("buttonStop");
       }}
     >♦</button>
   );
 
   const buttonWalkLeft = (
     <button 
-      className={"button-action action-left "+marioState.dPad}
+      className={`button-action action-left ${marioState.dPad} ${marioState.actionButtonDepressed.buttonWalkLeft ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
-        animateDpad("d-left");
+        if (marioState.dPad !== "d-left") {
+          handleMarioSlip();
+        }
+        dispatch({ type: `UPDATE_DPAD`, payload: "d-left" });
+        animateButtonPress("buttonWalkLeft");
       }}
     >◀</button>
   );
 
   const buttonWalkRight = (
     <button 
-      className={"button-action action-right "+marioState.dPad}
+      className={`button-action action-right ${marioState.dPad} ${marioState.actionButtonDepressed.buttonWalkRight ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
-        animateDpad("d-right");
+        if (marioState.dPad !== "d-right") {
+          handleMarioSlip();
+        }
+        dispatch({ type: `UPDATE_DPAD`, payload: "d-right" });
+        animateButtonPress("buttonWalkRight");
       }}
     >▶</button>
   );
@@ -110,20 +121,20 @@ export default function ActionButtons() {
 
   const buttonClimb = (
     <button 
-      className={"button-action action-climb "+marioState.dPad}
+      className={`button-action action-climb ${marioState.dPad} ${marioState.actionButtonDepressed.buttonClimb ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
-        animateDpad("d-up");
+        dispatch({ type: `UPDATE_DPAD`, payload: "d-up" });
+        animateButtonPress("buttonClimb");
       }}
     >▲</button>
   );
 
   const buttonDuck = (
     <button 
-      className={"button-action action-duck "+marioState.dPad}
+      className={`button-action action-duck ${marioState.dPad} ${marioState.actionButtonDepressed.buttonDuck ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
-        animateDpad("d-down");
+        dispatch({ type: `UPDATE_DPAD`, payload: `${marioState.dPad === "d-left" ? "d-down-left" : "d-down"}` });
+        animateButtonPress("buttonDuck");
       }}
     >▼</button>
   );
