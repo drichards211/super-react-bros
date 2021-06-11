@@ -112,7 +112,10 @@ export default function ActionButtons() {
     <button 
       className={`button-action a ${marioState.actionButtonDepressed.buttonJump ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
+        dispatch({ type: "JUMP" });
+        setTimeout(function () {
+          dispatch({ type: "CANCEL_JUMP"});
+        }, 800);
         NoiseMaker("jump");
         animateButtonPress("buttonJump");
       }}

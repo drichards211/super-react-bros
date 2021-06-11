@@ -86,6 +86,7 @@ function reducer(state = initialState, action) {
         dPad: "d-right",
         brotherSlipLeft: false,
         brotherSlipRight: false,
+        jumping: false,
       };
     case "MAKE_SUPER":
       return {
@@ -241,6 +242,16 @@ function reducer(state = initialState, action) {
         brotherSlipLeft: false,
         brotherSlipRight: false,
       };
+    case "JUMP":
+      return {
+        ...state,
+        jumping: true,
+      }
+    case "CANCEL_JUMP":
+      return {
+        ...state,
+        jumping: false,
+      }
     default:
       console.log(`${action.type} is an invalid reducer action.`);
       return state; // Return the unchanged state if action is unclear

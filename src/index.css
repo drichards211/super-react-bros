@@ -92,6 +92,10 @@ body ::after {
     background-position: 45% 10%;
   }
 }
+.mario.jumping {
+  animation: none;
+  background-position: 25% 10%;
+}
 .luigi {
   height: 2rem;
   margin-top: 2rem;
@@ -129,6 +133,10 @@ body ::after {
   to {
     background-position: 45% 25%;
   }
+}
+.luigi.jumping {
+  animation: none;
+  background-position: 25% 25%;
 }
 .mario-super {
   height: 4rem;
@@ -175,6 +183,10 @@ body ::after {
     background-position: 45% 0%;
   }
 }
+.mario-super.jumping {
+  animation: none;
+  background-position: 25% 0%;
+}
 .luigi-super {
   height: 4rem;
   background-position: 0% 15.8%;
@@ -219,6 +231,10 @@ body ::after {
   to {
     background-position: 45% 15.8%;
   }
+}
+.luigi-super.jumping {
+  animation: none;
+  background-position: 25% 15.8%;
 }
 .fire {
   /* Identical sprites used for Mario and Luigi in Fire form */
@@ -266,6 +282,10 @@ body ::after {
     background-position: 45% 31.6%;
   }
 }
+.fire.jumping {
+  animation: none;
+  background-position: 25% 31.6%;
+}
 .invincible {
   height: 2rem;
   margin-top: 2rem;
@@ -299,6 +319,18 @@ body ::after {
   animation: invincible-slip .11s steps(3) infinite;
 }
 @keyframes invincible-slip {
+  0% {
+    background-position: 20% 75%;
+  }
+  100% {
+    background-position: 20% 90%;
+  }
+}
+.invincible.jumping {
+  background-position: 25% 31.6%;
+  animation: invincible-jump .11s steps(3) infinite;
+}
+@keyframes invincible-jump {
   0% {
     background-position: 20% 75%;
   }
@@ -355,6 +387,18 @@ body ::after {
   }
   100% {
     background-position: 30% 78.93%;
+  }
+}
+.invincible-super.jumping {
+  background-position: 25% 31.6%;
+  animation: invincible-super-jump .11s steps(3) infinite;
+}
+@keyframes invincible-super-jump {
+  0% {
+    background-position: 20% 47.35%;
+  }
+  100% {
+    background-position: 20% 78.93%;
   }
 }
 .mario-dead {
