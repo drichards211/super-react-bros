@@ -332,10 +332,10 @@ body ::after {
 }
 @keyframes invincible-jump {
   0% {
-    background-position: 20% 75%;
+    background-position: 25% 74.99%;
   }
   100% {
-    background-position: 20% 90%;
+    background-position: 25% 90%;
   }
 }
 .invincible-super {
@@ -395,10 +395,10 @@ body ::after {
 }
 @keyframes invincible-super-jump {
   0% {
-    background-position: 20% 47.35%;
+    background-position: 25% 47.35%;
   }
   100% {
-    background-position: 20% 78.93%;
+    background-position: 25% 78.93%;
   }
 }
 .mario-dead {
