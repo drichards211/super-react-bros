@@ -762,7 +762,7 @@ Solution: add a bit of invisible text to all buttons. */
   font-size: 0.9rem;
   background: linear-gradient(0deg, #4e99f2, #4490e7);
 }
-.action-climb.d-down {
+.action-climb.d-down, .action-climb.d-down-left {
   background: linear-gradient(180deg, #6bb9ff, #50a9ff);
 }
 .action-climb.d-stop {
@@ -808,7 +808,7 @@ Solution: add a bit of invisible text to all buttons. */
 .action-left.d-up {
   background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-left.d-down {
+.action-left.d-down, .action-left.d-down-left {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-left.d-stop {
@@ -831,7 +831,7 @@ Solution: add a bit of invisible text to all buttons. */
 .action-right.d-up {
   background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-right.d-down {
+.action-right.d-down, .action-right.d-down-left {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-right.d-stop, .action-right-d-stop-left {
@@ -852,7 +852,7 @@ Solution: add a bit of invisible text to all buttons. */
 .action-stop.d-up {
   background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-stop.d-down {
+.action-stop.d-down, .action-stop.d-down-left {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-stop.d-stop {
