@@ -47,7 +47,7 @@ export default function ActionButtons() {
       dispatch({ type: `${marioState.dPad === "d-left" ? "SLIP_LEFT" : "SLIP_RIGHT"}` });
         setTimeout(function () {
           dispatch({ type: "CANCEL_SLIP"});
-        }, 433);
+        }, 233);
     }
   }
   
