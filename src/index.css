@@ -57,6 +57,7 @@ body ::after {
 .mario {
   height: 2rem;
   margin-top: 2rem;
+  z-index: +10;
   background-position: 0 10%;
   animation: walk-mario 0.33s steps(3) infinite;
 }
@@ -92,9 +93,40 @@ body ::after {
     background-position: 45% 10%;
   }
 }
+.mario.jumping {
+  animation: jump-mario 1s ease-out;
+  background-position: 25% 10%;
+}
+@keyframes jump-mario {
+  0% { 
+    transform: translateY(0rem);
+  }
+  50% {
+    transform: translateY(-6rem);
+  }
+  100% { 
+    transform: translateY(0rem);
+  }
+}
+.mario.d-left.jumping, .mario.d-stop-left.jumping, .mario.d-down-left.jumping {
+  animation: jump-mario-left 1s ease-out;
+  background-position: 25% 10%;
+}
+@keyframes jump-mario-left {
+  0% { 
+    transform: translateY(0rem) scaleX(-1);
+  }
+  50% {
+    transform: translateY(-6rem) scaleX(-1);
+  }
+  100% { 
+    transform: translateY(0rem) scaleX(-1);
+  }
+}
 .luigi {
   height: 2rem;
   margin-top: 2rem;
+  z-index: +10;
   background-position: 0% 25%;
   animation: walk-luigi 0.33s steps(3) infinite;
 }
@@ -130,8 +162,17 @@ body ::after {
     background-position: 45% 25%;
   }
 }
+.luigi.jumping {
+  animation: jump-mario 1s ease-out;
+  background-position: 25% 25%;
+}
+.luigi.d-left.jumping, .luigi.d-stop-left.jumping, .luigi.d-down-left.jumping {
+  animation: jump-mario-left 1s ease-out;
+  background-position: 25% 25%;
+}
 .mario-super {
   height: 4rem;
+  z-index: +10;
   background-position: 0% 0%;
   animation: walk-super-mario 0.33s steps(3) infinite;
 }
@@ -175,8 +216,17 @@ body ::after {
     background-position: 45% 0%;
   }
 }
+.mario-super.jumping {
+  background-position: 25% 0%;
+  animation: jump-mario 1s ease-out;
+}
+.mario-super.d-left.jumping, .mario-super.d-stop-left.jumping, .mario-super.d-down-left.jumping {
+  background-position: 25% 0%;
+  animation: jump-mario-left 1s ease-out;
+}
 .luigi-super {
   height: 4rem;
+  z-index: +10;
   background-position: 0% 15.8%;
   animation: walk-super-luigi 0.33s steps(3) infinite;
 }
@@ -220,9 +270,18 @@ body ::after {
     background-position: 45% 15.8%;
   }
 }
+.luigi-super.jumping {
+  background-position: 25% 15.8%;
+  animation: jump-mario 1s ease-out;
+}
+.luigi-super.d-left.jumping, .luigi-super.d-stop-left.jumping, .luigi-super.d-down-left.jumping {
+  animation: jump-mario-left 1s ease-out;
+  background-position: 25% 15.8%;
+}
 .fire {
   /* Identical sprites used for Mario and Luigi in Fire form */
   height: 4rem;
+  z-index: +10;
   background-position: 0% 31.6%;
   animation: walk-fire 0.33s steps(3) infinite;
 }
@@ -266,9 +325,17 @@ body ::after {
     background-position: 45% 31.6%;
   }
 }
+.fire.jumping {
+  background-position: 25% 31.6%;
+  animation: jump-mario 1s ease-out;
+}
+.fire.d-left.jumping, .fire.d-stop-left.jumping, .fire.d-down-left.jumping {
+  animation: jump-mario-left 1s ease-out;
+}
 .invincible {
   height: 2rem;
   margin-top: 2rem;
+  z-index: 10;
   background-position: 0% 75%;
   animation: invincible 0.33s steps(9) infinite;
 }
@@ -306,8 +373,24 @@ body ::after {
     background-position: 20% 90%;
   }
 }
+.invincible.jumping {
+  background-position: 25% 31.6%;
+  animation: invincible-jump .11s steps(3) infinite, jump-mario 1s ease-out;
+}
+@keyframes invincible-jump {
+  0% {
+    background-position: 25% 74.99%;
+  }
+  100% {
+    background-position: 25% 90%;
+  }
+}
+.invincible.d-left.jumping, .invincible.d-stop-left.jumping, .invincible.d-down-left.jumping {
+  animation: invincible-jump .11s steps(3) infinite, jump-mario-left 1s ease-out;
+}
 .invincible-super {
   height: 4rem;
+  z-index: +10;
   background-position: 0% 47.35%;
   animation: invincible-super 0.33s steps(9) infinite;
 }
@@ -356,6 +439,21 @@ body ::after {
   100% {
     background-position: 30% 78.93%;
   }
+}
+.invincible-super.jumping {
+  background-position: 25% 31.6%;
+  animation: invincible-super-jump .11s steps(3) infinite, jump-mario 1s ease-out;
+}
+@keyframes invincible-super-jump {
+  0% {
+    background-position: 25% 47.35%;
+  }
+  100% {
+    background-position: 25% 78.93%;
+  }
+}
+.invincible-super.d-left.jumping, .invincible-super.d-stop-left.jumping, .invincible-super.d-down-left.jumping {
+  animation: invincible-super-jump .11s steps(3) infinite, jump-mario-left 1s ease-out;
 }
 .mario-dead {
   height: 2rem;
@@ -718,7 +816,7 @@ Solution: add a bit of invisible text to all buttons. */
   font-size: 0.9rem;
   background: linear-gradient(0deg, #4e99f2, #4490e7);
 }
-.action-climb.d-down {
+.action-climb.d-down, .action-climb.d-down-left {
   background: linear-gradient(180deg, #6bb9ff, #50a9ff);
 }
 .action-climb.d-stop {
@@ -764,7 +862,7 @@ Solution: add a bit of invisible text to all buttons. */
 .action-left.d-up {
   background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-left.d-down {
+.action-left.d-down, .action-left.d-down-left {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-left.d-stop {
@@ -787,7 +885,7 @@ Solution: add a bit of invisible text to all buttons. */
 .action-right.d-up {
   background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-right.d-down {
+.action-right.d-down, .action-right.d-down-left {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-right.d-stop, .action-right-d-stop-left {
@@ -808,7 +906,7 @@ Solution: add a bit of invisible text to all buttons. */
 .action-stop.d-up {
   background: linear-gradient(0deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
-.action-stop.d-down {
+.action-stop.d-down, .action-stop.d-down-left {
   background: linear-gradient(180deg, rgba(80,169,255,1) 0%, rgba(80,169,255,1) 50%, rgba(78,153,242,1) 100%);
 }
 .action-stop.d-stop {

@@ -56,7 +56,8 @@ export default function MarioContainer() {
   // UPDATE MARIO CLASS WHEN SLIPPING:
     marioClass += marioState.brotherSlipLeft ? " slip-left" : "";
     marioClass += marioState.brotherSlipRight ? " slip-right" : "";
-  
+  // UPDATE MARIO CLASS WHEN JUMPING:
+    marioClass += marioState.jumping ? " jumping": "";
   return (
     <div className="mario-container">
       {" "}

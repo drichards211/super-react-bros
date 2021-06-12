@@ -47,7 +47,7 @@ export default function ActionButtons() {
       dispatch({ type: `${marioState.dPad === "d-left" ? "SLIP_LEFT" : "SLIP_RIGHT"}` });
         setTimeout(function () {
           dispatch({ type: "CANCEL_SLIP"});
-        }, 433);
+        }, 233);
     }
   }
   
@@ -112,7 +112,10 @@ export default function ActionButtons() {
     <button 
       className={`button-action a ${marioState.actionButtonDepressed.buttonJump ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: "SHOW_HELP" });
+        dispatch({ type: "JUMP" });
+        setTimeout(function () {
+          dispatch({ type: "CANCEL_JUMP"});
+        }, 800);
         NoiseMaker("jump");
         animateButtonPress("buttonJump");
       }}
@@ -133,7 +136,7 @@ export default function ActionButtons() {
     <button 
       className={`button-action action-duck ${marioState.dPad} ${marioState.actionButtonDepressed.buttonDuck ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: `UPDATE_DPAD`, payload: `${marioState.dPad === "d-left" ? "d-down-left" : "d-down"}` });
+        dispatch({ type: `UPDATE_DPAD`, payload: `${marioState.dPad === "d-left" || marioState.dPad === "d-stop-left" ? "d-down-left" : "d-down"}` });
         animateButtonPress("buttonDuck");
       }}
     >▼</button>
