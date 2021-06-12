@@ -136,7 +136,7 @@ export default function ActionButtons() {
     <button 
       className={`button-action action-duck ${marioState.dPad} ${marioState.actionButtonDepressed.buttonDuck ? "depressed" : ""}`}
       onClick={() => {
-        dispatch({ type: `UPDATE_DPAD`, payload: `${marioState.dPad === "d-left" ? "d-down-left" : "d-down"}` });
+        dispatch({ type: `UPDATE_DPAD`, payload: `${marioState.dPad === "d-left" || marioState.dPad === "d-stop-left" ? "d-down-left" : "d-down"}` });
         animateButtonPress("buttonDuck");
       }}
     >▼</button>
