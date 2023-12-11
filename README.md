@@ -18,6 +18,7 @@ Features to be added are listed below, along with required bugfixes and styling 
 
 Features Under Development:
   * [ ] Add additional animations for physical actions.
+  * [ ] Add fireball animations.
   * [ ] Add PAUSE function with pop-up "About" screen.
   
 Styling:
